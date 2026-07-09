@@ -20,7 +20,8 @@ for (const source of sources) {
     const response = await fetch(source.url, {
       headers: {
         "user-agent": "ModelRadar/0.1 (+https://github.com/Cheeseorim/model-radar)",
-        accept: "text/html,application/xhtml+xml"
+        accept: "text/html,application/xhtml+xml",
+        "accept-language": "en-US,en;q=0.9"
       },
       signal: AbortSignal.timeout(30_000)
     });

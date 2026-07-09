@@ -181,10 +181,21 @@ main { padding: 28px 0 72px; }
 .headline-card:first-child h3 {
   font-size: 1.42rem;
 }
-.headline-card p {
+.brief-points {
+  display: grid;
+  gap: 8px;
+}
+.brief-points p {
   margin: 0;
-  color: #3f4b5f;
-  font-size: .9rem;
+  color: #344257;
+  font-size: .88rem;
+}
+.brief-points strong {
+  display: inline-block;
+  min-width: 42px;
+  margin-right: 8px;
+  color: var(--ink);
+  font-size: .76rem;
 }
 .headline-bottom {
   display: flex;
