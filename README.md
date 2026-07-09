@@ -31,7 +31,7 @@ npm run dev
 
 `config/sources.json`에서 공식 출처를, `config/watchlist.json`에서 사용하는 플랫폼과 모델을 관리합니다.
 
-로컬에서 키를 붙여 테스트하려면 `.env.sample`을 `.env`로 복사한 뒤 값을 채웁니다. 자연스러운 한국어 번역·요약을 사용하려면 저장소의 Actions secret에 `OPENAI_API_KEY`를 추가합니다. 기본 모델은 `gpt-5.4-mini`이며, 하루 최대 요약 항목 수는 `SUMMARY_MAX_EVENTS`로 제한합니다.
+로컬에서 키를 붙여 테스트하려면 `.env.example`을 `.env`로 복사한 뒤 값을 채웁니다. 자연스러운 한국어 번역·요약을 사용하려면 저장소의 Actions secret에 `OPENAI_API_KEY`를 추가합니다. 기본 모델은 `gpt-5.4-mini`이며, 하루 최대 요약 항목 수는 `SUMMARY_MAX_EVENTS`로 제한합니다.
 
 Discord 알림을 사용하려면 저장소의 Actions secret에 `DISCORD_WEBHOOK_URL`을 추가합니다. 환경변수 전체 목록은 `.env.example`을 참고하세요.
 
