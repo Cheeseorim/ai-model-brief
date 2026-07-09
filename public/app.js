@@ -1,6 +1,6 @@
 const [events, state] = await Promise.all([
-  fetch("./data/events.json?v=20260709-10").then((response) => response.json()),
-  fetch("./data/state.json?v=20260709-10").then((response) => response.json())
+  fetch("./data/events.json?v=20260710-1").then((response) => response.json()),
+  fetch("./data/state.json?v=20260710-1").then((response) => response.json())
 ]);
 
 const ui = {
