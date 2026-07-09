@@ -1,6 +1,6 @@
 const [events, state] = await Promise.all([
-  fetch("./data/events.json?v=20260709-6").then((response) => response.json()),
-  fetch("./data/state.json?v=20260709-6").then((response) => response.json())
+  fetch("./data/events.json?v=20260709-8").then((response) => response.json()),
+  fetch("./data/state.json?v=20260709-8").then((response) => response.json())
 ]);
 
 const ui = {
@@ -87,7 +87,7 @@ const deprecations = events.filter((event) => event.kind === "deprecation").leng
 const watched = events.filter((event) => event.watched).length;
 ui.stats.innerHTML = [
   [events.length, "누적 변경사항"],
-  [deprecations, "지원 종료 신호"],
+  [deprecations, "지원 종료 관련"],
   [sourceStates.length, "공식 출처"],
   [watched, "Watchlist 관련"]
 ].map(([value, label]) => `<div class="stat"><strong>${value.toLocaleString("ko-KR")}</strong><span>${label}</span></div>`).join("");
@@ -205,7 +205,7 @@ function renderHeadlines() {
 
   ui.headlineMeta.textContent = recent.length
     ? `최근 7일 ${recent.length.toLocaleString("ko-KR")}건 중 검토 우선순위 ${headlines.length}건`
-    : `최근 7일 항목 없음 · 최신 고위험 ${headlines.length}건`;
+    : `최근 7일 업데이트 없음 · 최신 고위험 ${headlines.length}건`;
   ui.headlines.replaceChildren(...headlines.map(headlineCard));
 }
 
@@ -279,7 +279,7 @@ function briefing(event) {
   if (/claude sonnet 5|claude-sonnet-5/.test(lower)) {
     return {
       title: "Claude Sonnet 5 출시 및 가격 구간 확인",
-      change: "Anthropic 릴리스 노트에 Claude Sonnet 5 출시와 초기 가격 안내가 감지되었습니다.",
+      change: "Anthropic 릴리스 노트에 Claude Sonnet 5 출시와 초기 가격 안내가 올라왔습니다.",
       impact: "Sonnet 계열을 코딩·문서·분석 워크로드에 쓰는 경우 성능/비용 기준점이 바뀔 수 있습니다.",
       action: "현재 Sonnet 사용량과 프롬프트 회귀 테스트를 기준으로 Sonnet 5 전환 후보를 평가하세요."
     };
@@ -288,8 +288,8 @@ function briefing(event) {
     return {
       title: "Claude Fable/Mythos 접근성 변경 확인",
       change: /mythos-preview.*retired|will be retired/.test(lower)
-        ? "Claude Mythos Preview가 은퇴되고 Claude Mythos 5로 이전하라는 안내가 감지되었습니다."
-        : excerpt || "Anthropic 문서와 뉴스에서 Fable 5 및 Mythos 5 접근성·재배포 관련 변경이 감지되었습니다.",
+        ? "Claude Mythos Preview가 은퇴되고 Claude Mythos 5로 이전하라는 안내가 올라왔습니다."
+        : excerpt || "Anthropic 문서와 뉴스에 Fable 5 및 Mythos 5 접근성·재배포 관련 변경이 올라왔습니다.",
       impact: "해당 모델을 직접 또는 Bedrock 경유로 쓰는 경우 지역·정책·안전장치에 따라 가용성이 달라질 수 있습니다.",
       action: "사용 중인 Claude 모델 ID와 공급 경로(API/Bedrock)를 대조하고 장애 시 대체 모델을 정해두세요."
     };
@@ -297,7 +297,7 @@ function briefing(event) {
   if (/gemini omni flash|nano banana 2 lite/.test(lower)) {
     return {
       title: "Gemini Omni Flash / Nano Banana 2 Lite 빌드 후보 추가",
-      change: "Google Gemini 쪽에서 빠른 멀티모달·이미지/비디오 생성 계열 모델 업데이트가 감지되었습니다.",
+      change: "Google Gemini에 빠른 멀티모달·이미지/비디오 생성 계열 모델 업데이트가 올라왔습니다.",
       impact: "이미지·영상 생성 워크플로의 비용, 속도, 대화형 편집 UX 후보가 늘어납니다.",
       action: "프로덕션 투입 전 preview 여부, quota, 워터마크/저작권 정책, 지역 제공 여부를 확인하세요."
     };
@@ -321,15 +321,15 @@ function briefing(event) {
   if (/vertex ai documentation is no longer being updated|gemini enterprise agent platform/.test(lower)) {
     return {
       title: "Vertex AI 생성형 AI 문서 경로 변경",
-      change: "Vertex AI 생성형 AI 문서가 Gemini Enterprise Agent Platform 문서로 이동·통합되는 신호가 감지되었습니다.",
+      change: "Vertex AI 생성형 AI 문서가 Gemini Enterprise Agent Platform 문서로 이동·통합되는 흐름이 확인됩니다.",
       impact: "Vertex AI 기반 구현을 문서 기준으로 운영하는 팀은 최신 안내 위치가 바뀌어 deprecated 문서를 참조할 위험이 있습니다.",
       action: "내부 위키, 런북, 링크 모음을 Gemini Enterprise Agent Platform 최신 문서 기준으로 갱신하세요."
     };
   }
   if (/deprecat|retir|sunset|legacy|shut.?down|end.of.life/.test(lower) || event.kind === "deprecation") {
     return {
-      title: `${vendorLabels[event.vendor] || event.vendor} 지원 종료/수명주기 신호`,
-      change: models ? `지원 종료 또는 모델 수명주기 변경이 감지되었습니다. 관련 모델: ${models}.` : excerpt || "공식 문서에서 지원 종료 또는 모델 수명주기 관련 변경이 감지되었습니다.",
+      title: `${vendorLabels[event.vendor] || event.vendor} 지원 종료/수명주기 업데이트`,
+      change: models ? `지원 종료 또는 모델 수명주기 변경이 올라왔습니다. 관련 모델: ${models}.` : excerpt || "공식 문서에 지원 종료 또는 모델 수명주기 관련 변경이 올라왔습니다.",
       impact: "운영 중인 모델 호출, Bedrock/Vertex 경유 사용, alias 기반 호출이 있다면 예고 없이 비용·품질·가용성 리스크로 이어질 수 있습니다.",
       action: "현재 사용 중인 모델 ID와 alias를 대조하고, 대체 모델·마이그레이션 마감일·리전별 제공 여부를 확인하세요."
     };
@@ -337,7 +337,7 @@ function briefing(event) {
   if (/price|pricing|billing|cost/.test(lower) || event.kind === "pricing") {
     return {
       title: `${vendorLabels[event.vendor] || event.vendor} 가격/과금 변경`,
-      change: excerpt || "공식 문서에서 가격 또는 과금 방식 관련 변경이 감지되었습니다.",
+      change: excerpt || "공식 문서에 가격 또는 과금 방식 관련 변경이 올라왔습니다.",
       impact: "대량 호출, Batch, tool 사용, 장기 세션이 있는 워크로드는 월 비용 추정이 달라질 수 있습니다.",
       action: "최근 사용량 기준으로 비용 민감도가 큰 엔드포인트부터 재계산하고 예산 알림 기준을 조정하세요."
     };
@@ -345,14 +345,14 @@ function briefing(event) {
   if (/released|introduc|launch|generally available|preview|new model|start building/.test(lower) || event.kind === "release") {
     return {
       title: readableTitle,
-      change: excerpt || "신규 모델 또는 기능 출시가 공식 출처에서 감지되었습니다.",
+      change: excerpt || "공식 출처에 신규 모델 또는 기능 출시 소식이 올라왔습니다.",
       impact: models ? `관련 모델(${models})을 평가 후보에 추가할 수 있습니다.` : "성능·비용·지연시간 개선 후보가 생겼지만, preview/experimental 여부를 확인해야 합니다.",
       action: "바로 교체하기보다 샘플 프롬프트, 비용, rate limit, 리전 제공 여부를 체크리스트로 비교하세요."
     };
   }
   return {
     title: readableTitle,
-    change: excerpt || `${sourceLabels[event.sourceId] || event.sourceId}에서 문서 변경이 감지되었습니다.`,
+    change: excerpt || `${sourceLabels[event.sourceId] || event.sourceId}에 문서 업데이트가 올라왔습니다.`,
     impact: "현재 사용 중인 모델 또는 플랫폼과 직접 관련되는지 먼저 선별하면 됩니다.",
     action: "원문을 열어 API/모델 ID/마감일/리전 등 운영 영향 필드가 있는지 확인하세요."
   };
@@ -439,11 +439,42 @@ function koreanizeTitle(event) {
 }
 
 function koreanizeSummary(event) {
+  const vendor = vendorLabels[event.vendor] || event.vendor;
   const source = sourceLabels[event.sourceId] || event.sourceId;
   const kind = labels[event.kind] || event.kind;
-  const models = event.modelIds.length ? ` 관련 모델: ${event.modelIds.slice(0, 5).join(", ")}.` : "";
-  const excerpt = event.summary ? ` 원문 요약: ${event.summary}` : "";
-  return `${vendorLabels[event.vendor] || event.vendor}의 ${source}에서 ${kind} 항목이 감지되었습니다.${models}${excerpt}`.slice(0, 1000);
+  const models = event.modelIds.length ? ` 관련 모델은 ${event.modelIds.slice(0, 5).join(", ")}입니다.` : "";
+  const excerpt = shouldShowExcerpt(event) && event.summary ? ` 원문 핵심: ${cleanForBrief(event.summary)}` : "";
+  const lead = summaryLead(event, vendor, source, kind);
+  return `${lead}${models}${excerpt}`.slice(0, 1000);
+}
+
+function summaryLead(event, vendor, source, kind) {
+  if (event.sourceId === "bedrock-lifecycle") {
+    return "Amazon Bedrock 모델 수명주기 문서가 업데이트되었습니다. Bedrock 경유로 쓰는 모델의 활성·레거시·종료 상태를 확인하세요.";
+  }
+  if (event.sourceId === "bedrock-doc-history") {
+    return "Amazon Bedrock 문서 변경 이력에 업데이트가 추가되었습니다. 새 모델, 리전, 기능 지원 여부를 확인할 만한 변경입니다.";
+  }
+  if (event.sourceId?.includes("deprecations")) {
+    return `${vendor}의 ${source} 문서에 ${kind} 관련 업데이트가 올라왔습니다. 사용 중인 모델이나 API가 포함되는지 먼저 확인하세요.`;
+  }
+  if (event.kind === "release") {
+    return `${vendor}의 ${source}에 신규 출시 소식이 올라왔습니다. 평가 후보로 볼 만한 모델이나 기능인지 확인하세요.`;
+  }
+  if (event.kind === "pricing") {
+    return `${vendor}의 ${source}에 가격 또는 과금 관련 업데이트가 올라왔습니다. 사용량이 큰 워크로드의 비용 영향을 확인하세요.`;
+  }
+  if (event.kind === "breaking-change") {
+    return `${vendor}의 ${source}에 호환성 영향을 줄 수 있는 변경이 올라왔습니다. 적용 일정과 기존 연동 영향을 확인하세요.`;
+  }
+  return `${vendor}의 ${source}에 ${kind} 관련 업데이트가 올라왔습니다. 현재 사용하는 모델·API와 관련이 있는지 확인하세요.`;
+}
+
+function shouldShowExcerpt(event) {
+  if (event.sourceId === "bedrock-lifecycle") return false;
+  if (event.sourceId?.endsWith("-models") && event.summary?.length > 260) return false;
+  if (event.kind === "deprecation" && event.modelIds?.length) return false;
+  return true;
 }
 
 function formatDateTime(value) {
