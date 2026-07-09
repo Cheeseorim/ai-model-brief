@@ -1,5 +1,97 @@
 [
   {
+    "startedAt": "2026-07-09T09:39:45.601Z",
+    "completedAt": "2026-07-09T09:39:53.074Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 294
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 65,
+        "durationMs": 261
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 109
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1033,
+        "durationMs": 636
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 83,
+        "durationMs": 613
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 367
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 7,
+        "durationMs": 442
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 10,
+        "durationMs": 254
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 126,
+        "durationMs": 971
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 224
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 42,
+        "durationMs": 1280
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 9,
+        "durationMs": 226
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 434,
+        "durationMs": 815
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 689
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 140
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 188,
+        "durationMs": 131
+      }
+    },
+    "newEvents": 0,
+    "summaries": {
+      "summarized": 0,
+      "skipped": true,
+      "model": null
+    }
+  },
+  {
     "startedAt": "2026-07-09T09:02:36.205Z",
     "completedAt": "2026-07-09T09:02:51.035Z",
     "sources": {
