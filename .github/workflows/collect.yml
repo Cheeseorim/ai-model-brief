@@ -29,6 +29,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL }}
+          SUMMARY_MAX_EVENTS: ${{ vars.SUMMARY_MAX_EVENTS }}
       - name: Commit changed data
         run: |
           git config user.name "model-radar[bot]"

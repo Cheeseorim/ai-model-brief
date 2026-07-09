@@ -4,6 +4,7 @@ import { extractEvents } from "../lib/extract.mjs";
 import { readJson, writeJson } from "../lib/io.mjs";
 import { hash, severityFor } from "../lib/text.mjs";
 import { notifyDiscord } from "../lib/discord.mjs";
+import { enrichWithOpenAISummaries } from "../lib/openai-summary.mjs";
 
 const DATA_DIR = new URL("../data/", import.meta.url);
 const now = new Date().toISOString();
@@ -71,12 +72,18 @@ for (const source of sources) {
   }
 }
 
-const merged = [...newEvents, ...previousEvents]
-  .sort((a, b) => (b.publishedAt || b.detectedAt).localeCompare(a.publishedAt || a.detectedAt))
-  .slice(0, 5000);
 state.lastRunAt = now;
 run.completedAt = new Date().toISOString();
 run.newEvents = newEvents.length;
+const summaryResult = await enrichWithOpenAISummaries(newEvents);
+run.summaries = {
+  summarized: summaryResult.summarized,
+  skipped: summaryResult.skipped,
+  model: summaryResult.model || null
+};
+const merged = [...newEvents, ...previousEvents]
+  .sort((a, b) => (b.publishedAt || b.detectedAt).localeCompare(a.publishedAt || a.detectedAt))
+  .slice(0, 5000);
 
 const runs = fresh ? [] : await readJson(new URL("runs.json", DATA_DIR), []);
 await writeJson(new URL("events.json", DATA_DIR), merged);

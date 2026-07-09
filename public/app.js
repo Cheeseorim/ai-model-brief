@@ -1,6 +1,6 @@
 const [events, state] = await Promise.all([
-  fetch("./data/events.json?v=20260709-9").then((response) => response.json()),
-  fetch("./data/state.json?v=20260709-9").then((response) => response.json())
+  fetch("./data/events.json?v=20260709-10").then((response) => response.json()),
+  fetch("./data/state.json?v=20260709-10").then((response) => response.json())
 ]);
 
 const ui = {
@@ -258,6 +258,15 @@ function headlineCard(event, index) {
 }
 
 function briefing(event) {
+  if (event.briefKo) {
+    return {
+      title: event.briefKo.title || event.titleKo || koreanizeTitle(event),
+      change: event.briefKo.change || event.summaryKo || usefulExcerpt(event) || "공식 문서에 새 업데이트가 올라왔습니다.",
+      impact: event.briefKo.impact || event.impactKo || "현재 사용 중인 모델 또는 플랫폼과 직접 관련되는지 확인할 필요가 있습니다.",
+      action: event.briefKo.action || event.actionKo || "원문에서 모델 ID, 적용일, 마이그레이션 안내를 확인하세요."
+    };
+  }
+
   const title = event.title || "";
   const lower = `${event.title} ${event.summary}`.toLowerCase();
   const models = event.modelIds?.length ? event.modelIds.slice(0, 4).join(", ") : "";

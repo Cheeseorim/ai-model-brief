@@ -8,6 +8,7 @@ OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 공식 문
 - 페이지 전체 해시가 아닌 항목 단위 변경 감지
 - 모델 ID 추출 및 플랫폼별 분리
 - 지원 종료·호환성 변경·출시·가격 분류
+- `OPENAI_API_KEY` 설정 시 중요 신규 항목만 한국어 AI 브리핑 생성
 - 수집기 실패 및 빈 파싱 감지
 - Discord 고위험 변경 알림
 - GitHub Pages 정적 대시보드
@@ -29,6 +30,8 @@ npm run dev
 ## 설정
 
 `config/sources.json`에서 공식 출처를, `config/watchlist.json`에서 사용하는 플랫폼과 모델을 관리합니다.
+
+자연스러운 한국어 번역·요약을 사용하려면 저장소의 Actions secret에 `OPENAI_API_KEY`를 추가합니다. 기본 모델은 `gpt-5.4-mini`이며, 하루 최대 요약 항목 수는 `SUMMARY_MAX_EVENTS`로 제한합니다.
 
 Discord 알림을 사용하려면 저장소의 Actions secret에 `DISCORD_WEBHOOK_URL`을 추가합니다. 환경변수 전체 목록은 `.env.example`을 참고하세요.
 
