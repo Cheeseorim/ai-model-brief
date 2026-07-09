@@ -12,10 +12,14 @@ const ui = {
   resultCount: document.querySelector("#resultCount"),
   stats: document.querySelector("#stats"),
   health: document.querySelector("#health"),
-  coverage: document.querySelector("#coverage")
+  coverage: document.querySelector("#coverage"),
+  headlines: document.querySelector("#headlines"),
+  headlineMeta: document.querySelector("#headlineMeta")
 };
 
 const filters = { vendor: "", kind: "", search: "" };
+const RECENT_LIMIT = 5;
+const HEADLINE_LIMIT = 5;
 const labels = {
   deprecation: "지원 종료",
   "breaking-change": "호환성 변경",
@@ -89,6 +93,7 @@ ui.stats.innerHTML = [
 ].map(([value, label]) => `<div class="stat"><strong>${value.toLocaleString("ko-KR")}</strong><span>${label}</span></div>`).join("");
 
 renderCoverage();
+renderHeadlines();
 render();
 
 function render() {
@@ -98,9 +103,9 @@ function render() {
       && (!filters.kind || event.kind === filters.kind)
       && (!filters.search || haystack.includes(filters.search));
   });
-  const visible = matched.slice(0, 200);
+  const visible = matched.slice(0, RECENT_LIMIT);
   ui.events.replaceChildren(...visible.map(card));
-  ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 ${visible.length.toLocaleString("ko-KR")}건 표시`;
+  ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 핵심 ${visible.length.toLocaleString("ko-KR")}건 표시`;
 }
 
 function card(event) {
@@ -167,6 +172,69 @@ function renderCoverage() {
     }).join("");
 }
 
+function renderHeadlines() {
+  const anchor = new Date(state.lastRunAt || Date.now());
+  const windowStart = new Date(anchor);
+  windowStart.setDate(windowStart.getDate() - 7);
+  const recent = events.filter((event) => {
+    const date = eventDate(event);
+    return date && date >= windowStart && date <= anchor;
+  });
+  const candidates = recent.length ? recent : events;
+  const headlines = [...candidates]
+    .sort((a, b) => {
+      const severityDelta = (b.severity || 0) - (a.severity || 0);
+      if (severityDelta) return severityDelta;
+      return eventTime(b) - eventTime(a);
+    })
+    .slice(0, HEADLINE_LIMIT);
+
+  ui.headlineMeta.textContent = recent.length
+    ? `최근 7일 ${recent.length.toLocaleString("ko-KR")}건 중 상위 ${headlines.length}건`
+    : `최근 7일 항목 없음 · 최신 고위험 ${headlines.length}건`;
+  ui.headlines.replaceChildren(...headlines.map(headlineCard));
+}
+
+function headlineCard(event, index) {
+  const article = document.createElement("article");
+  article.className = "headline-card";
+  article.classList.add(event.kind);
+  const models = Array.isArray(event.modelIds) ? event.modelIds.slice(0, 3) : [];
+  article.innerHTML = `
+    <div class="headline-rank">${String(index + 1).padStart(2, "0")}</div>
+    <div class="headline-body">
+      <div class="headline-meta">
+        <span>${escapeHtml(vendorLabels[event.vendor] || event.vendor)}</span>
+        <span>${escapeHtml(labels[event.kind] || event.kind || "")}</span>
+        <span>${escapeHtml(shortDate(event.publishedAt || event.detectedAt))}</span>
+      </div>
+      <h3>${escapeHtml(event.titleKo || koreanizeTitle(event))}</h3>
+      <p>${escapeHtml(headlineSummary(event))}</p>
+      <div class="headline-bottom">
+        <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
+        ${models.length ? `<span>${escapeHtml(models.join(", "))}</span>` : ""}
+      </div>
+    </div>
+  `;
+  article.addEventListener("click", () => {
+    window.open(event.sourceUrl, "_blank", "noopener,noreferrer");
+  });
+  return article;
+}
+
+function headlineSummary(event) {
+  const kind = labels[event.kind] || event.kind;
+  const models = event.modelIds?.length ? ` 주요 모델: ${event.modelIds.slice(0, 3).join(", ")}.` : "";
+  const action = event.kind === "deprecation"
+    ? "마이그레이션 또는 사용 중단 일정을 확인하세요."
+    : event.kind === "breaking-change"
+      ? "호환성 영향과 적용 일정을 먼저 확인하세요."
+      : event.kind === "pricing"
+        ? "비용 영향이 있는지 사용량 기준으로 확인하세요."
+        : "도입 가능성과 기존 워크플로 영향도를 확인하세요.";
+  return `${kind} 신호입니다.${models} ${action}`;
+}
+
 function koreanizeTitle(event) {
   const title = event.title || "";
   const replacements = [
@@ -204,6 +272,21 @@ function koreanizeSummary(event) {
 
 function formatDateTime(value) {
   return value ? new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)) : "기록 없음";
+}
+
+function shortDate(value) {
+  return value ? new Intl.DateTimeFormat("ko-KR", { month: "numeric", day: "numeric" }).format(new Date(value)) : "날짜 없음";
+}
+
+function eventDate(event) {
+  const value = event.publishedAt || event.detectedAt;
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.valueOf()) ? null : date;
+}
+
+function eventTime(event) {
+  return eventDate(event)?.valueOf() || 0;
 }
 
 function escapeHtml(value) {
