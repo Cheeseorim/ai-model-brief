@@ -1,4 +1,4 @@
-# Model Radar
+# AI Model Brief
 
 OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 공식 문서를 매일 확인해 모델 출시, API 변경, 가격 변화, 지원 종료 신호를 정리하는 대시보드입니다.
 
