@@ -20,7 +20,7 @@ for (const source of sources) {
   try {
     const response = await fetch(source.url, {
       headers: {
-        "user-agent": "AIModelBrief/0.1 (+https://github.com/Cheeseorim/model-radar)",
+        "user-agent": "AIModelBrief/0.1 (+https://github.com/Cheeseorim/ai-model-brief)",
         accept: "text/html,application/xhtml+xml",
         "accept-language": "en-US,en;q=0.9"
       },
