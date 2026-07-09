@@ -244,29 +244,22 @@ h2 {
   color: var(--muted);
   font-size: .78rem;
 }
-.coverage-card dl {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 16px 0 12px;
-}
-.coverage-card dl div {
-  padding: 10px;
-  border-radius: 8px;
-  background: var(--surface-alt);
-}
-.coverage-card dt {
-  color: var(--muted);
-  font-size: .72rem;
-}
-.coverage-card dd {
-  margin: 2px 0 0;
-  font-weight: 740;
+.coverage-card h3 {
+  margin: 16px 0 8px;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 .coverage-card p {
   margin: 0;
+}
+.coverage-summary {
+  color: #344257;
+  font-size: .86rem;
+}
+.coverage-sources {
+  margin-top: 14px !important;
   color: var(--muted);
-  font-size: .78rem;
+  font-size: .74rem;
 }
 
 .toolbar {

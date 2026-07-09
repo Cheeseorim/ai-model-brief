@@ -1,6 +1,6 @@
 const [events, state] = await Promise.all([
-  fetch("./data/events.json?v=20260709-8").then((response) => response.json()),
-  fetch("./data/state.json?v=20260709-8").then((response) => response.json())
+  fetch("./data/events.json?v=20260709-9").then((response) => response.json()),
+  fetch("./data/state.json?v=20260709-9").then((response) => response.json())
 ]);
 
 const ui = {
@@ -136,40 +136,52 @@ function card(event) {
 
 function renderCoverage() {
   const byVendor = new Map();
+  const anchor = new Date();
+  const windowStart = new Date(anchor);
+  windowStart.setDate(windowStart.getDate() - 7);
   for (const event of events) {
     const item = byVendor.get(event.vendor) || {
       vendor: event.vendor,
-      total: 0,
-      deprecations: 0,
-      releases: 0,
-      sources: new Set()
+      sources: new Set(),
+      recent: [],
+      fallback: []
     };
-    item.total += 1;
-    if (event.kind === "deprecation") item.deprecations += 1;
-    if (event.kind === "release") item.releases += 1;
     item.sources.add(event.sourceId);
+    if (isBriefingCandidate(event)) {
+      const date = eventDateForBriefing(event);
+      if (date && date >= windowStart && date <= anchor) item.recent.push(event);
+      else item.fallback.push(event);
+    }
     byVendor.set(event.vendor, item);
   }
 
   ui.coverage.innerHTML = [...byVendor.values()]
-    .sort((a, b) => b.total - a.total)
+    .sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor))
     .map((item) => {
+      const pool = (item.recent.length ? item.recent : item.fallback)
+        .sort((a, b) => briefingScore(b) - briefingScore(a));
+      const primary = pool[0];
+      const brief = primary ? briefing(primary) : null;
       const sourceList = [...item.sources].map((id) => sourceLabels[id] || id).join(", ");
+      const status = item.recent.length
+        ? `최근 7일 주요 이슈 ${item.recent.length.toLocaleString("ko-KR")}건`
+        : "최근 7일 주요 이슈 없음";
       return `
         <article class="coverage-card">
           <div class="coverage-top">
             <strong>${vendorLabels[item.vendor] || item.vendor}</strong>
-            <span>${item.sources.size}개 출처</span>
+            <span>${status}</span>
           </div>
-          <dl>
-            <div><dt>전체</dt><dd>${item.total.toLocaleString("ko-KR")}</dd></div>
-            <div><dt>지원 종료</dt><dd>${item.deprecations.toLocaleString("ko-KR")}</dd></div>
-            <div><dt>출시</dt><dd>${item.releases.toLocaleString("ko-KR")}</dd></div>
-          </dl>
-          <p>${escapeHtml(sourceList)}</p>
+          <h3>${escapeHtml(brief?.title || "특이 업데이트 없음")}</h3>
+          <p class="coverage-summary">${escapeHtml(brief ? `${brief.change} ${brief.action}` : "공식 문서는 정상 수집 중입니다. 새로 확인할 만한 주요 변경은 아직 없습니다.")}</p>
+          <p class="coverage-sources">${escapeHtml(sourceList)}</p>
         </article>
       `;
     }).join("");
+}
+
+function vendorSort(vendor) {
+  return { openai: 0, anthropic: 1, google: 2, aws: 3 }[vendor] ?? 99;
 }
 
 function renderHeadlines() {
@@ -313,7 +325,7 @@ function briefing(event) {
   if (/spark|macos|connected apps/.test(lower)) {
     return {
       title: "Gemini 앱/클라이언트 기능 업데이트",
-      change: "Gemini Spark의 macOS 출시와 연결 앱 관련 업데이트가 감지되었습니다.",
+      change: "Gemini Spark의 macOS 출시와 연결 앱 관련 업데이트가 올라왔습니다.",
       impact: "개발 API 변경이라기보다는 사용자용 Gemini 제품 경험 변화에 가깝습니다. 조직 내 Gemini 사용 가이드에 영향이 있을 수 있습니다.",
       action: "API 모델 변경과 분리해서 보고, 업무용 Gemini 앱을 쓰는 팀에만 공유하면 됩니다."
     };
