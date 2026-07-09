@@ -10,15 +10,24 @@
   <body>
     <header>
       <div>
-        <p class="eyebrow">AI MODEL INTELLIGENCE</p>
+        <p class="eyebrow">공식 문서 변경 모니터링</p>
         <h1>Model Radar</h1>
-        <p class="lede">모델 출시부터 지원 종료까지, 공식 문서의 변화를 한곳에서.</p>
+        <p class="lede">OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 모델·API 변경사항을 매일 수집합니다.</p>
       </div>
       <div id="health" class="health">수집 상태 확인 중…</div>
     </header>
 
     <main>
       <section class="stats" id="stats"></section>
+      <section class="coverage" aria-labelledby="coverageTitle">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">수집 범위</p>
+            <h2 id="coverageTitle">공급사별 현황</h2>
+          </div>
+        </div>
+        <div id="coverage" class="coverage-grid"></div>
+      </section>
       <section class="toolbar">
         <div class="filters" id="vendorFilters"></div>
         <select id="kindFilter" aria-label="변경 유형">
@@ -36,7 +45,7 @@
       <section>
         <div class="section-heading">
           <div>
-            <p class="eyebrow">LATEST SIGNALS</p>
+            <p class="eyebrow">최근 감지 항목</p>
             <h2>최근 변경사항</h2>
           </div>
           <span id="resultCount"></span>
@@ -48,10 +57,14 @@
     <template id="eventTemplate">
       <article class="event-card">
         <div class="event-top">
-          <span class="vendor"></span>
+          <div>
+            <span class="vendor"></span>
+            <span class="source"></span>
+          </div>
           <span class="kind"></span>
         </div>
         <h3></h3>
+        <p class="original-title"></p>
         <p class="summary"></p>
         <div class="models"></div>
         <footer>
@@ -60,6 +73,6 @@
         </footer>
       </article>
     </template>
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=20260709-3"></script>
   </body>
 </html>

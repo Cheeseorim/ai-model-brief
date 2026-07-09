@@ -1,89 +1,89 @@
 [
   {
-    "startedAt": "2026-07-09T08:26:08.300Z",
-    "completedAt": "2026-07-09T08:26:18.751Z",
+    "startedAt": "2026-07-09T08:55:35.953Z",
+    "completedAt": "2026-07-09T08:55:54.200Z",
     "sources": {
       "openai-changelog": {
         "ok": true,
         "itemCount": 33,
-        "durationMs": 144
+        "durationMs": 253
       },
       "openai-deprecations": {
         "ok": true,
         "itemCount": 65,
-        "durationMs": 45
+        "durationMs": 176
       },
       "openai-models": {
         "ok": true,
         "itemCount": 33,
-        "durationMs": 636
+        "durationMs": 670
       },
       "openai-news": {
         "ok": true,
         "itemCount": 1033,
-        "durationMs": 777
+        "durationMs": 859
       },
       "anthropic-release-notes": {
         "ok": true,
         "itemCount": 83,
-        "durationMs": 759
+        "durationMs": 757
       },
       "anthropic-deprecations": {
         "ok": true,
         "itemCount": 18,
-        "durationMs": 581
+        "durationMs": 616
       },
       "anthropic-models": {
         "ok": true,
         "itemCount": 7,
-        "durationMs": 578
+        "durationMs": 610
       },
       "anthropic-news": {
         "ok": true,
         "itemCount": 10,
-        "durationMs": 458
+        "durationMs": 6770
       },
       "gemini-changelog": {
         "ok": true,
-        "itemCount": 126,
-        "durationMs": 825
+        "itemCount": 2,
+        "durationMs": 1676
       },
       "gemini-deprecations": {
         "ok": true,
         "itemCount": 11,
-        "durationMs": 1533
+        "durationMs": 642
       },
       "gemini-models": {
         "ok": true,
         "itemCount": 42,
-        "durationMs": 507
+        "durationMs": 1529
       },
       "gemini-news": {
         "ok": true,
-        "itemCount": 10,
-        "durationMs": 696
+        "itemCount": 9,
+        "durationMs": 570
       },
       "vertex-release-notes": {
         "ok": true,
         "itemCount": 434,
-        "durationMs": 1579
+        "durationMs": 1149
       },
       "vertex-deprecations": {
         "ok": true,
         "itemCount": 1,
-        "durationMs": 1044
+        "durationMs": 1838
       },
       "bedrock-lifecycle": {
         "ok": true,
         "itemCount": 2,
-        "durationMs": 54
+        "durationMs": 91
       },
       "bedrock-doc-history": {
         "ok": true,
         "itemCount": 188,
-        "durationMs": 226
+        "durationMs": 34
       }
     },
-    "newEvents": 2096
+    "newEvents": 1971
   }
 ]
