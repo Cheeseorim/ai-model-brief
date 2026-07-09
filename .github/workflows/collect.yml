@@ -1,0 +1,38 @@
+name: Collect model updates
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: model-radar-collector
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Collect official sources
+        run: npm run collect
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL }}
+      - name: Commit changed data
+        run: |
+          git config user.name "model-radar[bot]"
+          git config user.email "model-radar[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: collect model updates"
+          git push

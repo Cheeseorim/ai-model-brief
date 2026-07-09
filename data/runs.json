@@ -1,0 +1,89 @@
+[
+  {
+    "startedAt": "2026-07-09T08:26:08.300Z",
+    "completedAt": "2026-07-09T08:26:18.751Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 144
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 65,
+        "durationMs": 45
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 636
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1033,
+        "durationMs": 777
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 83,
+        "durationMs": 759
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 581
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 7,
+        "durationMs": 578
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 10,
+        "durationMs": 458
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 126,
+        "durationMs": 825
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 1533
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 42,
+        "durationMs": 507
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 10,
+        "durationMs": 696
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 434,
+        "durationMs": 1579
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 1044
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 54
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 188,
+        "durationMs": 226
+      }
+    },
+    "newEvents": 2096
+  }
+]

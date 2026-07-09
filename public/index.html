@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경 감시 대시보드" />
+    <title>Model Radar</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <p class="eyebrow">AI MODEL INTELLIGENCE</p>
+        <h1>Model Radar</h1>
+        <p class="lede">모델 출시부터 지원 종료까지, 공식 문서의 변화를 한곳에서.</p>
+      </div>
+      <div id="health" class="health">수집 상태 확인 중…</div>
+    </header>
+
+    <main>
+      <section class="stats" id="stats"></section>
+      <section class="toolbar">
+        <div class="filters" id="vendorFilters"></div>
+        <select id="kindFilter" aria-label="변경 유형">
+          <option value="">모든 유형</option>
+          <option value="deprecation">지원 종료</option>
+          <option value="breaking-change">호환성 변경</option>
+          <option value="release">신규 출시</option>
+          <option value="pricing">가격</option>
+          <option value="changelog">변경 로그</option>
+          <option value="news">뉴스</option>
+        </select>
+        <input id="search" type="search" placeholder="모델이나 변경사항 검색" />
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LATEST SIGNALS</p>
+            <h2>최근 변경사항</h2>
+          </div>
+          <span id="resultCount"></span>
+        </div>
+        <div id="events" class="event-grid"></div>
+      </section>
+    </main>
+
+    <template id="eventTemplate">
+      <article class="event-card">
+        <div class="event-top">
+          <span class="vendor"></span>
+          <span class="kind"></span>
+        </div>
+        <h3></h3>
+        <p class="summary"></p>
+        <div class="models"></div>
+        <footer>
+          <span class="date"></span>
+          <a target="_blank" rel="noreferrer">원문 보기 ↗</a>
+        </footer>
+      </article>
+    </template>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

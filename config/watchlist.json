@@ -1,0 +1,13 @@
+{
+  "models": [],
+  "platforms": [
+    "openai-api",
+    "claude-api",
+    "gemini-api",
+    "amazon-bedrock"
+  ],
+  "regions": [
+    "ap-northeast-2",
+    "us-east-1"
+  ]
+}
