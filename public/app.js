@@ -93,7 +93,7 @@ function render() {
       && (!filters.kind || event.kind === filters.kind)
       && (!filters.search || haystack.includes(filters.search));
   }).sort((a, b) => recentListScore(b) - recentListScore(a));
-  const visible = matched.slice(0, RECENT_LIMIT);
+  const visible = uniqueRecentEvents(matched).slice(0, RECENT_LIMIT);
   ui.events.replaceChildren(...visible.map(card));
   ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 핵심 ${visible.length.toLocaleString("ko-KR")}건 표시`;
 }
@@ -102,7 +102,8 @@ function card(event) {
   const article = document.createElement("article");
   article.className = "event-card";
   article.classList.add(event.kind);
-  const titleKo = event.titleKo || koreanizeTitle(event);
+  const titleKo = cardTitle(event);
+  const summaryKo = cardSummary(event);
   const models = Array.isArray(event.modelIds) ? event.modelIds : [];
   article.innerHTML = `
     <div class="event-top">
@@ -114,7 +115,7 @@ function card(event) {
     </div>
     <h3>${escapeHtml(titleKo)}</h3>
     <p class="original-title">${titleKo === event.title ? "" : `원문: ${escapeHtml(event.title || "")}`}</p>
-    <p class="summary">${escapeHtml(event.summaryKo || koreanizeSummary(event))}</p>
+    <p class="summary">${escapeHtml(summaryKo)}</p>
     <div class="models">${models.slice(0, 8).map((model) => `<span class="model">${escapeHtml(model)}</span>`).join("")}</div>
     <footer>
       <span class="date">${escapeHtml(cardDateLabel(event))}</span>
@@ -444,6 +445,55 @@ function normalizeSearch(value = "") {
   return value.toLowerCase().replace(/[\s._-]+/g, "");
 }
 
+function cardTitle(event) {
+  if (event.titleKo) return event.titleKo;
+  if (event.briefKo?.title) return event.briefKo.title;
+  const brief = isBriefingCandidate(event) ? briefing(event) : null;
+  if (brief?.title && !/관련 공지$/.test(brief.title)) return brief.title;
+  return readableOriginalTitle(event);
+}
+
+function cardSummary(event) {
+  if (event.summaryKo) return event.summaryKo;
+  if (event.briefKo?.change) return event.briefKo.change;
+  const brief = isBriefingCandidate(event) ? briefing(event) : null;
+  const action = brief?.action ? ` 확인할 일: ${brief.action}` : "";
+  if (brief?.change && !/업데이트가 올라왔습니다|공식 문서에/.test(brief.change)) {
+    return `${brief.change}${action}`.slice(0, 900);
+  }
+  const excerpt = usefulExcerpt(event);
+  const models = event.modelIds?.length ? ` 관련 모델: ${event.modelIds.slice(0, 4).join(", ")}.` : "";
+  if (excerpt) return `${naturalizeExcerpt(excerpt)}${models}`.slice(0, 900);
+  return `${sourceLabels[event.sourceId] || "공식 문서"}에서 확인할 변경사항입니다.${models}`.slice(0, 900);
+}
+
+function readableOriginalTitle(event) {
+  const title = cleanForBrief(event.title || "");
+  if (/^Jul \d{1,2}, \d{4}/.test(title)) {
+    return title.replace(/^([A-Z][a-z]{2} \d{1,2}, \d{4})(Announcements|Product|Feature)?/i, "").trim() || title;
+  }
+  return koreanizeTitle(event);
+}
+
+function uniqueRecentEvents(items) {
+  const seen = new Set();
+  const result = [];
+  for (const event of items) {
+    const key = `${event.vendor}|${normalizeTitle(cardTitle(event))}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(event);
+  }
+  return result;
+}
+
+function naturalizeExcerpt(value) {
+  return value
+    .replace(/^(Overview|Quickstart|Models|Pricing|SDKs and CLI|OpenAI SDK|Agents SDK|OpenAI CLI)\s+/i, "")
+    .replace(/([a-z])([A-Z][a-z])/g, "$1 $2")
+    .trim();
+}
+
 function koreanizeTitle(event) {
   const title = event.title || "";
   const replacements = [
@@ -465,9 +515,9 @@ function koreanizeTitle(event) {
   let value = title;
   for (const [pattern, replacement] of replacements) value = value.replace(pattern, replacement);
   if (value !== title) return value;
-  if (event.kind === "deprecation") return `${vendorLabels[event.vendor] || event.vendor} 지원 종료 관련 공지`;
-  if (event.kind === "release") return `${vendorLabels[event.vendor] || event.vendor} 신규 출시 공지`;
-  if (event.kind === "pricing") return `${vendorLabels[event.vendor] || event.vendor} 가격 변경 공지`;
+  if (event.kind === "deprecation") return "지원 종료 또는 수명주기 변경";
+  if (event.kind === "release") return "새 모델·기능 출시";
+  if (event.kind === "pricing") return "가격·과금 변경";
   return title;
 }
 
