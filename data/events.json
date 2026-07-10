@@ -1,25 +1,19 @@
 [
   {
-    "id": "15736ebb0a8eec44ab58e97d",
-    "fingerprint": "fa5f499a65ccc1bc619d2ed5",
-    "sourceId": "anthropic-models",
+    "id": "33c225020c9bc5be0233a225",
+    "fingerprint": "372031793d5d294ebbc6230c",
+    "sourceId": "anthropic-news",
     "vendor": "anthropic",
-    "platform": "claude-api",
-    "kind": "deprecation",
-    "title": "Latest models comparison",
-    "summary": "FeatureClaude Fable 5Claude Opus 4.8Claude Sonnet 5Claude Haiku 4.5DescriptionNext-generation intelligence for long-running agentsFor complex agentic coding and enterprise workThe best combination of speed and intelligenceThe fastest model with near-frontier intelligenceClaude API IDclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5-20251001Claude API aliasclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5AWS Bedrock IDanthropic.claude-fable-53anthropic.claude-opus-4-83anthropic.claude-sonnet-53anthropic.claude-haiku-4-5-20251001-v1:0Google Cloud IDclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5@20251001Pricing1$10 / input MTok$50 / output MTok$5 / input MTok$25 / output MTok$3 / input MTok$15 / output MTok4$1 / input MTok$5 / output MTokExtended thinkingNoNoNoYesAdaptive thinkingYes (always on)YesYesNoComparative latencySlowerModerateFastFastestContext window1M tokens1M tokens1M tokens200k tokensMax output128k tokens128k tokens128k tokens64k tokensReli",
-    "modelIds": [
-      "claude-opus-4-6",
-      "anthropic.claude-fable-53",
-      "anthropic.claude-opus-4-83",
-      "anthropic.claude-sonnet-53",
-      "anthropic.claude-haiku-4-5-20251001-v1:0"
-    ],
-    "sourceUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
-    "severity": 100,
-    "publishedAt": "2026-08-31",
-    "detectedAt": "2026-07-09T09:02:41.285Z",
-    "watched": true
+    "platform": "anthropic",
+    "kind": "news",
+    "title": "Jul 9, 2026Case StudyUST is bringing Claude to physical AI",
+    "summary": "Jul 9, 2026Case StudyUST is bringing Claude to physical AI",
+    "modelIds": [],
+    "sourceUrl": "https://www.anthropic.com/news/ust-claude",
+    "severity": 20,
+    "publishedAt": null,
+    "detectedAt": "2026-07-10T04:12:00.967Z",
+    "watched": false
   },
   {
     "id": "d60824a32e02a08ae8bf3133",
@@ -2186,6 +2180,28 @@
     "watched": false
   },
   {
+    "id": "15736ebb0a8eec44ab58e97d",
+    "fingerprint": "fa5f499a65ccc1bc619d2ed5",
+    "sourceId": "anthropic-models",
+    "vendor": "anthropic",
+    "platform": "claude-api",
+    "kind": "deprecation",
+    "title": "Latest models comparison",
+    "summary": "FeatureClaude Fable 5Claude Opus 4.8Claude Sonnet 5Claude Haiku 4.5DescriptionNext-generation intelligence for long-running agentsFor complex agentic coding and enterprise workThe best combination of speed and intelligenceThe fastest model with near-frontier intelligenceClaude API IDclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5-20251001Claude API aliasclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5AWS Bedrock IDanthropic.claude-fable-53anthropic.claude-opus-4-83anthropic.claude-sonnet-53anthropic.claude-haiku-4-5-20251001-v1:0Google Cloud IDclaude-fable-5claude-opus-4-8claude-sonnet-5claude-haiku-4-5@20251001Pricing1$10 / input MTok$50 / output MTok$5 / input MTok$25 / output MTok$3 / input MTok$15 / output MTok4$1 / input MTok$5 / output MTokExtended thinkingNoNoNoYesAdaptive thinkingYes (always on)YesYesNoComparative latencySlowerModerateFastFastestContext window1M tokens1M tokens1M tokens200k tokensMax output128k tokens128k tokens128k tokens64k tokensReli",
+    "modelIds": [
+      "claude-opus-4-6",
+      "anthropic.claude-fable-53",
+      "anthropic.claude-opus-4-83",
+      "anthropic.claude-sonnet-53",
+      "anthropic.claude-haiku-4-5-20251001-v1:0"
+    ],
+    "sourceUrl": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "severity": 100,
+    "publishedAt": "2026-08-31",
+    "detectedAt": "2026-07-09T09:02:41.285Z",
+    "watched": true
+  },
+  {
     "id": "488cecd9e04a5870c9da4503",
     "fingerprint": "f2ba74aa6edb1284c844fbd7",
     "sourceId": "anthropic-models",
@@ -3587,6 +3603,37 @@
     "watched": false
   },
   {
+    "id": "2e9aeba130a68a08cea89a51",
+    "fingerprint": "7c333bc47f8aa1a848e617f2",
+    "sourceId": "anthropic-release-notes",
+    "vendor": "anthropic",
+    "platform": "claude-api",
+    "kind": "changelog",
+    "title": "July 8, 2026",
+    "summary": "You can now set an expiration when you create an API key or an Admin API key in the Claude Console. Choose a preset, a custom duration, or Never. For keys with a lifetime of at least 7 days, Anthropic emails the creator before expiration. Existing keys are unaffected. The Admin API reports each key's expiration in the expires_at field. See Authentication.",
+    "modelIds": [],
+    "sourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+    "severity": 63,
+    "publishedAt": "2026-07-08",
+    "detectedAt": "2026-07-10T04:11:58.664Z",
+    "watched": true,
+    "titleKo": "Claude Console API 키 만료 설정 지원",
+    "summaryKo": "이제 Claude Console에서 API 키와 Admin API 키를 만들 때 만료일을 설정할 수 있습니다. 미리 정해진 기간, 사용자 지정 기간, 또는 ‘Never’ 중에서 선택할 수 있으며, 기존 키에는 영향이 없습니다.",
+    "impactKo": "키 수명 관리와 보안 운영이 쉬워지고, 만료 전 이메일 안내로 갱신 시점을 놓칠 가능성이 줄어듭니다.",
+    "actionKo": "새로 발급하는 키의 만료 옵션과 Admin API의 expires_at 필드를 확인하고, 기존 키와의 운영 기준을 정리하세요.",
+    "briefKo": {
+      "title": "API 키 생성 시 만료일 지정 가능",
+      "change": "이제 Claude Console에서 API 키와 Admin API 키를 만들 때 만료일을 설정할 수 있습니다. 미리 정해진 기간, 사용자 지정 기간, 또는 ‘Never’ 중에서 선택할 수 있으며, 기존 키에는 영향이 없습니다.",
+      "impact": "키 수명 관리와 보안 운영이 쉬워지고, 만료 전 이메일 안내로 갱신 시점을 놓칠 가능성이 줄어듭니다.",
+      "action": "새로 발급하는 키의 만료 옵션과 Admin API의 expires_at 필드를 확인하고, 기존 키와의 운영 기준을 정리하세요."
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "summarizedAt": "2026-07-10T04:12:06.607Z"
+    }
+  },
+  {
     "id": "a8ff7b10ffccabacf92c0b9d",
     "fingerprint": "6f16d39aa8d9db31caa8ff91",
     "sourceId": "openai-news",
@@ -3699,6 +3746,37 @@
     "publishedAt": "2026-07-06",
     "detectedAt": "2026-07-10T00:20:58.151Z",
     "watched": true
+  },
+  {
+    "id": "7f674363dee07ae2dbd0de63",
+    "fingerprint": "7dbbbf5345c6e857da1299a0",
+    "sourceId": "anthropic-release-notes",
+    "vendor": "anthropic",
+    "platform": "claude-api",
+    "kind": "changelog",
+    "title": "July 2, 2026",
+    "summary": "We've added the agent-memory-2026-07-22 beta header, which changes how listing memories (GET /v1/memory_stores/{memory_store_id}/memories) behaves: results are returned in a stable, server-defined order and the order_by and order parameters are ignored; depth accepts only 0, 1, or being omitted (other values return a 400 error); and path_prefix must end with / and matches whole path segments instead of a substring. Page cursors issued without the header aren't valid with it, so restart from the first page when you adopt it. On memory store endpoints, agent-memory-2026-07-22 replaces managed-agents-2026-04-01; sending both returns a 400 error. On July 22, 2026, the managed-agents-2026-04-01 header adopts the same list behavior. See Beta headers.\nThe Python (0.116.0), TypeScript (0.110.0), Go (1.56.0), Java (2.48.0), Ruby (1.55.0), PHP (0.36.0), C# (12.35.0), and CLI (1.16.0) SDKs now send agent-memory-2026-07-22 on all memory store calls instead of managed-agents-2026-04-01. If your cod",
+    "modelIds": [],
+    "sourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+    "severity": 55,
+    "publishedAt": "2026-07-02",
+    "detectedAt": "2026-07-10T04:11:58.664Z",
+    "watched": true,
+    "titleKo": "Anthropic 메모리 조회 동작 변경 및 새 베타 헤더 추가",
+    "summaryKo": "Anthropic이 `agent-memory-2026-07-22` 베타 헤더를 추가해 메모리 목록 조회(`GET /v1/memory_stores/{memory_store_id}/memories`)의 동작을 바꿨습니다. 이 헤더를 쓰면 결과는 서버가 정한 고정 순서로 반환되며 `order_by`와 `order`는 무시되고, `depth`는 0·1 또는 생략만 허용됩니다. 또한 `path_prefix`는 `/`로 끝나야 하며 부분 문자열이 아니라 전체 경로 세그먼트 기준으로 매칭됩니다.",
+    "impactKo": "페이지네이션, 필터링, 경로 매칭 로직이 달라져 기존 호출 코드가 예상과 다르게 동작할 수 있어 운영 영향이 큽니다.",
+    "actionKo": "오늘은 메모리 스토어 호출에서 새 헤더 적용 여부와 함께, 페이지 커서 재사용 가능성, `depth`/`path_prefix` 파라미터, 그리고 기존 `managed-agents-2026-04-01` 헤더와의 동시 전송 여부를 점검하세요.",
+    "briefKo": {
+      "title": "메모리 목록 조회가 새 헤더 기준으로 바뀝니다",
+      "change": "Anthropic이 `agent-memory-2026-07-22` 베타 헤더를 추가해 메모리 목록 조회(`GET /v1/memory_stores/{memory_store_id}/memories`)의 동작을 바꿨습니다. 이 헤더를 쓰면 결과는 서버가 정한 고정 순서로 반환되며 `order_by`와 `order`는 무시되고, `depth`는 0·1 또는 생략만 허용됩니다. 또한 `path_prefix`는 `/`로 끝나야 하며 부분 문자열이 아니라 전체 경로 세그먼트 기준으로 매칭됩니다.",
+      "impact": "페이지네이션, 필터링, 경로 매칭 로직이 달라져 기존 호출 코드가 예상과 다르게 동작할 수 있어 운영 영향이 큽니다.",
+      "action": "오늘은 메모리 스토어 호출에서 새 헤더 적용 여부와 함께, 페이지 커서 재사용 가능성, `depth`/`path_prefix` 파라미터, 그리고 기존 `managed-agents-2026-04-01` 헤더와의 동시 전송 여부를 점검하세요."
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini",
+      "summarizedAt": "2026-07-10T04:12:09.079Z"
+    }
   },
   {
     "id": "121a046bfc10e32361f3d5b2",

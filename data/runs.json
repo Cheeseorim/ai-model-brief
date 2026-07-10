@@ -1,5 +1,97 @@
 [
   {
+    "startedAt": "2026-07-10T04:11:56.266Z",
+    "completedAt": "2026-07-10T04:12:03.861Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 755
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 81,
+        "durationMs": 144
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 49,
+        "durationMs": 164
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1039,
+        "durationMs": 686
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 85,
+        "durationMs": 639
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 303
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 7,
+        "durationMs": 415
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 10,
+        "durationMs": 1578
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 127,
+        "durationMs": 394
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 265
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 42,
+        "durationMs": 442
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 9,
+        "durationMs": 189
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 434,
+        "durationMs": 720
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 511
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 242
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 188,
+        "durationMs": 130
+      }
+    },
+    "newEvents": 3,
+    "summaries": {
+      "summarized": 2,
+      "skipped": false,
+      "model": "gpt-5.4-mini"
+    }
+  },
+  {
     "startedAt": "2026-07-10T00:20:51.890Z",
     "completedAt": "2026-07-10T00:21:00.295Z",
     "sources": {
