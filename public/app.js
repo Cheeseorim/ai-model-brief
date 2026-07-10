@@ -8,7 +8,6 @@ const ui = {
   health: document.querySelector("#health"),
   coverage: document.querySelector("#coverage"),
   coverageMeta: document.querySelector("#coverageMeta"),
-  coverageDetail: document.querySelector("#coverageDetail"),
   headlines: document.querySelector("#headlines"),
   headlineMeta: document.querySelector("#headlineMeta"),
   pricingRows: document.querySelector("#pricingRows"),
@@ -77,9 +76,8 @@ function renderCoverage() {
   const byVendor = coverageByVendor();
   const items = [...byVendor.values()].sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor));
   if (!selectedCoverageVendor && items.length) selectedCoverageVendor = items[0].vendor;
-  ui.coverageMeta.textContent = "카드를 누르면 세부 이슈를 볼 수 있어요";
+  ui.coverageMeta.textContent = "펼쳐서 세부 이슈를 바로 확인";
   ui.coverage.replaceChildren(...items.map(coverageCard));
-  renderCoverageDetail(byVendor.get(selectedCoverageVendor) || items[0]);
 }
 
 function coverageByVendor() {
@@ -109,43 +107,49 @@ function coverageCard(item) {
   const pool = vendorIssuePool(item);
   const primary = pool[0];
   const brief = primary ? briefing(primary) : null;
+  const isActive = selectedCoverageVendor === item.vendor;
+  const detailPool = uniqueVendorIssues(pool).slice(0, 6);
   const status = item.recent.length
     ? `최근 7일 ${item.recent.length.toLocaleString("ko-KR")}건`
     : "최근 고위험 이슈 중심";
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `coverage-card vendor-${item.vendor} ${selectedCoverageVendor === item.vendor ? "active" : ""}`;
-  button.dataset.vendor = item.vendor;
-  button.innerHTML = `
-    <div class="coverage-top">
-      <strong>${vendorLabels[item.vendor] || item.vendor}</strong>
-      <span>${status}</span>
-    </div>
-    <h3>${escapeHtml(brief?.title || "특이 업데이트 없음")}</h3>
-    <p class="coverage-summary">${escapeHtml(brief ? brief.change : "새로 확인할 만한 주요 변경은 아직 없습니다.")}</p>
-    <span class="coverage-cta">세부 이슈 보기</span>
+  const article = document.createElement("article");
+  article.className = `coverage-card vendor-${item.vendor} ${isActive ? "active" : ""}`;
+  article.dataset.vendor = item.vendor;
+  article.innerHTML = `
+    <button type="button" class="coverage-toggle" aria-expanded="${String(isActive)}">
+      <div class="coverage-main">
+        <div class="coverage-top">
+          <strong>${vendorLabels[item.vendor] || item.vendor}</strong>
+          <span>${status}</span>
+        </div>
+        <h3>${escapeHtml(brief?.title || "특이 업데이트 없음")}</h3>
+        <p class="coverage-summary">${escapeHtml(brief ? brief.change : "새로 확인할 만한 주요 변경은 아직 없습니다.")}</p>
+      </div>
+      <span class="coverage-cta">${isActive ? "접기" : "세부 이슈 보기"}</span>
+    </button>
+    ${isActive ? coverageInlineDetail(item, detailPool) : ""}
   `;
-  button.addEventListener("click", () => {
-    selectedCoverageVendor = item.vendor;
+  article.querySelector(".coverage-toggle").addEventListener("click", () => {
+    selectedCoverageVendor = selectedCoverageVendor === item.vendor ? "" : item.vendor;
     renderCoverage();
   });
-  return button;
+  return article;
 }
 
-function renderCoverageDetail(item) {
-  if (!ui.coverageDetail || !item) return;
-  const pool = uniqueVendorIssues(vendorIssuePool(item)).slice(0, 6);
+function coverageInlineDetail(item, pool) {
   const sourceList = [...item.sources].map((id) => sourceLabels[id] || id).join(", ");
-  ui.coverageDetail.innerHTML = `
-    <div class="coverage-detail-head">
-      <div>
-        <p class="eyebrow">${escapeHtml(vendorLabels[item.vendor] || item.vendor)}</p>
-        <h3>${escapeHtml(vendorLabels[item.vendor] || item.vendor)}에서 더 볼 이슈</h3>
+  return `
+    <div class="coverage-detail">
+      <div class="coverage-detail-head">
+        <div>
+          <p class="eyebrow">${escapeHtml(vendorLabels[item.vendor] || item.vendor)}</p>
+          <h3>${escapeHtml(vendorLabels[item.vendor] || item.vendor)}에서 더 볼 이슈</h3>
+        </div>
+        <span>${escapeHtml(sourceList)}</span>
       </div>
-      <span>${escapeHtml(sourceList)}</span>
-    </div>
-    <div class="issue-list">
-      ${pool.length ? pool.map(detailIssue).join("") : `<p class="empty-detail">지금 더 확인할 만한 세부 이슈는 없습니다.</p>`}
+      <div class="issue-list">
+        ${pool.length ? pool.map(detailIssue).join("") : `<p class="empty-detail">지금 더 확인할 만한 세부 이슈는 없습니다.</p>`}
+      </div>
     </div>
   `;
 }
