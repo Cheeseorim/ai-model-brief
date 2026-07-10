@@ -2,14 +2,14 @@ name: Collect model updates
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "10 0 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: model-radar-collector
+  group: ai-model-brief-collector
   cancel-in-progress: false
 
 jobs:
