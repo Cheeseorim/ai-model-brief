@@ -14,14 +14,14 @@
   --red: #c7363f;
   --green: #16754b;
   --amber: #aa6500;
-  --openai: #16856d;
-  --openai-soft: #e6f6f2;
-  --anthropic: #b76b24;
-  --anthropic-soft: #fff1e4;
-  --google: #3367d6;
-  --google-soft: #e8f0fe;
-  --aws: #dd7a00;
-  --aws-soft: #fff3dc;
+  --openai: #237569;
+  --openai-soft: #f3f8f7;
+  --anthropic: #8a6a4f;
+  --anthropic-soft: #f8f5f1;
+  --google: #4864a8;
+  --google-soft: #f3f5fb;
+  --aws: #9a6b2f;
+  --aws-soft: #faf6ef;
   --shadow: 0 14px 40px rgba(20, 26, 40, .07);
   --shadow-soft: 0 8px 22px rgba(20, 26, 40, .045);
   --radius-lg: 22px;
@@ -162,9 +162,10 @@ h2 {
 .headline-card.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .headline-card.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
 .headline-card.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
-.headline-card[class*="vendor-"] { border-top: 1px solid color-mix(in srgb, var(--vendor-color) 24%, var(--line-soft)); }
+.headline-card[class*="vendor-"] { border-top: 1px solid color-mix(in srgb, var(--vendor-color) 16%, var(--line-soft)); }
 .headline-card[class*="vendor-"] .headline-meta span:first-child {
-  background: var(--vendor-soft);
+  border: 1px solid color-mix(in srgb, var(--vendor-color) 16%, var(--line-soft));
+  background: #fff;
   color: var(--vendor-color);
   font-weight: 760;
 }
@@ -258,7 +259,7 @@ h2 {
   text-align: left;
   background: rgba(255, 255, 255, .86);
   border: 1px solid var(--line-soft);
-  border-top: 3px solid var(--vendor-color);
+  border-top: 2px solid color-mix(in srgb, var(--vendor-color) 55%, var(--line-soft));
   border-radius: var(--radius-md);
   padding: 17px;
   box-shadow: var(--shadow-soft);
@@ -274,8 +275,8 @@ h2 {
 .coverage-card:hover,
 .coverage-card.active {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--vendor-color) 34%, var(--line-soft));
-  background: linear-gradient(180deg, var(--vendor-soft), #fff 42%);
+  border-color: color-mix(in srgb, var(--vendor-color) 22%, var(--line-soft));
+  background: #fff;
   box-shadow: 0 13px 30px rgba(20, 26, 40, .08);
 }
 
@@ -292,7 +293,8 @@ h2 {
 
 .coverage-top span {
   color: var(--vendor-color);
-  background: var(--vendor-soft);
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--vendor-color) 14%, var(--line-soft));
   border-radius: 999px;
   padding: 3px 7px;
   font-size: .76rem;
@@ -401,7 +403,8 @@ h2 {
 }
 
 .issue-meta span:first-child {
-  background: var(--vendor-soft);
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--vendor-color) 14%, var(--line-soft));
   color: var(--vendor-color);
   font-weight: 760;
 }
@@ -512,9 +515,9 @@ h2 {
 .pricing-table tr.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
 .pricing-table tr.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .pricing-table tr[class*="vendor-"] td:first-child {
-  box-shadow: inset 3px 0 0 var(--vendor-color);
+  box-shadow: inset 2px 0 0 color-mix(in srgb, var(--vendor-color) 70%, var(--line-soft));
 }
-.pricing-table tr[class*="vendor-"] td strong { color: var(--vendor-color); }
+.pricing-table tr[class*="vendor-"] td strong { color: color-mix(in srgb, var(--vendor-color) 74%, var(--ink)); }
 
 .pricing-table td span {
   display: block;
@@ -585,12 +588,12 @@ h2 {
 .model-toggles button.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .model-toggles button:hover,
 .model-toggles button.active {
-  border-color: var(--vendor-color);
-  background: var(--vendor-soft);
+  border-color: color-mix(in srgb, var(--vendor-color) 42%, var(--line));
+  background: #fff;
   color: var(--vendor-color);
 }
 .model-toggles button.active {
-  box-shadow: inset 0 0 0 1px var(--vendor-color);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--vendor-color) 28%, transparent);
 }
 
 .pricing-estimate {
@@ -614,10 +617,10 @@ h2 {
 .pricing-estimate > div.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
 .pricing-estimate > div.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .pricing-estimate > div[class*="vendor-"] {
-  border-color: color-mix(in srgb, var(--vendor-color) 28%, var(--line-soft));
-  background: linear-gradient(180deg, var(--vendor-soft), #fff 55%);
+  border-color: color-mix(in srgb, var(--vendor-color) 20%, var(--line-soft));
+  background: #fff;
 }
-.pricing-estimate > div[class*="vendor-"] strong { color: var(--vendor-color); }
+.pricing-estimate > div[class*="vendor-"] strong { color: color-mix(in srgb, var(--vendor-color) 76%, var(--ink)); }
 
 .pricing-estimate span,
 .pricing-estimate small {
