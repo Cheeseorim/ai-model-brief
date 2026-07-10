@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경사항을 매일 요약하는 AI 브리핑" />
     <title>AI Model Brief</title>
-    <link rel="stylesheet" href="./styles.css?v=20260710-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260710-3" />
   </head>
   <body>
     <header>
@@ -45,20 +45,6 @@
           </div>
           <span id="pricingMeta"></span>
         </div>
-        <div class="pricing-tools">
-          <label>
-            <span>요청당 입력 토큰</span>
-            <input id="inputTokens" type="number" min="0" step="1000" value="10000" />
-          </label>
-          <label>
-            <span>요청당 출력 토큰</span>
-            <input id="outputTokens" type="number" min="0" step="1000" value="2000" />
-          </label>
-          <label>
-            <span>하루 요청 수</span>
-            <input id="dailyRequests" type="number" min="0" step="100" value="1000" />
-          </label>
-        </div>
         <div class="pricing-scroll">
           <table class="pricing-table">
             <thead>
@@ -67,12 +53,34 @@
                 <th>입력</th>
                 <th>출력</th>
                 <th>캐시 읽기</th>
-                <th>월 예상</th>
                 <th>비고</th>
               </tr>
             </thead>
             <tbody id="pricingRows"></tbody>
           </table>
+        </div>
+        <div class="cost-calculator" aria-labelledby="calculatorTitle">
+          <div class="calculator-copy">
+            <p class="eyebrow">토큰 계산기</p>
+            <h3 id="calculatorTitle">선택한 모델 기준 월 예상 비용</h3>
+            <p>입력·출력 토큰과 하루 요청 수를 넣으면 30일 기준 비용을 계산합니다.</p>
+          </div>
+          <div id="pricingModelToggles" class="model-toggles"></div>
+          <div class="pricing-tools">
+            <label>
+              <span>요청당 입력 토큰</span>
+              <input id="inputTokens" type="number" min="0" step="1000" value="10000" />
+            </label>
+            <label>
+              <span>요청당 출력 토큰</span>
+              <input id="outputTokens" type="number" min="0" step="1000" value="2000" />
+            </label>
+            <label>
+              <span>하루 요청 수</span>
+              <input id="dailyRequests" type="number" min="0" step="100" value="1000" />
+            </label>
+          </div>
+          <div id="pricingEstimate" class="pricing-estimate"></div>
         </div>
         <div id="pricingSources" class="pricing-sources"></div>
       </section>
@@ -121,6 +129,6 @@
         </footer>
       </article>
     </template>
-    <script type="module" src="./app.js?v=20260710-2"></script>
+    <script type="module" src="./app.js?v=20260710-3"></script>
   </body>
 </html>

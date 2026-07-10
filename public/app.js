@@ -1,7 +1,7 @@
 const [events, state, pricing] = await Promise.all([
   fetch("./data/events.json?v=20260710-2").then((response) => response.json()),
   fetch("./data/state.json?v=20260710-2").then((response) => response.json()),
-  fetch("./config/pricing.json?v=20260710-pricing1").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
+  fetch("./config/pricing.json?v=20260710-pricing2").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
 ]);
 
 const ui = {
@@ -18,12 +18,15 @@ const ui = {
   pricingRows: document.querySelector("#pricingRows"),
   pricingMeta: document.querySelector("#pricingMeta"),
   pricingSources: document.querySelector("#pricingSources"),
+  pricingModelToggles: document.querySelector("#pricingModelToggles"),
+  pricingEstimate: document.querySelector("#pricingEstimate"),
   inputTokens: document.querySelector("#inputTokens"),
   outputTokens: document.querySelector("#outputTokens"),
   dailyRequests: document.querySelector("#dailyRequests")
 };
 
 const filters = { vendor: "", kind: "", search: "" };
+let selectedPricingModelId = "";
 const RECENT_LIMIT = 5;
 const HEADLINE_LIMIT = 5;
 const labels = {
@@ -184,30 +187,28 @@ function renderCoverage() {
 
 function renderPricing() {
   if (!ui.pricingRows) return;
-  const models = Array.isArray(pricing.models) ? pricing.models : [];
+  const models = pricedModels();
   const inputTokens = Math.max(0, Number(ui.inputTokens?.value || 0));
   const outputTokens = Math.max(0, Number(ui.outputTokens?.value || 0));
   const dailyRequests = Math.max(0, Number(ui.dailyRequests?.value || 0));
-  const sorted = [...models].sort((a, b) => {
-    const aCost = estimateMonthlyCost(a, inputTokens, outputTokens, dailyRequests);
-    const bCost = estimateMonthlyCost(b, inputTokens, outputTokens, dailyRequests);
-    if (aCost == null && bCost == null) return vendorSort(a.vendor) - vendorSort(b.vendor);
-    if (aCost == null) return 1;
-    if (bCost == null) return -1;
-    return aCost - bCost;
-  });
+  const sorted = [...models].sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor)
+    || (a.input ?? 999) - (b.input ?? 999)
+    || (a.output ?? 999) - (b.output ?? 999)
+    || a.model.localeCompare(b.model));
+  if (!selectedPricingModelId && sorted.length) selectedPricingModelId = pricingModelId(sorted[0]);
   ui.pricingMeta.textContent = pricing.verifiedAt
     ? `공식 가격 기준 · ${pricing.verifiedAt}`
     : "공식 가격 기준";
-  ui.pricingRows.replaceChildren(...sorted.map((model) => pricingRow(model, inputTokens, outputTokens, dailyRequests)));
+  ui.pricingRows.replaceChildren(...sorted.map((model) => pricingRow(model)));
+  renderPricingModelToggles(sorted);
+  renderPricingEstimate(sorted, inputTokens, outputTokens, dailyRequests);
   ui.pricingSources.innerHTML = (pricing.sources || [])
     .map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`)
     .join("<span>·</span>");
 }
 
-function pricingRow(model, inputTokens, outputTokens, dailyRequests) {
+function pricingRow(model) {
   const tr = document.createElement("tr");
-  const monthly = estimateMonthlyCost(model, inputTokens, outputTokens, dailyRequests);
   const source = (pricing.sources || []).find((item) => item.vendor === model.vendor);
   tr.innerHTML = `
     <td>
@@ -217,13 +218,58 @@ function pricingRow(model, inputTokens, outputTokens, dailyRequests) {
     <td>${priceCell(model.input)}</td>
     <td>${priceCell(model.output)}</td>
     <td>${priceCell(model.cacheRead)}</td>
-    <td class="monthly">${monthly == null ? "확인 필요" : formatCurrency(monthly)}</td>
     <td>
       ${escapeHtml(model.notes || model.tier || "")}
       ${source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">출처 ↗</a>` : ""}
     </td>
   `;
   return tr;
+}
+
+function renderPricingModelToggles(models) {
+  if (!ui.pricingModelToggles) return;
+  ui.pricingModelToggles.replaceChildren(...models.map((model) => {
+    const id = pricingModelId(model);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = id === selectedPricingModelId ? "active" : "";
+    button.textContent = model.model;
+    button.addEventListener("click", () => {
+      selectedPricingModelId = id;
+      renderPricing();
+    });
+    return button;
+  }));
+}
+
+function renderPricingEstimate(models, inputTokens, outputTokens, dailyRequests) {
+  if (!ui.pricingEstimate) return;
+  const selected = models.find((model) => pricingModelId(model) === selectedPricingModelId) || models[0];
+  if (!selected) {
+    ui.pricingEstimate.innerHTML = "<p>계산할 모델 가격 데이터가 없습니다.</p>";
+    return;
+  }
+  const monthly = estimateMonthlyCost(selected, inputTokens, outputTokens, dailyRequests);
+  const daily = monthly == null ? null : monthly / 30;
+  const inputCost = typeof selected.input === "number" ? inputTokens * dailyRequests * 30 / 1_000_000 * selected.input : null;
+  const outputCost = typeof selected.output === "number" ? outputTokens * dailyRequests * 30 / 1_000_000 * selected.output : null;
+  ui.pricingEstimate.innerHTML = `
+    <div>
+      <span>선택 모델</span>
+      <strong>${escapeHtml(selected.model)}</strong>
+      <small>${escapeHtml(vendorLabels[selected.vendor] || selected.vendor)} · ${escapeHtml(selected.platform || "")}</small>
+    </div>
+    <div>
+      <span>월 예상 비용</span>
+      <strong>${monthly == null ? "확인 필요" : formatCurrency(monthly)}</strong>
+      <small>30일 기준 · 일 ${daily == null ? "—" : formatCurrency(daily)}</small>
+    </div>
+    <div>
+      <span>비용 구성</span>
+      <strong>${inputCost == null || outputCost == null ? "—" : `${formatCurrency(inputCost)} + ${formatCurrency(outputCost)}`}</strong>
+      <small>입력 비용 + 출력 비용</small>
+    </div>
+  `;
 }
 
 function estimateMonthlyCost(model, inputTokens, outputTokens, dailyRequests) {
@@ -235,6 +281,15 @@ function estimateMonthlyCost(model, inputTokens, outputTokens, dailyRequests) {
 
 function priceCell(value) {
   return typeof value === "number" ? `${formatCurrency(value)} / 1M` : "—";
+}
+
+function pricedModels() {
+  return (Array.isArray(pricing.models) ? pricing.models : [])
+    .filter((model) => typeof model.input === "number" && typeof model.output === "number");
+}
+
+function pricingModelId(model) {
+  return `${model.vendor}:${model.platform}:${model.model}`;
 }
 
 function formatCurrency(value) {

@@ -294,7 +294,6 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin-bottom: 14px;
 }
 
 .pricing-tools label {
@@ -320,7 +319,7 @@ h2 {
 
 .pricing-table {
   width: 100%;
-  min-width: 850px;
+  min-width: 760px;
   border-collapse: collapse;
   background: #fbfcff;
 }
@@ -360,12 +359,6 @@ h2 {
   font-size: .74rem;
 }
 
-.pricing-table .monthly {
-  color: var(--ink);
-  font-weight: 820;
-  white-space: nowrap;
-}
-
 .pricing-table td:last-child {
   color: #475467;
   max-width: 260px;
@@ -384,6 +377,70 @@ h2 {
   margin-top: 12px;
   color: var(--muted);
   font-size: .78rem;
+}
+
+.cost-calculator {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fbfcff, #f7f9fd);
+}
+
+.calculator-copy h3 {
+  margin: 0;
+  font-size: 1.03rem;
+  letter-spacing: -.02em;
+}
+
+.calculator-copy p:last-child {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.model-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.model-toggles button {
+  min-height: 34px;
+  padding: 0 10px;
+  font-size: .78rem;
+}
+
+.pricing-estimate {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pricing-estimate > div {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line-soft);
+  border-radius: 13px;
+  background: var(--surface);
+}
+
+.pricing-estimate span,
+.pricing-estimate small {
+  display: block;
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.pricing-estimate strong {
+  display: block;
+  margin: 5px 0 3px;
+  color: var(--ink);
+  font-size: clamp(1rem, 2.2vw, 1.28rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .toolbar {
@@ -555,6 +612,7 @@ a:hover { text-decoration: underline; }
 @media (max-width: 1100px) {
   .coverage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pricing-tools { grid-template-columns: 1fr; }
+  .pricing-estimate { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 820px) {
@@ -624,6 +682,19 @@ a:hover { text-decoration: underline; }
   }
   .brief-points p { font-size: .86rem; }
   .coverage { margin-top: 20px; }
+  .pricing-panel {
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .cost-calculator { padding: 14px; }
+  .model-toggles {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .model-toggles::-webkit-scrollbar { display: none; }
+  .model-toggles button { flex: 0 0 auto; }
   .coverage-card,
   .event-card {
     padding: 15px;
