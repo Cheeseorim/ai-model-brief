@@ -194,8 +194,8 @@ function renderHeadlines() {
   const headlines = [];
   for (const event of pool) {
     const candidateBrief = briefing(event);
-    const key = `${event.vendor}|${normalizeTitle(candidateBrief.title)}`;
-    if (headlines.some((item) => `${item.vendor}|${normalizeTitle(briefing(item).title)}` === key)) continue;
+    const key = event.clusterKey || event.summaryMeta?.clusterKey || `${event.vendor}|${normalizeTitle(candidateBrief.title)}`;
+    if (headlines.some((item) => (item.clusterKey || item.summaryMeta?.clusterKey || `${item.vendor}|${normalizeTitle(briefing(item).title)}`) === key)) continue;
     const vendorCount = vendorCounts.get(event.vendor) || 0;
     if (vendorCount >= 2 && headlines.length < 4) continue;
     const kindCount = kindCounts.get(event.kind) || 0;
@@ -400,6 +400,13 @@ function briefingScore(event) {
   const source = event.sourceId || "";
   const text = `${event.title} ${event.summary}`.toLowerCase();
   let score = event.severity || 0;
+  if (event.urgency === "high") score += 40;
+  if (event.urgency === "low") score -= 25;
+  if (event.isProbablyNoise || event.summaryMeta?.isProbablyNoise) score -= 120;
+  if (event.changeType === "new_model") score += 25;
+  if (event.changeType === "api_change") score += 22;
+  if (event.changeType === "availability") score += 16;
+  if (event.changeType === "docs_only" || event.changeType === "product_news") score -= 20;
   if (event.kind === "deprecation") score += 35;
   if (event.kind === "breaking-change") score += 30;
   if (event.kind === "pricing") score += 24;
@@ -479,7 +486,7 @@ function uniqueRecentEvents(items) {
   const seen = new Set();
   const result = [];
   for (const event of items) {
-    const key = `${event.vendor}|${normalizeTitle(cardTitle(event))}`;
+    const key = event.clusterKey || event.summaryMeta?.clusterKey || `${event.vendor}|${normalizeTitle(cardTitle(event))}`;
     if (seen.has(key)) continue;
     seen.add(key);
     result.push(event);
