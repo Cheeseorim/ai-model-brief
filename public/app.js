@@ -1,6 +1,6 @@
 const [events, state] = await Promise.all([
-  fetch("./data/events.json?v=20260710-1").then((response) => response.json()),
-  fetch("./data/state.json?v=20260710-1").then((response) => response.json())
+  fetch("./data/events.json?v=20260710-2").then((response) => response.json()),
+  fetch("./data/state.json?v=20260710-2").then((response) => response.json())
 ]);
 
 const ui = {
@@ -10,7 +10,6 @@ const ui = {
   kindFilter: document.querySelector("#kindFilter"),
   search: document.querySelector("#search"),
   resultCount: document.querySelector("#resultCount"),
-  stats: document.querySelector("#stats"),
   health: document.querySelector("#health"),
   coverage: document.querySelector("#coverage"),
   headlines: document.querySelector("#headlines"),
@@ -82,15 +81,6 @@ ui.health.textContent = failures.length
   ? `수집기 ${failures.length}개 확인 필요`
   : `마지막 수집 ${formatDateTime(state.lastRunAt)}`;
 ui.health.classList.add(failures.length ? "bad" : "ok");
-
-const deprecations = events.filter((event) => event.kind === "deprecation").length;
-const watched = events.filter((event) => event.watched).length;
-ui.stats.innerHTML = [
-  [events.length, "누적 변경사항"],
-  [deprecations, "지원 종료 관련"],
-  [sourceStates.length, "공식 출처"],
-  [watched, "Watchlist 관련"]
-].map(([value, label]) => `<div class="stat"><strong>${value.toLocaleString("ko-KR")}</strong><span>${label}</span></div>`).join("");
 
 renderCoverage();
 renderHeadlines();
@@ -216,7 +206,7 @@ function renderHeadlines() {
   }
 
   ui.headlineMeta.textContent = recent.length
-    ? `최근 7일 ${recent.length.toLocaleString("ko-KR")}건 중 검토 우선순위 ${headlines.length}건`
+    ? `최근 7일 기준 · ${headlines.length}건`
     : `최근 7일 업데이트 없음 · 최신 고위험 ${headlines.length}건`;
   ui.headlines.replaceChildren(...headlines.map(headlineCard));
 }
@@ -232,7 +222,7 @@ function headlineCard(event, index) {
   const models = Array.isArray(event.modelIds) ? event.modelIds.slice(0, 3) : [];
   const brief = briefing(event);
   article.innerHTML = `
-    <div class="headline-rank">${String(index + 1).padStart(2, "0")}</div>
+    <div class="headline-rank">${String(index + 1)}</div>
     <div class="headline-body">
       <div class="headline-meta">
         <span>${escapeHtml(vendorLabels[event.vendor] || event.vendor)}</span>
@@ -241,9 +231,9 @@ function headlineCard(event, index) {
       </div>
       <h3>${escapeHtml(brief.title)}</h3>
       <div class="brief-points">
-        <p><strong>변경</strong>${escapeHtml(brief.change)}</p>
-        <p><strong>영향</strong>${escapeHtml(brief.impact)}</p>
-        <p><strong>확인</strong>${escapeHtml(brief.action)}</p>
+        <p><strong>변경</strong><span>${escapeHtml(brief.change)}</span></p>
+        <p><strong>영향</strong><span>${escapeHtml(brief.impact)}</span></p>
+        <p><strong>확인</strong><span>${escapeHtml(brief.action)}</span></p>
       </div>
       <div class="headline-bottom">
         <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
