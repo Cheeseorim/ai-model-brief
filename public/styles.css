@@ -100,8 +100,50 @@ h1 {
 
 main { padding: 20px 0 72px; }
 
+.section-tabs {
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 18px;
+  padding: 5px;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.section-tabs::-webkit-scrollbar { display: none; }
+
+.section-tabs button {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: .84rem;
+  font-weight: 740;
+}
+
+.section-tabs button.active {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(20, 26, 40, .14);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
 .headline-panel {
-  margin-top: 18px;
+  margin-top: 0;
   padding: 22px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
@@ -490,9 +532,11 @@ h2 {
 }
 
 .pricing-scroll {
-  overflow-x: auto;
+  max-height: 420px;
+  overflow: auto;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-md);
+  overscroll-behavior: contain;
 }
 
 .pricing-table {
@@ -514,6 +558,7 @@ h2 {
 .pricing-table th {
   position: sticky;
   top: 0;
+  z-index: 1;
   background: #f4f7fc;
   color: var(--muted);
   font-size: .74rem;
@@ -838,6 +883,10 @@ a:hover { text-decoration: underline; }
     padding: 22px;
   }
   .health { width: fit-content; }
+  .section-tabs {
+    position: static;
+    width: 100%;
+  }
   .toolbar {
     position: static;
     grid-template-columns: 1fr;
@@ -918,6 +967,7 @@ a:hover { text-decoration: underline; }
     padding: 14px;
     border-radius: 18px;
   }
+  .pricing-scroll { max-height: 340px; }
   .cost-calculator { padding: 14px; }
   .model-toggles {
     flex-wrap: nowrap;

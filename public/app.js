@@ -6,6 +6,9 @@ const [events, state, pricing] = await Promise.all([
 
 const ui = {
   health: document.querySelector("#health"),
+  tabNav: document.querySelector(".section-tabs"),
+  tabs: [...document.querySelectorAll(".section-tabs button")],
+  panels: [...document.querySelectorAll(".tab-panel")],
   coverage: document.querySelector("#coverage"),
   coverageMeta: document.querySelector("#coverageMeta"),
   headlines: document.querySelector("#headlines"),
@@ -60,6 +63,11 @@ const sourceLabels = {
 for (const input of [ui.inputTokens, ui.outputTokens, ui.dailyRequests]) {
   input?.addEventListener("input", renderPricing);
 }
+ui.tabNav?.addEventListener("click", (event) => {
+  const tab = event.target.closest("button[data-tab]");
+  if (!tab) return;
+  activateTab(tab.dataset.tab || "briefing");
+});
 
 const sourceStates = Object.values(state.sources || {});
 const failures = sourceStates.filter((source) => !source.ok);
@@ -71,6 +79,27 @@ ui.health.classList.add(failures.length ? "bad" : "ok");
 renderCoverage();
 renderHeadlines();
 renderPricing();
+activateTab(initialTab());
+
+function initialTab() {
+  const hash = window.location.hash.replace("#", "");
+  return ["briefing", "vendors", "pricing"].includes(hash) ? hash : "briefing";
+}
+
+function activateTab(tabName) {
+  const safeTab = ["briefing", "vendors", "pricing"].includes(tabName) ? tabName : "briefing";
+  for (const tab of ui.tabs) {
+    const active = tab.dataset.tab === safeTab;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", String(active));
+  }
+  for (const panel of ui.panels) {
+    panel.classList.toggle("active", panel.dataset.panel === safeTab);
+  }
+  if (window.location.hash.replace("#", "") !== safeTab) {
+    history.replaceState(null, "", `#${safeTab}`);
+  }
+}
 
 function renderCoverage() {
   const byVendor = coverageByVendor();

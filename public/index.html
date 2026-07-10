@@ -3,42 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경사항을 매일 요약하는 AI 브리핑" />
+    <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경사항을 핵심만 추려 보여주는 AI 브리핑" />
     <title>AI Model Brief</title>
-    <link rel="stylesheet" href="./styles.css?v=20260710-5" />
+    <link rel="stylesheet" href="./styles.css?v=20260710-6" />
   </head>
   <body>
     <header>
       <div>
         <p class="eyebrow">공식 문서 변경 모니터링</p>
         <h1>AI Model Brief</h1>
-        <p class="lede">OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 모델·API 변경사항을 매일 아침 핵심만 추려 보여줍니다.</p>
+        <p class="lede">OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 모델·API 변경사항을 핵심만 추려 보여줍니다.</p>
       </div>
       <div id="health" class="health">수집 상태 확인 중…</div>
     </header>
 
     <main>
-      <section class="headline-panel" aria-labelledby="headlineTitle">
+      <nav class="section-tabs" aria-label="대시보드 섹션">
+        <button type="button" class="active" data-tab="briefing">주요 뉴스</button>
+        <button type="button" data-tab="vendors">공급사별 이슈</button>
+        <button type="button" data-tab="pricing">가격 비교</button>
+      </nav>
+
+      <section class="headline-panel tab-panel active" data-panel="briefing" aria-labelledby="headlineTitle">
         <div class="section-heading">
           <div>
             <p class="eyebrow">주요 변경 요약</p>
-            <h2 id="headlineTitle">오늘 먼저 볼 것</h2>
+            <h2 id="headlineTitle">주요 뉴스 브리핑</h2>
           </div>
           <span id="headlineMeta"></span>
         </div>
         <div id="headlines" class="headline-list"></div>
       </section>
-      <section class="coverage" aria-labelledby="coverageTitle">
+      <section class="coverage tab-panel" data-panel="vendors" aria-labelledby="coverageTitle">
         <div class="section-heading compact">
           <div>
-            <p class="eyebrow">벤더별 체크포인트</p>
-            <h2 id="coverageTitle">어디를 먼저 볼까</h2>
+            <p class="eyebrow">공급사별 체크포인트</p>
+            <h2 id="coverageTitle">공급사별 핵심 이슈</h2>
           </div>
           <span id="coverageMeta"></span>
         </div>
         <div id="coverage" class="coverage-list"></div>
       </section>
-      <section class="pricing-panel" aria-labelledby="pricingTitle">
+      <section class="pricing-panel tab-panel" data-panel="pricing" aria-labelledby="pricingTitle">
         <div class="section-heading">
           <div>
             <p class="eyebrow">비용 비교</p>
@@ -86,6 +92,6 @@
         <div id="pricingSources" class="pricing-sources"></div>
       </section>
     </main>
-    <script type="module" src="./app.js?v=20260710-5"></script>
+    <script type="module" src="./app.js?v=20260710-6"></script>
   </body>
 </html>
