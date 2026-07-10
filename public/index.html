@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경사항을 매일 요약하는 AI 브리핑" />
     <title>AI Model Brief</title>
-    <link rel="stylesheet" href="./styles.css?v=20260710-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260710-4" />
   </head>
   <body>
     <header>
@@ -31,11 +31,13 @@
       <section class="coverage" aria-labelledby="coverageTitle">
         <div class="section-heading compact">
           <div>
-            <p class="eyebrow">공급사별 브리핑</p>
-            <h2 id="coverageTitle">공급사별로 지금 볼 것</h2>
+            <p class="eyebrow">벤더별 체크포인트</p>
+            <h2 id="coverageTitle">어디를 먼저 볼까</h2>
           </div>
+          <span id="coverageMeta"></span>
         </div>
         <div id="coverage" class="coverage-grid"></div>
+        <div id="coverageDetail" class="coverage-detail"></div>
       </section>
       <section class="pricing-panel" aria-labelledby="pricingTitle">
         <div class="section-heading">
@@ -84,51 +86,7 @@
         </div>
         <div id="pricingSources" class="pricing-sources"></div>
       </section>
-      <section class="toolbar">
-        <div class="filters" id="vendorFilters"></div>
-        <select id="kindFilter" aria-label="변경 유형">
-          <option value="">모든 유형</option>
-          <option value="deprecation">지원 종료</option>
-          <option value="breaking-change">호환성 변경</option>
-          <option value="release">신규 출시</option>
-          <option value="pricing">가격</option>
-          <option value="changelog">변경 로그</option>
-          <option value="news">뉴스</option>
-        </select>
-        <input id="search" type="search" placeholder="모델이나 변경사항 검색" />
-      </section>
-
-      <section>
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">최근 업데이트</p>
-            <h2>최근 변경사항 5건</h2>
-          </div>
-          <span id="resultCount"></span>
-        </div>
-        <div id="events" class="event-grid"></div>
-      </section>
     </main>
-
-    <template id="eventTemplate">
-      <article class="event-card">
-        <div class="event-top">
-          <div>
-            <span class="vendor"></span>
-            <span class="source"></span>
-          </div>
-          <span class="kind"></span>
-        </div>
-        <h3></h3>
-        <p class="original-title"></p>
-        <p class="summary"></p>
-        <div class="models"></div>
-        <footer>
-          <span class="date"></span>
-          <a target="_blank" rel="noreferrer">원문 보기 ↗</a>
-        </footer>
-      </article>
-    </template>
-    <script type="module" src="./app.js?v=20260710-3"></script>
+    <script type="module" src="./app.js?v=20260710-4"></script>
   </body>
 </html>

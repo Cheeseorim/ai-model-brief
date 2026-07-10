@@ -5,14 +5,10 @@ const [events, state, pricing] = await Promise.all([
 ]);
 
 const ui = {
-  events: document.querySelector("#events"),
-  template: document.querySelector("#eventTemplate"),
-  vendorFilters: document.querySelector("#vendorFilters"),
-  kindFilter: document.querySelector("#kindFilter"),
-  search: document.querySelector("#search"),
-  resultCount: document.querySelector("#resultCount"),
   health: document.querySelector("#health"),
   coverage: document.querySelector("#coverage"),
+  coverageMeta: document.querySelector("#coverageMeta"),
+  coverageDetail: document.querySelector("#coverageDetail"),
   headlines: document.querySelector("#headlines"),
   headlineMeta: document.querySelector("#headlineMeta"),
   pricingRows: document.querySelector("#pricingRows"),
@@ -25,9 +21,8 @@ const ui = {
   dailyRequests: document.querySelector("#dailyRequests")
 };
 
-const filters = { vendor: "", kind: "", search: "" };
 let selectedPricingModelId = "";
-const RECENT_LIMIT = 5;
+let selectedCoverageVendor = "";
 const HEADLINE_LIMIT = 5;
 const labels = {
   deprecation: "지원 종료",
@@ -63,27 +58,6 @@ const sourceLabels = {
   "bedrock-doc-history": "문서 변경 이력"
 };
 
-const vendors = [...new Set(events.map((event) => event.vendor))].sort();
-for (const [value, label] of [["", "전체"], ...vendors.map((vendor) => [vendor, vendorLabels[vendor] || vendor])]) {
-  const button = document.createElement("button");
-  button.textContent = label;
-  button.className = value === "" ? "active" : "";
-  button.addEventListener("click", () => {
-    filters.vendor = value;
-    [...ui.vendorFilters.children].forEach((child) => child.classList.toggle("active", child === button));
-    render();
-  });
-  ui.vendorFilters.append(button);
-}
-
-ui.kindFilter.addEventListener("change", (event) => {
-  filters.kind = event.target.value;
-  render();
-});
-ui.search.addEventListener("input", (event) => {
-  filters.search = normalizeSearch(event.target.value);
-  render();
-});
 for (const input of [ui.inputTokens, ui.outputTokens, ui.dailyRequests]) {
   input?.addEventListener("input", renderPricing);
 }
@@ -98,48 +72,17 @@ ui.health.classList.add(failures.length ? "bad" : "ok");
 renderCoverage();
 renderHeadlines();
 renderPricing();
-render();
-
-function render() {
-  const matched = events.filter((event) => {
-    const haystack = normalizeSearch(`${event.title} ${event.summary} ${event.titleKo || ""} ${event.summaryKo || ""} ${event.modelIds.join(" ")}`);
-    return (!filters.vendor || event.vendor === filters.vendor)
-      && (!filters.kind || event.kind === filters.kind)
-      && (!filters.search || haystack.includes(filters.search));
-  }).sort((a, b) => recentListScore(b) - recentListScore(a));
-  const visible = uniqueRecentEvents(matched).slice(0, RECENT_LIMIT);
-  ui.events.replaceChildren(...visible.map(card));
-  ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 핵심 ${visible.length.toLocaleString("ko-KR")}건 표시`;
-}
-
-function card(event) {
-  const article = document.createElement("article");
-  article.className = "event-card";
-  article.classList.add(event.kind);
-  const titleKo = cardTitle(event);
-  const summaryKo = cardSummary(event);
-  const models = Array.isArray(event.modelIds) ? event.modelIds : [];
-  article.innerHTML = `
-    <div class="event-top">
-      <div>
-        <span class="vendor">${escapeHtml(vendorLabels[event.vendor] || event.vendor)} · ${escapeHtml(event.platform || "")}</span>
-        <span class="source">${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
-      </div>
-      <span class="kind">${escapeHtml(labels[event.kind] || event.kind || "")}</span>
-    </div>
-    <h3>${escapeHtml(titleKo)}</h3>
-    <p class="original-title">${titleKo === event.title ? "" : `원문: ${escapeHtml(event.title || "")}`}</p>
-    <p class="summary">${escapeHtml(summaryKo)}</p>
-    <div class="models">${models.slice(0, 8).map((model) => `<span class="model">${escapeHtml(model)}</span>`).join("")}</div>
-    <footer>
-      <span class="date">${escapeHtml(cardDateLabel(event))}</span>
-      <a href="${escapeHtml(event.sourceUrl || "#")}" target="_blank" rel="noreferrer">원문 보기 ↗</a>
-    </footer>
-  `;
-  return article;
-}
 
 function renderCoverage() {
+  const byVendor = coverageByVendor();
+  const items = [...byVendor.values()].sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor));
+  if (!selectedCoverageVendor && items.length) selectedCoverageVendor = items[0].vendor;
+  ui.coverageMeta.textContent = "카드를 누르면 세부 이슈를 볼 수 있어요";
+  ui.coverage.replaceChildren(...items.map(coverageCard));
+  renderCoverageDetail(byVendor.get(selectedCoverageVendor) || items[0]);
+}
+
+function coverageByVendor() {
   const byVendor = new Map();
   const anchor = new Date();
   const windowStart = new Date(anchor);
@@ -159,30 +102,89 @@ function renderCoverage() {
     }
     byVendor.set(event.vendor, item);
   }
+  return byVendor;
+}
 
-  ui.coverage.innerHTML = [...byVendor.values()]
-    .sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor))
-    .map((item) => {
-      const pool = (item.recent.length ? item.recent : item.fallback)
-        .sort((a, b) => briefingScore(b) - briefingScore(a));
-      const primary = pool[0];
-      const brief = primary ? briefing(primary) : null;
-      const sourceList = [...item.sources].map((id) => sourceLabels[id] || id).join(", ");
-      const status = item.recent.length
-        ? `최근 7일 주요 이슈 ${item.recent.length.toLocaleString("ko-KR")}건`
-        : "최근 7일 주요 이슈 없음";
-      return `
-        <article class="coverage-card">
-          <div class="coverage-top">
-            <strong>${vendorLabels[item.vendor] || item.vendor}</strong>
-            <span>${status}</span>
-          </div>
-          <h3>${escapeHtml(brief?.title || "특이 업데이트 없음")}</h3>
-          <p class="coverage-summary">${escapeHtml(brief ? `${brief.change} ${brief.action}` : "공식 문서는 정상 수집 중입니다. 새로 확인할 만한 주요 변경은 아직 없습니다.")}</p>
-          <p class="coverage-sources">${escapeHtml(sourceList)}</p>
-        </article>
-      `;
-    }).join("");
+function coverageCard(item) {
+  const pool = vendorIssuePool(item);
+  const primary = pool[0];
+  const brief = primary ? briefing(primary) : null;
+  const status = item.recent.length
+    ? `최근 7일 ${item.recent.length.toLocaleString("ko-KR")}건`
+    : "최근 고위험 이슈 중심";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `coverage-card vendor-${item.vendor} ${selectedCoverageVendor === item.vendor ? "active" : ""}`;
+  button.dataset.vendor = item.vendor;
+  button.innerHTML = `
+    <div class="coverage-top">
+      <strong>${vendorLabels[item.vendor] || item.vendor}</strong>
+      <span>${status}</span>
+    </div>
+    <h3>${escapeHtml(brief?.title || "특이 업데이트 없음")}</h3>
+    <p class="coverage-summary">${escapeHtml(brief ? brief.change : "새로 확인할 만한 주요 변경은 아직 없습니다.")}</p>
+    <span class="coverage-cta">세부 이슈 보기</span>
+  `;
+  button.addEventListener("click", () => {
+    selectedCoverageVendor = item.vendor;
+    renderCoverage();
+  });
+  return button;
+}
+
+function renderCoverageDetail(item) {
+  if (!ui.coverageDetail || !item) return;
+  const pool = uniqueVendorIssues(vendorIssuePool(item)).slice(0, 6);
+  const sourceList = [...item.sources].map((id) => sourceLabels[id] || id).join(", ");
+  ui.coverageDetail.innerHTML = `
+    <div class="coverage-detail-head">
+      <div>
+        <p class="eyebrow">${escapeHtml(vendorLabels[item.vendor] || item.vendor)}</p>
+        <h3>${escapeHtml(vendorLabels[item.vendor] || item.vendor)}에서 더 볼 이슈</h3>
+      </div>
+      <span>${escapeHtml(sourceList)}</span>
+    </div>
+    <div class="issue-list">
+      ${pool.length ? pool.map(detailIssue).join("") : `<p class="empty-detail">지금 더 확인할 만한 세부 이슈는 없습니다.</p>`}
+    </div>
+  `;
+}
+
+function detailIssue(event) {
+  const brief = briefing(event);
+  const models = Array.isArray(event.modelIds) ? event.modelIds.slice(0, 4) : [];
+  return `
+    <article class="issue-item vendor-${escapeHtml(event.vendor || "")} ${escapeHtml(event.kind || "")}">
+      <div class="issue-meta">
+        <span>${escapeHtml(labels[event.kind] || event.kind || "업데이트")}</span>
+        <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
+        <span>${escapeHtml(shortDate(displayDate(event)))}</span>
+      </div>
+      <h4>${escapeHtml(brief.title)}</h4>
+      <p>${escapeHtml(brief.change)}</p>
+      <div class="issue-bottom">
+        ${models.length ? `<span>${escapeHtml(models.join(", "))}</span>` : "<span>모델 ID 없음</span>"}
+        <a href="${escapeHtml(event.sourceUrl || "#")}" target="_blank" rel="noreferrer">원문 보기 ↗</a>
+      </div>
+    </article>
+  `;
+}
+
+function vendorIssuePool(item) {
+  return (item.recent.length ? item.recent : item.fallback)
+    .sort((a, b) => briefingScore(b) - briefingScore(a));
+}
+
+function uniqueVendorIssues(items) {
+  const seen = new Set();
+  const result = [];
+  for (const event of items) {
+    const key = event.clusterKey || event.summaryMeta?.clusterKey || `${event.vendor}|${normalizeTitle(briefing(event).title)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(event);
+  }
+  return result;
 }
 
 function renderPricing() {
@@ -209,6 +211,7 @@ function renderPricing() {
 
 function pricingRow(model) {
   const tr = document.createElement("tr");
+  tr.className = `vendor-${model.vendor}`;
   const source = (pricing.sources || []).find((item) => item.vendor === model.vendor);
   tr.innerHTML = `
     <td>
@@ -232,7 +235,7 @@ function renderPricingModelToggles(models) {
     const id = pricingModelId(model);
     const button = document.createElement("button");
     button.type = "button";
-    button.className = id === selectedPricingModelId ? "active" : "";
+    button.className = `vendor-${model.vendor} ${id === selectedPricingModelId ? "active" : ""}`;
     button.textContent = model.model;
     button.addEventListener("click", () => {
       selectedPricingModelId = id;
@@ -254,7 +257,7 @@ function renderPricingEstimate(models, inputTokens, outputTokens, dailyRequests)
   const inputCost = typeof selected.input === "number" ? inputTokens * dailyRequests * 30 / 1_000_000 * selected.input : null;
   const outputCost = typeof selected.output === "number" ? outputTokens * dailyRequests * 30 / 1_000_000 * selected.output : null;
   ui.pricingEstimate.innerHTML = `
-    <div>
+    <div class="vendor-${escapeHtml(selected.vendor || "")}">
       <span>선택 모델</span>
       <strong>${escapeHtml(selected.model)}</strong>
       <small>${escapeHtml(vendorLabels[selected.vendor] || selected.vendor)} · ${escapeHtml(selected.platform || "")}</small>
@@ -345,6 +348,7 @@ function headlineCard(event, index) {
   const article = document.createElement("article");
   article.className = "headline-card";
   article.classList.add(event.kind);
+  article.classList.add(`vendor-${event.vendor}`);
   const models = Array.isArray(event.modelIds) ? event.modelIds.slice(0, 3) : [];
   const brief = briefing(event);
   article.innerHTML = `
