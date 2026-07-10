@@ -72,7 +72,7 @@ ui.kindFilter.addEventListener("change", (event) => {
   render();
 });
 ui.search.addEventListener("input", (event) => {
-  filters.search = event.target.value.toLowerCase();
+  filters.search = normalizeSearch(event.target.value);
   render();
 });
 
@@ -98,11 +98,11 @@ render();
 
 function render() {
   const matched = events.filter((event) => {
-    const haystack = `${event.title} ${event.summary} ${event.titleKo || ""} ${event.summaryKo || ""} ${event.modelIds.join(" ")}`.toLowerCase();
+    const haystack = normalizeSearch(`${event.title} ${event.summary} ${event.titleKo || ""} ${event.summaryKo || ""} ${event.modelIds.join(" ")}`);
     return (!filters.vendor || event.vendor === filters.vendor)
       && (!filters.kind || event.kind === filters.kind)
       && (!filters.search || haystack.includes(filters.search));
-  }).sort((a, b) => eventTime(b) - eventTime(a));
+  }).sort((a, b) => recentListScore(b) - recentListScore(a));
   const visible = matched.slice(0, RECENT_LIMIT);
   ui.events.replaceChildren(...visible.map(card));
   ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 핵심 ${visible.length.toLocaleString("ko-KR")}건 표시`;
@@ -297,6 +297,14 @@ function briefing(event) {
       action: "Realtime API를 쓰는 플로우가 있다면 기존 샘플 대화와 noisy 환경 테스트를 새 모델로 재실행하세요."
     };
   }
+  if (/gpt[-\s]?5\.6|gpt-5\.6-sol|gpt-5\.6-terra|gpt-5\.6-luna/.test(lower)) {
+    return {
+      title: "OpenAI GPT-5.6 모델 패밀리 공개",
+      change: "OpenAI 공식 모델 문서와 변경 로그에 GPT-5.6 Sol, Terra, Luna 모델 패밀리와 gpt-5.6 alias 안내가 올라왔습니다.",
+      impact: "복잡한 추론·코딩용 Sol, 비용 균형형 Terra, 고처리량용 Luna로 모델 선택 기준이 새로 생겼습니다.",
+      action: "현재 GPT 계열 호출부에서 모델 alias, 비용, reasoning/tool 기능 지원 범위를 확인하고 평가 후보에 추가하세요."
+    };
+  }
   if (/claude sonnet 5|claude-sonnet-5/.test(lower)) {
     return {
       title: "Claude Sonnet 5 출시 및 가격 구간 확인",
@@ -407,9 +415,19 @@ function briefingScore(event) {
   if (event.kind === "release") score += 18;
   if (/changelog|release-notes|doc-history|deprecations|news/.test(source)) score += 16;
   if (/released|introduc|launch|preview|generally available|deprecat|retir|pricing|billing|computer use/i.test(text)) score += 14;
+  if (/gpt[-\s]?5\.6|gpt-5\.6-sol|gpt-5\.6-terra|gpt-5\.6-luna/.test(text)) score += 100;
+  if (/gpt[-\s]?5\.6/.test((event.title || "").toLowerCase())) score += 80;
+  if (/^(get started|overview|documentation)$/i.test(event.title || "")) score -= 120;
   if (event.modelIds?.length) score += 6;
   score += Math.max(0, 10 - Math.floor((Date.now() - eventTime(event)) / 86_400_000));
   return score;
+}
+
+function recentListScore(event) {
+  const detected = event.detectedAt ? new Date(event.detectedAt) : null;
+  const detectedTime = detected && !Number.isNaN(detected.valueOf()) ? detected.valueOf() : eventTime(event);
+  const dayBucket = Math.floor(detectedTime / 86_400_000);
+  return dayBucket * 1_000 + briefingScore(event);
 }
 
 function usefulExcerpt(event) {
@@ -430,6 +448,10 @@ function cleanForBrief(value) {
 
 function normalizeTitle(value = "") {
   return value.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function normalizeSearch(value = "") {
+  return value.toLowerCase().replace(/[\s._-]+/g, "");
 }
 
 function koreanizeTitle(event) {
