@@ -30,7 +30,7 @@ npm run dev
 
 ## 설정
 
-`config/sources.json`에서 공식 출처를, `config/watchlist.json`에서 사용하는 플랫폼과 모델을 관리합니다. `config/pricing.json`은 모델별 토큰 가격과 출처를 관리합니다. `config/briefing.json`은 한국어 AI 브리핑의 독자, 우선순위, 톤을 정합니다. 예를 들어 지원 종료·가격·API 변경은 높게 보고, 단순 문서 내비게이션이나 소비자 앱 소식은 낮게 보도록 조정할 수 있습니다.
+`config/sources.json`에서 공식 출처를, `config/watchlist.json`에서 사용하는 플랫폼과 모델을 관리합니다. `config/pricing.json`은 모델별 토큰 가격과 출처를 관리합니다. `config/briefing.json`은 한국어 AI 브리핑의 독자, 우선순위, 톤을 정합니다. `config/terminology.json`은 용어 사전, 피해야 할 번역투 표현, 변경 유형별 문장 규칙을 관리합니다. 예를 들어 지원 종료·가격·API 변경은 높게 보고, 단순 문서 내비게이션이나 소비자 앱 소식은 낮게 보도록 조정할 수 있습니다.
 
 로컬에서 키를 붙여 테스트하려면 `.env.example`을 `.env`로 복사한 뒤 값을 채웁니다. 자연스러운 한국어 번역·요약을 사용하려면 저장소의 Actions secret에 `OPENAI_API_KEY`를 추가합니다. 기본 모델은 `gpt-5.4-mini`이며, 하루 최대 요약 항목 수는 `SUMMARY_MAX_EVENTS`로 제한합니다.
 

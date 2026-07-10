@@ -38,8 +38,8 @@ const labels = {
 const vendorLabels = {
   openai: "OpenAI",
   anthropic: "Anthropic",
-  google: "Google",
-  aws: "AWS"
+  google: "Google Gemini / Vertex AI",
+  aws: "Amazon Bedrock"
 };
 const sourceLabels = {
   "openai-changelog": "API 변경 로그",

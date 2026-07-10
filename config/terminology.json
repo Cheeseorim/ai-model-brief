@@ -1,0 +1,81 @@
+{
+  "preferredTerms": {
+    "deprecation": "지원 종료",
+    "deprecated": "지원 종료됨",
+    "retire": "종료",
+    "retired": "종료됨",
+    "sunset": "단계적 종료",
+    "legacy": "레거시",
+    "launch": "출시",
+    "introduce": "공개",
+    "release": "출시",
+    "availability": "제공 여부",
+    "region": "리전",
+    "model lifecycle": "모델 수명주기",
+    "inference": "추론",
+    "rate limit": "호출 한도",
+    "pricing": "가격",
+    "billing": "과금",
+    "context window": "컨텍스트 길이",
+    "cached input": "캐시 입력",
+    "batch": "배치",
+    "preview": "프리뷰",
+    "generally available": "정식 제공"
+  },
+  "providerDisplayNames": {
+    "openai": "OpenAI",
+    "anthropic": "Anthropic",
+    "google": "Google Gemini / Vertex AI",
+    "aws": "Amazon Bedrock"
+  },
+  "avoidPhrases": [
+    "감지되었습니다",
+    "업데이트가 올라왔습니다",
+    "관련 공지",
+    "관련 업데이트",
+    "확인할 필요가 있습니다",
+    "공식 문서에 새 업데이트",
+    "공식 출처에 신규 모델 또는 기능 출시 소식"
+  ],
+  "rewriteHints": [
+    {
+      "weak": "지원 종료 항목이 감지되었습니다.",
+      "better": "모델 종료 일정이 바뀌었습니다."
+    },
+    {
+      "weak": "공식 문서에 업데이트가 올라왔습니다.",
+      "better": "가격표에 새 모델 단가가 추가됐습니다."
+    },
+    {
+      "weak": "관련 업데이트가 있습니다.",
+      "better": "현재 쓰는 모델 ID와 대체 모델을 대조해야 합니다."
+    }
+  ],
+  "typeRules": {
+    "new_model": [
+      "새로 추가된 모델명과 용도를 먼저 쓴다.",
+      "바로 교체를 권하지 말고 평가할 기준을 제시한다."
+    ],
+    "deprecation": [
+      "종료 대상과 날짜를 가장 앞에 둔다.",
+      "사용 중인 모델 ID, alias, 대체 모델을 대조하라고 쓴다."
+    ],
+    "pricing": [
+      "어떤 단가나 과금 조건이 바뀌었는지 쓴다.",
+      "대량 호출, 배치, 캐시 사용 여부를 기준으로 비용 재계산을 권한다."
+    ],
+    "api_change": [
+      "호환성 영향과 적용 시점을 우선한다.",
+      "테스트해야 할 호출부나 파라미터를 구체적으로 쓴다."
+    ],
+    "availability": [
+      "제공 리전, 공급 경로, 프리뷰/정식 제공 여부를 구분한다."
+    ],
+    "docs_only": [
+      "실제 API 변경인지 문서 위치·설명 변경인지 명확히 쓴다."
+    ],
+    "product_news": [
+      "API 운영 영향이 작으면 낮은 긴급도로 분류한다."
+    ]
+  }
+}
