@@ -1202,6 +1202,22 @@
     "watched": true
   },
   {
+    "id": "53dd9598ef120d9dfc1d26be",
+    "fingerprint": "761eb2a031cc404c11e36fd3",
+    "sourceId": "openai-news",
+    "vendor": "openai",
+    "platform": "openai",
+    "kind": "news",
+    "title": "How Deutsche Telekom is rewiring telecommunications with AI",
+    "summary": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.\nFri, 10 Jul 2026 07:00:00 GMT",
+    "modelIds": [],
+    "sourceUrl": "https://openai.com/index/deutsche-telekom",
+    "severity": 20,
+    "publishedAt": "2026-07-10",
+    "detectedAt": "2026-07-10T09:50:40.587Z",
+    "watched": false
+  },
+  {
     "id": "da3a4a03c02d276c4b5556b8",
     "fingerprint": "de7f1f8d31b9f8d5e7ccbd47",
     "sourceId": "bedrock-lifecycle",
