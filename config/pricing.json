@@ -1,0 +1,253 @@
+{
+  "currency": "USD",
+  "unit": "1M tokens",
+  "verifiedAt": "2026-07-10",
+  "sources": [
+    {
+      "vendor": "openai",
+      "label": "OpenAI API pricing",
+      "url": "https://developers.openai.com/api/docs/pricing"
+    },
+    {
+      "vendor": "anthropic",
+      "label": "Anthropic Claude pricing",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "vendor": "google",
+      "label": "Gemini API pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "vendor": "aws",
+      "label": "Amazon Bedrock pricing",
+      "url": "https://aws.amazon.com/bedrock/pricing/"
+    }
+  ],
+  "models": [
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.6-sol",
+      "input": 5,
+      "output": 30,
+      "cacheWrite5m": 6.25,
+      "cacheRead": 0.5,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context 기준. Long context는 $10/$45"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.6-terra",
+      "input": 2.5,
+      "output": 15,
+      "cacheWrite5m": 3.125,
+      "cacheRead": 0.25,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context 기준. Long context는 $5/$22.50"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.6-luna",
+      "input": 1,
+      "output": 6,
+      "cacheWrite5m": 1.25,
+      "cacheRead": 0.1,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context 기준. Long context는 $2/$9"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.4",
+      "input": 2.5,
+      "output": 15,
+      "cacheRead": 0.25,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context 기준. Long context는 $5/$22.50"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.4-mini",
+      "input": 0.75,
+      "output": 4.5,
+      "cacheRead": 0.075,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context only"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-5.4-nano",
+      "input": 0.2,
+      "output": 1.25,
+      "cacheRead": 0.02,
+      "tier": "standard",
+      "context": "short",
+      "notes": "Short context only"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-realtime-2.1 text",
+      "input": 4,
+      "output": 24,
+      "cacheRead": 0.4,
+      "tier": "realtime",
+      "notes": "Realtime text 토큰 기준"
+    },
+    {
+      "vendor": "anthropic",
+      "platform": "Claude API",
+      "model": "Claude Fable 5",
+      "input": 10,
+      "output": 50,
+      "cacheWrite5m": 12.5,
+      "cacheWrite1h": 20,
+      "cacheRead": 1,
+      "tier": "standard",
+      "notes": "최신 고성능 계열"
+    },
+    {
+      "vendor": "anthropic",
+      "platform": "Claude API",
+      "model": "Claude Opus 4.8",
+      "input": 5,
+      "output": 25,
+      "cacheWrite5m": 6.25,
+      "cacheWrite1h": 10,
+      "cacheRead": 0.5,
+      "tier": "standard",
+      "notes": "Opus 4.7+ 계열"
+    },
+    {
+      "vendor": "anthropic",
+      "platform": "Claude API",
+      "model": "Claude Sonnet 5",
+      "input": 2,
+      "output": 10,
+      "cacheWrite5m": 2.5,
+      "cacheWrite1h": 4,
+      "cacheRead": 0.2,
+      "tier": "intro",
+      "effectiveThrough": "2026-08-31",
+      "notes": "프로모션 가격. 2026-09-01부터 $3/$15"
+    },
+    {
+      "vendor": "anthropic",
+      "platform": "Claude API",
+      "model": "Claude Sonnet 4.6",
+      "input": 3,
+      "output": 15,
+      "cacheWrite5m": 3.75,
+      "cacheWrite1h": 6,
+      "cacheRead": 0.3,
+      "tier": "standard"
+    },
+    {
+      "vendor": "anthropic",
+      "platform": "Claude API",
+      "model": "Claude Haiku 4.5",
+      "input": 1,
+      "output": 5,
+      "cacheWrite5m": 1.25,
+      "cacheWrite1h": 2,
+      "cacheRead": 0.1,
+      "tier": "standard"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
+      "model": "Gemini 3 Flash Preview",
+      "input": 0.5,
+      "output": 3,
+      "cacheRead": 0.05,
+      "tier": "standard",
+      "notes": "text/image/video 기준. audio는 별도"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
+      "model": "Gemini 2.5 Pro ≤200k",
+      "input": 1.25,
+      "output": 10,
+      "cacheRead": 0.125,
+      "tier": "standard",
+      "notes": "프롬프트 200k 토큰 이하"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
+      "model": "Gemini 2.5 Pro >200k",
+      "input": 2.5,
+      "output": 15,
+      "cacheRead": 0.25,
+      "tier": "standard",
+      "notes": "프롬프트 200k 토큰 초과"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
+      "model": "Gemini 2.5 Flash",
+      "input": 0.3,
+      "output": 2.5,
+      "cacheRead": 0.03,
+      "tier": "standard",
+      "notes": "text/image/video 기준. audio는 별도"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
+      "model": "Gemini 2.5 Flash-Lite",
+      "input": 0.1,
+      "output": 0.4,
+      "cacheRead": 0.01,
+      "tier": "standard",
+      "notes": "text/image/video 기준. audio는 별도"
+    },
+    {
+      "vendor": "aws",
+      "platform": "Amazon Bedrock",
+      "model": "Claude Opus 4.8",
+      "input": 6,
+      "output": 30,
+      "cacheWrite5m": 7.5,
+      "cacheWrite1h": 12,
+      "cacheRead": 0.6,
+      "tier": "on-demand",
+      "region": "AWS GovCloud US-East/US-West",
+      "notes": "Bedrock 리전별 가격. 일반 리전은 별도 확인 필요"
+    },
+    {
+      "vendor": "aws",
+      "platform": "Amazon Bedrock",
+      "model": "Claude 3.5 Sonnet extended access",
+      "input": 6,
+      "output": 30,
+      "batchInput": 3,
+      "batchOutput": 15,
+      "cacheRead": 0.6,
+      "tier": "on-demand",
+      "region": "US/EU 일부 리전",
+      "notes": "Public Extended Access 기준"
+    },
+    {
+      "vendor": "aws",
+      "platform": "Amazon Bedrock",
+      "model": "Gemma 4 31B",
+      "input": 0.14,
+      "output": 0.4,
+      "tier": "on-demand",
+      "region": "US East/Ohio/West Oregon",
+      "notes": "Bedrock의 Google 모델 가격"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
-const [events, state] = await Promise.all([
+const [events, state, pricing] = await Promise.all([
   fetch("./data/events.json?v=20260710-2").then((response) => response.json()),
-  fetch("./data/state.json?v=20260710-2").then((response) => response.json())
+  fetch("./data/state.json?v=20260710-2").then((response) => response.json()),
+  fetch("./config/pricing.json?v=20260710-pricing1").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
 ]);
 
 const ui = {
@@ -13,7 +14,13 @@ const ui = {
   health: document.querySelector("#health"),
   coverage: document.querySelector("#coverage"),
   headlines: document.querySelector("#headlines"),
-  headlineMeta: document.querySelector("#headlineMeta")
+  headlineMeta: document.querySelector("#headlineMeta"),
+  pricingRows: document.querySelector("#pricingRows"),
+  pricingMeta: document.querySelector("#pricingMeta"),
+  pricingSources: document.querySelector("#pricingSources"),
+  inputTokens: document.querySelector("#inputTokens"),
+  outputTokens: document.querySelector("#outputTokens"),
+  dailyRequests: document.querySelector("#dailyRequests")
 };
 
 const filters = { vendor: "", kind: "", search: "" };
@@ -74,6 +81,9 @@ ui.search.addEventListener("input", (event) => {
   filters.search = normalizeSearch(event.target.value);
   render();
 });
+for (const input of [ui.inputTokens, ui.outputTokens, ui.dailyRequests]) {
+  input?.addEventListener("input", renderPricing);
+}
 
 const sourceStates = Object.values(state.sources || {});
 const failures = sourceStates.filter((source) => !source.ok);
@@ -84,6 +94,7 @@ ui.health.classList.add(failures.length ? "bad" : "ok");
 
 renderCoverage();
 renderHeadlines();
+renderPricing();
 render();
 
 function render() {
@@ -169,6 +180,65 @@ function renderCoverage() {
         </article>
       `;
     }).join("");
+}
+
+function renderPricing() {
+  if (!ui.pricingRows) return;
+  const models = Array.isArray(pricing.models) ? pricing.models : [];
+  const inputTokens = Math.max(0, Number(ui.inputTokens?.value || 0));
+  const outputTokens = Math.max(0, Number(ui.outputTokens?.value || 0));
+  const dailyRequests = Math.max(0, Number(ui.dailyRequests?.value || 0));
+  const sorted = [...models].sort((a, b) => {
+    const aCost = estimateMonthlyCost(a, inputTokens, outputTokens, dailyRequests);
+    const bCost = estimateMonthlyCost(b, inputTokens, outputTokens, dailyRequests);
+    if (aCost == null && bCost == null) return vendorSort(a.vendor) - vendorSort(b.vendor);
+    if (aCost == null) return 1;
+    if (bCost == null) return -1;
+    return aCost - bCost;
+  });
+  ui.pricingMeta.textContent = pricing.verifiedAt
+    ? `공식 가격 기준 · ${pricing.verifiedAt}`
+    : "공식 가격 기준";
+  ui.pricingRows.replaceChildren(...sorted.map((model) => pricingRow(model, inputTokens, outputTokens, dailyRequests)));
+  ui.pricingSources.innerHTML = (pricing.sources || [])
+    .map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`)
+    .join("<span>·</span>");
+}
+
+function pricingRow(model, inputTokens, outputTokens, dailyRequests) {
+  const tr = document.createElement("tr");
+  const monthly = estimateMonthlyCost(model, inputTokens, outputTokens, dailyRequests);
+  const source = (pricing.sources || []).find((item) => item.vendor === model.vendor);
+  tr.innerHTML = `
+    <td>
+      <strong>${escapeHtml(model.model)}</strong>
+      <span>${escapeHtml(vendorLabels[model.vendor] || model.vendor)} · ${escapeHtml(model.platform || "")}${model.region ? ` · ${escapeHtml(model.region)}` : ""}</span>
+    </td>
+    <td>${priceCell(model.input)}</td>
+    <td>${priceCell(model.output)}</td>
+    <td>${priceCell(model.cacheRead)}</td>
+    <td class="monthly">${monthly == null ? "확인 필요" : formatCurrency(monthly)}</td>
+    <td>
+      ${escapeHtml(model.notes || model.tier || "")}
+      ${source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">출처 ↗</a>` : ""}
+    </td>
+  `;
+  return tr;
+}
+
+function estimateMonthlyCost(model, inputTokens, outputTokens, dailyRequests) {
+  if (typeof model.input !== "number" || typeof model.output !== "number") return null;
+  const inputMillion = inputTokens * dailyRequests * 30 / 1_000_000;
+  const outputMillion = outputTokens * dailyRequests * 30 / 1_000_000;
+  return inputMillion * model.input + outputMillion * model.output;
+}
+
+function priceCell(value) {
+  return typeof value === "number" ? `${formatCurrency(value)} / 1M` : "—";
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: pricing.currency || "USD", maximumFractionDigits: value < 1 ? 4 : 2 }).format(value);
 }
 
 function vendorSort(vendor) {

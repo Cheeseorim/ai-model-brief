@@ -37,6 +37,45 @@
         </div>
         <div id="coverage" class="coverage-grid"></div>
       </section>
+      <section class="pricing-panel" aria-labelledby="pricingTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">비용 비교</p>
+            <h2 id="pricingTitle">모델별 토큰 가격</h2>
+          </div>
+          <span id="pricingMeta"></span>
+        </div>
+        <div class="pricing-tools">
+          <label>
+            <span>요청당 입력 토큰</span>
+            <input id="inputTokens" type="number" min="0" step="1000" value="10000" />
+          </label>
+          <label>
+            <span>요청당 출력 토큰</span>
+            <input id="outputTokens" type="number" min="0" step="1000" value="2000" />
+          </label>
+          <label>
+            <span>하루 요청 수</span>
+            <input id="dailyRequests" type="number" min="0" step="100" value="1000" />
+          </label>
+        </div>
+        <div class="pricing-scroll">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>모델</th>
+                <th>입력</th>
+                <th>출력</th>
+                <th>캐시 읽기</th>
+                <th>월 예상</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody id="pricingRows"></tbody>
+          </table>
+        </div>
+        <div id="pricingSources" class="pricing-sources"></div>
+      </section>
       <section class="toolbar">
         <div class="filters" id="vendorFilters"></div>
         <select id="kindFilter" aria-label="변경 유형">
