@@ -102,7 +102,7 @@ function render() {
     return (!filters.vendor || event.vendor === filters.vendor)
       && (!filters.kind || event.kind === filters.kind)
       && (!filters.search || haystack.includes(filters.search));
-  });
+  }).sort((a, b) => eventTime(b) - eventTime(a));
   const visible = matched.slice(0, RECENT_LIMIT);
   ui.events.replaceChildren(...visible.map(card));
   ui.resultCount.textContent = `${matched.length.toLocaleString("ko-KR")}건 중 핵심 ${visible.length.toLocaleString("ko-KR")}건 표시`;
@@ -127,7 +127,7 @@ function card(event) {
     <p class="summary">${escapeHtml(event.summaryKo || koreanizeSummary(event))}</p>
     <div class="models">${models.slice(0, 8).map((model) => `<span class="model">${escapeHtml(model)}</span>`).join("")}</div>
     <footer>
-      <span class="date">${escapeHtml(event.publishedAt || formatDateTime(event.detectedAt))}</span>
+      <span class="date">${escapeHtml(cardDateLabel(event))}</span>
       <a href="${escapeHtml(event.sourceUrl || "#")}" target="_blank" rel="noreferrer">원문 보기 ↗</a>
     </footer>
   `;
@@ -237,7 +237,7 @@ function headlineCard(event, index) {
       <div class="headline-meta">
         <span>${escapeHtml(vendorLabels[event.vendor] || event.vendor)}</span>
         <span>${escapeHtml(labels[event.kind] || event.kind || "")}</span>
-        <span>${escapeHtml(shortDate(event.publishedAt || event.detectedAt))}</span>
+        <span>${escapeHtml(shortDate(displayDate(event)))}</span>
       </div>
       <h3>${escapeHtml(brief.title)}</h3>
       <div class="brief-points">
@@ -506,21 +506,43 @@ function shortDate(value) {
   return value ? new Intl.DateTimeFormat("ko-KR", { month: "numeric", day: "numeric" }).format(new Date(value)) : "날짜 없음";
 }
 
+function cardDateLabel(event) {
+  const collected = formatDateTime(event.detectedAt);
+  if (event.publishedAt && isFutureDate(event.publishedAt)) {
+    return `수집 ${collected} · 적용 ${event.publishedAt}`;
+  }
+  return event.publishedAt || collected;
+}
+
+function displayDate(event) {
+  if (event.publishedAt && !isFutureDate(event.publishedAt)) return event.publishedAt;
+  return event.detectedAt;
+}
+
 function eventDate(event) {
-  const value = event.publishedAt || event.detectedAt;
+  const value = displayDate(event);
   if (!value) return null;
   const date = new Date(value);
   return Number.isNaN(date.valueOf()) ? null : date;
 }
 
 function eventDateForBriefing(event) {
-  if (event.publishedAt) return eventDate(event);
+  if (event.publishedAt && !isFutureDate(event.publishedAt)) return eventDate(event);
   if (/news|doc-history|changelog|release-notes/.test(event.sourceId || "")) return eventDate(event);
   return null;
 }
 
 function eventTime(event) {
   return eventDate(event)?.valueOf() || 0;
+}
+
+function isFutureDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.valueOf())) return false;
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  return date >= tomorrow;
 }
 
 function escapeHtml(value) {

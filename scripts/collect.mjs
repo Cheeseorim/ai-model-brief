@@ -82,7 +82,7 @@ run.summaries = {
   model: summaryResult.model || null
 };
 const merged = [...newEvents, ...previousEvents]
-  .sort((a, b) => (b.publishedAt || b.detectedAt).localeCompare(a.publishedAt || a.detectedAt))
+  .sort((a, b) => eventSortTime(b) - eventSortTime(a))
   .slice(0, 5000);
 
 const runs = fresh ? [] : await readJson(new URL("runs.json", DATA_DIR), []);
@@ -98,3 +98,19 @@ console.log(
     newEvents: newEvents.length
   })
 );
+
+function eventSortTime(event) {
+  const published = event.publishedAt ? new Date(event.publishedAt) : null;
+  if (published && !Number.isNaN(published.valueOf()) && !isFutureDate(published)) {
+    return published.valueOf();
+  }
+  const detected = event.detectedAt ? new Date(event.detectedAt) : null;
+  return detected && !Number.isNaN(detected.valueOf()) ? detected.valueOf() : 0;
+}
+
+function isFutureDate(date) {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  return date >= tomorrow;
+}
