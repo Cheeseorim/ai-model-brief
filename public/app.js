@@ -411,12 +411,15 @@ function headlineCard(event, index) {
 }
 
 function briefing(event) {
+  const earlyBrief = earlyRuleBriefing(event);
+  if (earlyBrief) return earlyBrief;
+
   if (event.briefKo) {
     return {
-      title: event.briefKo.title || event.titleKo || koreanizeTitle(event),
-      change: event.briefKo.change || event.summaryKo || usefulExcerpt(event) || "공식 문서에 새 업데이트가 올라왔습니다.",
-      impact: event.briefKo.impact || event.impactKo || "현재 사용 중인 모델 또는 플랫폼과 직접 관련되는지 확인할 필요가 있습니다.",
-      action: event.briefKo.action || event.actionKo || "원문에서 모델 ID, 적용일, 마이그레이션 안내를 확인하세요."
+      title: cleanDisplayTitle(event.briefKo.title || event.titleKo || koreanizeTitle(event), event),
+      change: naturalizeBriefText(event.briefKo.change || event.summaryKo || usefulExcerpt(event) || "공식 문서의 변경 내용을 확인했습니다.", event),
+      impact: naturalizeBriefText(event.briefKo.impact || event.impactKo || "현재 사용 중인 모델 또는 플랫폼과 직접 관련되는지 확인해야 합니다.", event),
+      action: naturalizeBriefText(event.briefKo.action || event.actionKo || "원문에서 모델 ID, 적용일, 마이그레이션 안내를 확인하세요.", event)
     };
   }
 
@@ -437,7 +440,7 @@ function briefing(event) {
   if (/gpt-live|voice models|chatgpt voice/.test(lower)) {
     return {
       title: "OpenAI가 GPT-Live 음성 모델을 공개",
-      change: "ChatGPT Voice에 쓰이는 자연스러운 실시간 음성 상호작용용 모델 세대가 공개되었습니다.",
+      change: "OpenAI가 ChatGPT Voice에 쓰이는 실시간 음성 상호작용용 모델 세대를 공개했습니다.",
       impact: "음성 상담, 실시간 인터뷰, 통역·코칭형 UX를 만드는 팀에는 Realtime/Voice 모델 평가 후보가 늘어납니다.",
       action: "기존 Realtime 모델 대비 지연시간, 음성 품질, 가격, 세션 유지 정책을 비교해 PoC 후보에 넣으세요."
     };
@@ -445,7 +448,7 @@ function briefing(event) {
   if (/gpt-realtime-2\.1|realtime reasoning/.test(lower)) {
     return {
       title: "OpenAI Realtime 모델 업데이트 확인",
-      change: "GPT-Realtime-2.1 및 mini 계열 업데이트가 OpenAI API 변경 로그에 올라왔습니다.",
+      change: "OpenAI API 변경 로그에서 GPT-Realtime-2.1 및 mini 계열 변경을 확인했습니다.",
       impact: "음성·실시간 에이전트에서 알파뉴메릭 인식, 침묵/잡음 처리, 지연시간 체감이 달라질 수 있습니다.",
       action: "Realtime API를 쓰는 플로우가 있다면 기존 샘플 대화와 noisy 환경 테스트를 새 모델로 재실행하세요."
     };
@@ -453,7 +456,7 @@ function briefing(event) {
   if (/gpt[-\s]?5\.6|gpt-5\.6-sol|gpt-5\.6-terra|gpt-5\.6-luna/.test(lower)) {
     return {
       title: "OpenAI GPT-5.6 모델 패밀리 공개",
-      change: "OpenAI 공식 모델 문서와 변경 로그에 GPT-5.6 Sol, Terra, Luna 모델 패밀리와 gpt-5.6 alias 안내가 올라왔습니다.",
+      change: "OpenAI 공식 모델 문서와 변경 로그에서 GPT-5.6 Sol, Terra, Luna 모델 패밀리와 gpt-5.6 alias 안내가 확인됐습니다.",
       impact: "복잡한 추론·코딩용 Sol, 비용 균형형 Terra, 고처리량용 Luna로 모델 선택 기준이 새로 생겼습니다.",
       action: "현재 GPT 계열 호출부에서 모델 alias, 비용, reasoning/tool 기능 지원 범위를 확인하고 평가 후보에 추가하세요."
     };
@@ -461,7 +464,7 @@ function briefing(event) {
   if (/claude sonnet 5|claude-sonnet-5/.test(lower)) {
     return {
       title: "Claude Sonnet 5 출시 및 가격 구간 확인",
-      change: "Anthropic 릴리스 노트에 Claude Sonnet 5 출시와 초기 가격 안내가 올라왔습니다.",
+      change: "Anthropic 릴리스 노트에서 Claude Sonnet 5 출시와 초기 가격 안내가 확인됐습니다.",
       impact: "Sonnet 계열을 코딩·문서·분석 워크로드에 쓰는 경우 성능/비용 기준점이 바뀔 수 있습니다.",
       action: "현재 Sonnet 사용량과 프롬프트 회귀 테스트를 기준으로 Sonnet 5 전환 후보를 평가하세요."
     };
@@ -469,7 +472,9 @@ function briefing(event) {
   if (/fable 5|mythos 5/.test(lower)) {
     return {
       title: "Claude Fable/Mythos 접근성 변경 확인",
-      change: /mythos-preview.*retired|will be retired/.test(lower)
+      change: /statement.*directive.*suspend access|suspend access to fable 5 and mythos 5/.test(lower)
+        ? "미국 정부 지침에 따라 Fable 5와 Mythos 5 접근 중단 관련 안내가 나왔습니다."
+        : /mythos-preview.*retired|will be retired/.test(lower)
         ? "Claude Mythos Preview가 은퇴되고 Claude Mythos 5로 이전하라는 안내가 올라왔습니다."
         : excerpt || "Anthropic 문서와 뉴스에 Fable 5 및 Mythos 5 접근성·재배포 관련 변경이 올라왔습니다.",
       impact: "해당 모델을 직접 또는 Bedrock 경유로 쓰는 경우 지역·정책·안전장치에 따라 가용성이 달라질 수 있습니다.",
@@ -479,25 +484,73 @@ function briefing(event) {
   if (/gemini omni flash|nano banana 2 lite/.test(lower)) {
     return {
       title: "Gemini Omni Flash / Nano Banana 2 Lite 빌드 후보 추가",
-      change: "Google Gemini에 빠른 멀티모달·이미지/비디오 생성 계열 모델 업데이트가 올라왔습니다.",
+      change: "Google Gemini 쪽에 빠른 멀티모달·이미지/비디오 생성 계열 모델 변경이 추가됐습니다.",
       impact: "이미지·영상 생성 워크플로의 비용, 속도, 대화형 편집 UX 후보가 늘어납니다.",
       action: "프로덕션 투입 전 preview 여부, quota, 워터마크/저작권 정책, 지역 제공 여부를 확인하세요."
+    };
+  }
+  if (/interactions api.*ai studio|developer logs support for the interactions api/.test(lower)) {
+    return {
+      title: "Interactions API 로그를 AI Studio에서 확인 가능",
+      change: "Google AI Studio 대시보드에서 지원되는 Interactions API 호출 로그를 볼 수 있게 됐습니다.",
+      impact: "Gemini API 기반 에이전트나 인터랙션 흐름을 디버깅하는 팀은 호출 추적과 원인 분석이 쉬워질 수 있습니다.",
+      action: "Interactions API를 쓰는 프로젝트가 있다면 AI Studio 로그에서 어떤 필드가 남는지, 보관 정책과 민감정보 노출 여부를 확인하세요."
     };
   }
   if (/computer use/.test(lower)) {
     return {
       title: "Gemini 3.5 Flash에 computer use 기능 공개",
-      change: "Gemini 3.5 Flash 계열에서 화면을 보고 클릭·입력·탐색하는 UI 자동화 기능이 공개되었습니다.",
+      change: "Gemini 3.5 Flash 계열에 화면을 보고 클릭·입력·탐색하는 UI 자동화 기능이 추가됐습니다.",
       impact: "브라우저 조작형 에이전트, QA 자동화, 내부 업무 자동화 후보가 늘어납니다. 기존 도구 호출 방식과 권한·감사 설계를 같이 봐야 합니다.",
       action: "Gemini API 또는 Vertex AI에서 사용할 계획이 있다면 지원 리전, 안전장치, 작업 실패 시 복구 전략을 확인하세요."
     };
   }
+  if (/live translate|voice translation/.test(lower)) {
+    return {
+      title: "Gemini 3.5 Live Translate 음성 번역 기능 공개",
+      change: "Gemini 3.5 Live Translate 기반의 자연스러운 음성 번역 기능 소식이 확인됐습니다.",
+      impact: "개발 API 변경보다는 Gemini 제품 기능 업데이트에 가깝지만, 음성·통역형 UX를 검토 중인 팀에는 참고할 만합니다.",
+      action: "API에서 바로 쓸 수 있는 모델·엔드포인트 변경인지, 제품 기능 소식인지 원문에서 구분해 보세요."
+    };
+  }
   if (/spark|macos|connected apps/.test(lower)) {
     return {
-      title: "Gemini 앱/클라이언트 기능 업데이트",
-      change: "Gemini Spark의 macOS 출시와 연결 앱 관련 업데이트가 올라왔습니다.",
+      title: "Gemini 앱/클라이언트 기능 변경",
+      change: "Gemini Spark의 macOS 출시와 연결 앱 관련 변경을 확인했습니다.",
       impact: "개발 API 변경이라기보다는 사용자용 Gemini 제품 경험 변화에 가깝습니다. 조직 내 Gemini 사용 가이드에 영향이 있을 수 있습니다.",
       action: "API 모델 변경과 분리해서 보고, 업무용 Gemini 앱을 쓰는 팀에만 공유하면 됩니다."
+    };
+  }
+  if (/bedrock agents.*classic|no longer be open to new customers.*july 30, 2026/.test(lower)) {
+    return {
+      title: "Amazon Bedrock Agents Classic 신규 고객 제한 예정",
+      change: "Amazon Bedrock Agents가 Agents Classic으로 바뀌며, 2026년 7월 30일부터 신규 고객에게 열리지 않는다는 안내가 추가됐습니다.",
+      impact: "기존 Agents Classic 사용자는 당장 중단은 아니지만, 신규 구축이나 마이그레이션 계획에는 영향을 줄 수 있습니다.",
+      action: "Bedrock Agents를 새로 도입하려는 팀이 있다면 권장 경로와 기존 Agents Classic 사용 범위를 문서에서 확인하세요."
+    };
+  }
+  if (/bedrock guardrails.*cross-region inference|cross-region inference.*additional regions/.test(lower)) {
+    return {
+      title: "Bedrock Guardrails 교차 리전 추론 리전 확대",
+      change: "Amazon Bedrock Guardrails의 교차 리전 추론 지원 리전이 추가됐습니다.",
+      impact: "멀티리전 Bedrock 구성을 쓰는 팀은 Guardrails 적용 범위와 지연시간·데이터 이동 조건을 다시 볼 필요가 있습니다.",
+      action: "사용 중인 리전이 새 지원 목록에 들어갔는지 확인하고, 보안·규정 준수 요구사항과 함께 점검하세요."
+    };
+  }
+  if (/asynchronous model invocation.*batch inference|multiple prompts with batch inference/.test(lower)) {
+    return {
+      title: "Batch inference 비동기 모델 호출 정식 지원",
+      change: "Amazon Bedrock에서 batch inference를 통한 다중 프롬프트 비동기 모델 호출이 정식 제공됩니다.",
+      impact: "대량 요약·분류·생성 작업처럼 실시간 응답이 꼭 필요하지 않은 워크로드의 비용과 처리량 설계에 영향을 줄 수 있습니다.",
+      action: "배치 처리 후보 워크로드를 골라 지원 모델, 입력 형식, 실패 재시도 방식, 비용을 확인하세요."
+    };
+  }
+  if (/custom model import.*open ?ai gpt-oss|gpt-oss models/.test(lower)) {
+    return {
+      title: "커스텀 모델 가져오기에서 OpenAI GPT-OSS 지원",
+      change: "Amazon Bedrock의 custom model import가 OpenAI GPT-OSS 모델을 지원한다는 변경이 확인됐습니다.",
+      impact: "자체 호스팅 대신 Bedrock 관리 환경에서 오픈 모델을 운영하려는 팀에는 선택지가 늘어납니다.",
+      action: "지원되는 GPT-OSS 모델 버전, 라이선스, 리전, 추론 비용과 기존 배포 방식의 차이를 비교하세요."
     };
   }
   if (/vertex ai documentation is no longer being updated|gemini enterprise agent platform/.test(lower)) {
@@ -510,8 +563,8 @@ function briefing(event) {
   }
   if (/deprecat|retir|sunset|legacy|shut.?down|end.of.life/.test(lower) || event.kind === "deprecation") {
     return {
-      title: `${vendorLabels[event.vendor] || event.vendor} 지원 종료/수명주기 업데이트`,
-      change: models ? `지원 종료 또는 모델 수명주기 변경이 올라왔습니다. 관련 모델: ${models}.` : excerpt || "공식 문서에 지원 종료 또는 모델 수명주기 관련 변경이 올라왔습니다.",
+      title: `${vendorLabels[event.vendor] || event.vendor} 모델 수명주기 변경`,
+      change: models ? `지원 종료 또는 모델 수명주기 변경을 확인했습니다. 관련 모델: ${models}.` : excerpt || "공식 문서에서 지원 종료 또는 모델 수명주기 관련 변경을 확인했습니다.",
       impact: "운영 중인 모델 호출, Bedrock/Vertex 경유 사용, alias 기반 호출이 있다면 예고 없이 비용·품질·가용성 리스크로 이어질 수 있습니다.",
       action: "현재 사용 중인 모델 ID와 alias를 대조하고, 대체 모델·마이그레이션 마감일·리전별 제공 여부를 확인하세요."
     };
@@ -519,7 +572,7 @@ function briefing(event) {
   if (/price|pricing|billing|cost/.test(lower) || event.kind === "pricing") {
     return {
       title: `${vendorLabels[event.vendor] || event.vendor} 가격/과금 변경`,
-      change: excerpt || "공식 문서에 가격 또는 과금 방식 관련 변경이 올라왔습니다.",
+      change: excerpt || "공식 문서에서 가격 또는 과금 방식 관련 변경을 확인했습니다.",
       impact: "대량 호출, Batch, tool 사용, 장기 세션이 있는 워크로드는 월 비용 추정이 달라질 수 있습니다.",
       action: "최근 사용량 기준으로 비용 민감도가 큰 엔드포인트부터 재계산하고 예산 알림 기준을 조정하세요."
     };
@@ -527,17 +580,127 @@ function briefing(event) {
   if (/released|introduc|launch|generally available|preview|new model|start building/.test(lower) || event.kind === "release") {
     return {
       title: readableTitle,
-      change: excerpt || "공식 출처에 신규 모델 또는 기능 출시 소식이 올라왔습니다.",
-      impact: models ? `관련 모델(${models})을 평가 후보에 추가할 수 있습니다.` : "성능·비용·지연시간 개선 후보가 생겼지만, preview/experimental 여부를 확인해야 합니다.",
-      action: "바로 교체하기보다 샘플 프롬프트, 비용, rate limit, 리전 제공 여부를 체크리스트로 비교하세요."
+      change: releaseChange(event, readableTitle, excerpt),
+      impact: models ? `관련 모델(${models})을 평가 후보에 추가할 수 있습니다.` : releaseImpact(event),
+      action: releaseAction(event)
     };
   }
   return {
     title: readableTitle,
-    change: excerpt || `${sourceLabels[event.sourceId] || event.sourceId}에 문서 업데이트가 올라왔습니다.`,
+    change: excerpt || `${sourceLabels[event.sourceId] || event.sourceId}에서 문서 변경을 확인했습니다.`,
     impact: "현재 사용 중인 모델 또는 플랫폼과 직접 관련되는지 먼저 선별하면 됩니다.",
     action: "원문을 열어 API/모델 ID/마감일/리전 등 운영 영향 필드가 있는지 확인하세요."
   };
+}
+
+function earlyRuleBriefing(event) {
+  const lower = [
+    event.title,
+    event.summary,
+    event.titleKo,
+    event.summaryKo,
+    event.briefKo?.title,
+    event.briefKo?.change,
+    event.briefKo?.impact,
+    event.briefKo?.action
+  ].filter(Boolean).join(" ").replace(/\s+/g, " ").toLowerCase();
+  if (/interactions api.*ai studio|developer logs support for the interactions api/.test(lower)) {
+    return {
+      title: "Interactions API 로그를 AI Studio에서 확인 가능",
+      change: "Google AI Studio 대시보드에서 지원되는 Interactions API 호출 로그를 볼 수 있게 됐습니다.",
+      impact: "Gemini API 기반 에이전트나 인터랙션 흐름을 디버깅하는 팀은 호출 추적과 원인 분석이 쉬워질 수 있습니다.",
+      action: "Interactions API를 쓰는 프로젝트가 있다면 AI Studio 로그에서 어떤 필드가 남는지, 보관 정책과 민감정보 노출 여부를 확인하세요."
+    };
+  }
+  if (/bedrock agents.*classic|no longer be open to new customers.*july 30, 2026/.test(lower)) {
+    return {
+      title: "Amazon Bedrock Agents Classic 신규 고객 제한 예정",
+      change: "Amazon Bedrock Agents가 Agents Classic으로 바뀌며, 2026년 7월 30일부터 신규 고객에게 열리지 않는다는 안내가 추가됐습니다.",
+      impact: "기존 Agents Classic 사용자는 당장 중단은 아니지만, 신규 구축이나 마이그레이션 계획에는 영향을 줄 수 있습니다.",
+      action: "Bedrock Agents를 새로 도입하려는 팀이 있다면 권장 경로와 기존 Agents Classic 사용 범위를 문서에서 확인하세요."
+    };
+  }
+  if (/bedrock guardrails.*cross-region inference|cross-region inference.*additional regions/.test(lower)) {
+    return {
+      title: "Bedrock Guardrails 교차 리전 추론 리전 확대",
+      change: "Amazon Bedrock Guardrails의 교차 리전 추론 지원 리전이 추가됐습니다.",
+      impact: "멀티리전 Bedrock 구성을 쓰는 팀은 Guardrails 적용 범위와 지연시간·데이터 이동 조건을 다시 볼 필요가 있습니다.",
+      action: "사용 중인 리전이 새 지원 목록에 들어갔는지 확인하고, 보안·규정 준수 요구사항과 함께 점검하세요."
+    };
+  }
+  if (/intelligent prompt routing/.test(lower)) {
+    return {
+      title: "Bedrock intelligent prompt routing 정식 지원",
+      change: "Amazon Bedrock에서 intelligent prompt routing이 정식 제공됩니다.",
+      impact: "요청 성격에 따라 모델 라우팅을 조정하는 구성을 검토 중이면 비용·지연시간·품질 균형을 다시 잡을 수 있습니다.",
+      action: "지원 모델, 라우팅 기준, 실패 시 fallback 동작, 기존 프롬프트 라우터와의 차이를 확인하세요."
+    };
+  }
+  if (/graph\s?rag.*bedrock knowledge bases/.test(lower)) {
+    return {
+      title: "Bedrock Knowledge Bases Graph RAG 정식 지원",
+      change: "Amazon Bedrock Knowledge Bases의 Graph RAG 기능이 추가 기능과 함께 정식 제공됩니다.",
+      impact: "복잡한 관계형 지식을 검색·생성에 함께 쓰는 RAG 구성을 검토 중이면 후보 아키텍처가 늘어납니다.",
+      action: "기존 vector RAG와 비교해 지원 데이터 소스, 그래프 구성 방식, 쿼리 품질, 비용을 확인하세요."
+    };
+  }
+  if (/amazon bedrock flows.*generally available|flows is now generally available/.test(lower)) {
+    return {
+      title: "Amazon Bedrock Flows 정식 지원",
+      change: "Amazon Bedrock Flows가 정식 제공됩니다.",
+      impact: "Bedrock 기반 워크플로를 시각적으로 구성하거나 운영 자동화하려는 팀에는 더 안정적인 도입 후보가 됩니다.",
+      action: "기존 Step Functions·자체 오케스트레이션과 비교해 지원 노드, 권한, 로깅, 비용 구조를 확인하세요."
+    };
+  }
+  if (/asynchronous model invocation.*batch inference|multiple prompts with batch inference/.test(lower)) {
+    return {
+      title: "Batch inference 비동기 모델 호출 정식 지원",
+      change: "Amazon Bedrock에서 batch inference를 통한 다중 프롬프트 비동기 모델 호출이 정식 제공됩니다.",
+      impact: "대량 요약·분류·생성 작업처럼 실시간 응답이 꼭 필요하지 않은 워크로드의 비용과 처리량 설계에 영향을 줄 수 있습니다.",
+      action: "배치 처리 후보 워크로드를 골라 지원 모델, 입력 형식, 실패 재시도 방식, 비용을 확인하세요."
+    };
+  }
+  if (/inline code nodes|run code directly in your amazon bedrock flow/.test(lower)) {
+    return {
+      title: "Bedrock Flow에서 인라인 코드 노드 프리뷰",
+      change: "Amazon Bedrock Flow 안에서 인라인 코드 노드로 코드를 직접 실행하는 프리뷰 기능이 추가됐습니다.",
+      impact: "Flow 기반 오케스트레이션에 간단한 변환·검증 로직을 넣을 수 있지만, 프리뷰 기능이라 운영 적용 전 제약 확인이 필요합니다.",
+      action: "지원 언어, 실행 제한, 권한, 로깅 방식과 프리뷰 SLA를 확인한 뒤 실험 환경에서만 테스트하세요."
+    };
+  }
+  if (/custom model import.*open ?ai gpt-oss|gpt-oss models/.test(lower)) {
+    return {
+      title: "커스텀 모델 가져오기에서 OpenAI GPT-OSS 지원",
+      change: "Amazon Bedrock의 custom model import가 OpenAI GPT-OSS 모델을 지원한다는 변경이 확인됐습니다.",
+      impact: "자체 호스팅 대신 Bedrock 관리 환경에서 오픈 모델을 운영하려는 팀에는 선택지가 늘어납니다.",
+      action: "지원되는 GPT-OSS 모델 버전, 라이선스, 리전, 추론 비용과 기존 배포 방식의 차이를 비교하세요."
+    };
+  }
+  return null;
+}
+
+function releaseChange(event, readableTitle, excerpt) {
+  if (event.sourceId === "anthropic-news") {
+    const subject = readableTitle.replace(/\s*공개$/, "");
+    return `${providerSubject(event.vendor)} ${subject}${objectParticle(subject)} 공개했습니다.`;
+  }
+  return excerpt || "신규 모델 또는 기능 출시 소식입니다.";
+}
+
+function releaseImpact(event) {
+  if (event.sourceId === "anthropic-news") {
+    return /tag|reflect|conversation|office|trust|partnership/i.test(event.title || "")
+      ? "API 모델 변경이라기보다 제품·회사 소식에 가까워, 운영 영향은 낮게 보면 됩니다."
+      : "Claude 제품 또는 생태계 변화로, API 사용과 직접 관련되는지 선별해서 보면 됩니다.";
+  }
+  return "성능·비용·지연시간 개선 후보가 생겼지만, preview/experimental 여부를 확인해야 합니다.";
+}
+
+function releaseAction(event) {
+  if (event.sourceId === "anthropic-news") {
+    return "모델 ID, API 변경, 가격·리전 변경이 포함됐는지만 원문에서 빠르게 확인하세요.";
+  }
+  return "바로 교체하기보다 샘플 프롬프트, 비용, rate limit, 리전 제공 여부를 체크리스트로 비교하세요.";
 }
 
 function isBriefingCandidate(event) {
@@ -554,8 +717,14 @@ function isBriefingCandidate(event) {
     return false;
   }
   if (source === "bedrock-lifecycle" && /active versions/i.test(event.title)) return false;
+  if (event.kind === "news" && isLowPriorityNews(event)) return false;
   if (event.kind === "news" && !/(gpt|claude|gemini|model|coding|benchmark|voice|realtime|sonnet|fable|mythos|omni|nano banana|computer use|api|codex)/i.test(`${event.title} ${event.summary}`)) return false;
   return true;
+}
+
+function isLowPriorityNews(event) {
+  const text = `${event.title} ${event.summary}`.toLowerCase();
+  return /case study|customer story|deutsche telekom|telco|bio bounty|bug bounty|partner for your most ambitious work|coding evaluations|swe-bench|benchmark reliability|seoul office|appointed|trust|partnership|\bpartner\b|public record|hard questions|pixel drop|new features for creators|smarter, more proactive android|android with gemini intelligence/.test(text);
 }
 
 function briefingScore(event) {
@@ -599,10 +768,19 @@ function usefulExcerpt(event) {
 }
 
 function cleanForBrief(value) {
-  return value
+  return stripNewsChrome(value)
     .replace(/\s+/g, " ")
     .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/\b(Home|Documentation|Resources|Send feedback)\b/g, "")
+    .trim();
+}
+
+function stripNewsChrome(value = "") {
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .replace(/^((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \d{1,2}, \d{4})(Announcements|Product|Feature|Features|Case Study)/i, "")
+    .replace(/^(Announcements|Product|Feature|Features|Case Study)((?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \d{1,2}, \d{4})/i, "")
+    .replace(/^(Announcements|Product|Feature|Features|Case Study)\b/i, "")
     .trim();
 }
 
@@ -615,16 +793,16 @@ function normalizeSearch(value = "") {
 }
 
 function cardTitle(event) {
-  if (event.titleKo) return event.titleKo;
-  if (event.briefKo?.title) return event.briefKo.title;
+  if (event.titleKo) return cleanDisplayTitle(event.titleKo, event);
+  if (event.briefKo?.title) return cleanDisplayTitle(event.briefKo.title, event);
   const brief = isBriefingCandidate(event) ? briefing(event) : null;
   if (brief?.title && !/관련 공지$/.test(brief.title)) return brief.title;
   return readableOriginalTitle(event);
 }
 
 function cardSummary(event) {
-  if (event.summaryKo) return event.summaryKo;
-  if (event.briefKo?.change) return event.briefKo.change;
+  if (event.summaryKo) return naturalizeBriefText(event.summaryKo, event);
+  if (event.briefKo?.change) return naturalizeBriefText(event.briefKo.change, event);
   const brief = isBriefingCandidate(event) ? briefing(event) : null;
   const action = brief?.action ? ` 확인할 일: ${brief.action}` : "";
   if (brief?.change && !/업데이트가 올라왔습니다|공식 문서에/.test(brief.change)) {
@@ -637,11 +815,7 @@ function cardSummary(event) {
 }
 
 function readableOriginalTitle(event) {
-  const title = cleanForBrief(event.title || "");
-  if (/^Jul \d{1,2}, \d{4}/.test(title)) {
-    return title.replace(/^([A-Z][a-z]{2} \d{1,2}, \d{4})(Announcements|Product|Feature)?/i, "").trim() || title;
-  }
-  return koreanizeTitle(event);
+  return cleanDisplayTitle(koreanizeTitle(event), event);
 }
 
 function uniqueRecentEvents(items) {
@@ -657,15 +831,25 @@ function uniqueRecentEvents(items) {
 }
 
 function naturalizeExcerpt(value) {
-  return value
+  return stripNewsChrome(value)
     .replace(/^(Overview|Quickstart|Models|Pricing|SDKs and CLI|OpenAI SDK|Agents SDK|OpenAI CLI)\s+/i, "")
     .replace(/([a-z])([A-Z][a-z])/g, "$1 $2")
     .trim();
 }
 
 function koreanizeTitle(event) {
-  const title = event.title || "";
+  const title = stripNewsChrome(event.title || "");
   const replacements = [
+    [/^Introducing a way to reflect on how you use Claude$/i, "Claude 사용 방식을 돌아보는 기능 공개"],
+    [/^Introducing Claude Tag$/i, "Claude Tag 공개"],
+    [/^The Making of Claude Code$/i, "Claude Code 제작기"],
+    [/^Redeploying Fable 5$/i, "Fable 5 재배포"],
+    [/^Introducing Claude Sonnet 5$/i, "Claude Sonnet 5 공개"],
+    [/^Claude Science, an AI workbench for scientists, is now available$/i, "과학자를 위한 Claude Science 공개"],
+    [/^GPT-5\.5 Bio Bug Bounty$/i, "GPT-5.5 Bio 버그 바운티 안내"],
+    [/^How Deutsche Telekom is rewiring telecommunications with AI$/i, "Deutsche Telekom의 AI 전환 사례"],
+    [/^ChatGPT is now a partner for your most ambitious work$/i, "ChatGPT 업무 에이전트 기능 공개"],
+    [/^Separating signal from noise in coding evaluations$/i, "코딩 벤치마크 평가 신뢰도 분석"],
     [/^Latest models comparison$/i, "최신 모델 비교"],
     [/^Model deprecations$/i, "모델 지원 종료"],
     [/^Active versions$/i, "활성 모델 버전"],
@@ -678,7 +862,7 @@ function koreanizeTitle(event) {
     [/Deprecated/i, "지원 종료"],
     [/Deprecation/i, "지원 종료"],
     [/Released/i, "출시"],
-    [/Introducing/i, "공개"],
+    [/^Introducing (.+)$/i, "$1 공개"],
     [/Start building with/i, "빌드 시작:"]
   ];
   let value = title;
@@ -688,6 +872,54 @@ function koreanizeTitle(event) {
   if (event.kind === "release") return "새 모델·기능 출시";
   if (event.kind === "pricing") return "가격·과금 변경";
   return title;
+}
+
+function cleanDisplayTitle(value, event) {
+  let title = stripNewsChrome(value || "")
+    .replace(/([a-z])([A-Z][a-z])/g, "$1 $2")
+    .replace(/^Introducing a way to reflect on how you use Claude$/i, "Claude 사용 방식을 돌아보는 기능 공개")
+    .replace(/^Introducing Claude Tag$/i, "Claude Tag 공개")
+    .replace(/^GPT-5\.5 Bio Bug Bounty$/i, "GPT-5.5 Bio 버그 바운티 안내")
+    .replace(/^How Deutsche Telekom is rewiring telecommunications with AI$/i, "Deutsche Telekom의 AI 전환 사례")
+    .replace(/^ChatGPT is now a partner for your most ambitious work$/i, "ChatGPT 업무 에이전트 기능 공개")
+    .replace(/^Separating signal from noise in coding evaluations$/i, "코딩 벤치마크 평가 신뢰도 분석")
+    .replace(/^Introducing (.+)$/i, "$1 공개")
+    .trim();
+  return title || koreanizeTitle(event || {});
+}
+
+function naturalizeBriefText(value, event) {
+  let text = cleanForBrief(value || "")
+    .replace(/공식 출처에 신규 모델 또는 기능 출시 소식이 올라왔습니다\.?/g, "신규 모델 또는 기능 출시 소식입니다.")
+    .replace(/공식 문서에 새 업데이트가 올라왔습니다\.?/g, "공식 문서의 변경 내용을 확인했습니다.")
+    .replace(/업데이트가 올라왔습니다\.?/g, "변경사항이 확인됐습니다.")
+    .replace(/확인할 필요가 있습니다/g, "확인해야 합니다")
+    .replace(/Anthropic가/g, "Anthropic이")
+    .replace(/OpenAI이/g, "OpenAI가")
+    .replace(/Google가/g, "Google이")
+    .replace(/Amazon Bedrock가/g, "Amazon Bedrock이")
+    .replace(/preview\/experimental/g, "프리뷰/실험 단계")
+    .trim();
+  if (/^(Introducing|Product|Announcements|Feature|Case Study)/i.test(text)) {
+    return `${providerSubject(event?.vendor)} ${cleanDisplayTitle(event?.title || "", event)} 소식을 공개했습니다.`;
+  }
+  return text;
+}
+
+function providerSubject(vendor) {
+  return {
+    openai: "OpenAI가",
+    anthropic: "Anthropic이",
+    google: "Google이",
+    aws: "Amazon Bedrock이"
+  }[vendor] || "공급사가";
+}
+
+function objectParticle(value = "") {
+  const trimmed = String(value).trim();
+  const last = trimmed.charCodeAt(trimmed.length - 1);
+  if (last < 0xac00 || last > 0xd7a3) return "를";
+  return (last - 0xac00) % 28 === 0 ? "를" : "을";
 }
 
 function koreanizeSummary(event) {
@@ -702,24 +934,24 @@ function koreanizeSummary(event) {
 
 function summaryLead(event, vendor, source, kind) {
   if (event.sourceId === "bedrock-lifecycle") {
-    return "Amazon Bedrock 모델 수명주기 문서가 업데이트되었습니다. Bedrock 경유로 쓰는 모델의 활성·레거시·종료 상태를 확인하세요.";
+    return "Amazon Bedrock 모델 수명주기 문서가 바뀌었습니다. Bedrock 경유로 쓰는 모델의 활성·레거시·종료 상태를 확인하세요.";
   }
   if (event.sourceId === "bedrock-doc-history") {
-    return "Amazon Bedrock 문서 변경 이력에 업데이트가 추가되었습니다. 새 모델, 리전, 기능 지원 여부를 확인할 만한 변경입니다.";
+    return "Amazon Bedrock 문서 변경 이력에 새 항목이 추가됐습니다. 새 모델, 리전, 기능 지원 여부를 확인할 만한 변경입니다.";
   }
   if (event.sourceId?.includes("deprecations")) {
-    return `${vendor}의 ${source} 문서에 ${kind} 관련 업데이트가 올라왔습니다. 사용 중인 모델이나 API가 포함되는지 먼저 확인하세요.`;
+    return `${vendor}의 ${source} 문서에서 ${kind} 관련 변경이 확인됐습니다. 사용 중인 모델이나 API가 포함되는지 먼저 확인하세요.`;
   }
   if (event.kind === "release") {
-    return `${vendor}의 ${source}에 신규 출시 소식이 올라왔습니다. 평가 후보로 볼 만한 모델이나 기능인지 확인하세요.`;
+    return `${vendor}의 ${source}에서 신규 출시 소식을 확인했습니다. 평가 후보로 볼 만한 모델이나 기능인지 확인하세요.`;
   }
   if (event.kind === "pricing") {
-    return `${vendor}의 ${source}에 가격 또는 과금 관련 업데이트가 올라왔습니다. 사용량이 큰 워크로드의 비용 영향을 확인하세요.`;
+    return `${vendor}의 ${source}에서 가격 또는 과금 관련 변경이 확인됐습니다. 사용량이 큰 워크로드의 비용 영향을 확인하세요.`;
   }
   if (event.kind === "breaking-change") {
-    return `${vendor}의 ${source}에 호환성 영향을 줄 수 있는 변경이 올라왔습니다. 적용 일정과 기존 연동 영향을 확인하세요.`;
+    return `${vendor}의 ${source}에서 호환성에 영향을 줄 수 있는 변경을 확인했습니다. 적용 일정과 기존 연동 영향을 확인하세요.`;
   }
-  return `${vendor}의 ${source}에 ${kind} 관련 업데이트가 올라왔습니다. 현재 사용하는 모델·API와 관련이 있는지 확인하세요.`;
+  return `${vendor}의 ${source}에서 ${kind} 관련 변경을 확인했습니다. 현재 사용하는 모델·API와 관련이 있는지 확인하세요.`;
 }
 
 function shouldShowExcerpt(event) {
