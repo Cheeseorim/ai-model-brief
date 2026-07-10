@@ -12,7 +12,7 @@ OpenAI, Anthropic Claude, Google Gemini, Vertex AI, Amazon Bedrock의 공식 문
 - 수집기 실패 및 빈 파싱 감지
 - Discord 고위험 변경 알림
 - GitHub Pages 정적 대시보드
-- GitHub Actions 매일 09:10 KST, 평일 15:10 KST 실행
+- GitHub Actions 매일 09:10·09:40·10:10 KST, 평일 15:10·15:40·16:10 KST 백업 실행
 - 90일 수집 실행 이력
 
 ## 로컬 실행
