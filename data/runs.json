@@ -1,5 +1,97 @@
 [
   {
+    "startedAt": "2026-07-11T03:56:09.141Z",
+    "completedAt": "2026-07-11T03:56:21.442Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 33,
+        "durationMs": 921
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 81,
+        "durationMs": 108
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 49,
+        "durationMs": 223
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1040,
+        "durationMs": 498
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 86,
+        "durationMs": 653
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 411
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 6,
+        "durationMs": 504
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 10,
+        "durationMs": 5975
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 127,
+        "durationMs": 488
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 282
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 42,
+        "durationMs": 254
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 9,
+        "durationMs": 334
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 434,
+        "durationMs": 905
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 541
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 85
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 188,
+        "durationMs": 89
+      }
+    },
+    "newEvents": 0,
+    "summaries": {
+      "summarized": 0,
+      "skipped": true,
+      "model": null
+    }
+  },
+  {
     "startedAt": "2026-07-11T03:37:06.571Z",
     "completedAt": "2026-07-11T03:37:19.486Z",
     "sources": {
