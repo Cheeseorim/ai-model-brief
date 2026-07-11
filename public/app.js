@@ -1,6 +1,6 @@
 const [events, state, pricing] = await Promise.all([
-  fetch("./data/events.json?v=20260710-2").then((response) => response.json()),
-  fetch("./data/state.json?v=20260710-2").then((response) => response.json()),
+  fetch("./data/events.json?v=20260711-date-labels").then((response) => response.json()),
+  fetch("./data/state.json?v=20260711-date-labels").then((response) => response.json()),
   fetch("./config/pricing.json?v=20260710-pricing2").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
 ]);
 
@@ -191,7 +191,7 @@ function detailIssue(event) {
       <div class="issue-meta">
         <span>${escapeHtml(labels[event.kind] || event.kind || "업데이트")}</span>
         <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
-        <span>${escapeHtml(shortDate(displayDate(event)))}</span>
+        <span>${escapeHtml(dateBadge(event))}</span>
       </div>
       <h4>${escapeHtml(brief.title)}</h4>
       <p>${escapeHtml(brief.change)}</p>
@@ -390,7 +390,7 @@ function headlineCard(event, index) {
       <div class="headline-meta">
         <span>${escapeHtml(vendorLabels[event.vendor] || event.vendor)}</span>
         <span>${escapeHtml(labels[event.kind] || event.kind || "")}</span>
-        <span>${escapeHtml(shortDate(displayDate(event)))}</span>
+        <span>${escapeHtml(dateBadge(event))}</span>
       </div>
       <h3>${escapeHtml(brief.title)}</h3>
       <div class="brief-points">
@@ -967,6 +967,23 @@ function formatDateTime(value) {
 
 function shortDate(value) {
   return value ? new Intl.DateTimeFormat("ko-KR", { month: "numeric", day: "numeric" }).format(new Date(value)) : "날짜 없음";
+}
+
+function fullDate(value) {
+  return value ? new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "numeric", day: "numeric" }).format(new Date(value)) : "날짜 없음";
+}
+
+function dateBadge(event) {
+  if (event.publishedAt && isFutureDate(event.publishedAt)) {
+    return `적용 ${fullDate(event.publishedAt)}`;
+  }
+  if (event.publishedAt) {
+    return `공개 ${shortDate(event.publishedAt)}`;
+  }
+  if (event.detectedAt) {
+    return `수집 ${shortDate(event.detectedAt)}`;
+  }
+  return "날짜 없음";
 }
 
 function cardDateLabel(event) {
