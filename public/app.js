@@ -1,6 +1,6 @@
 const [events, state, pricing] = await Promise.all([
-  fetch("./data/events.json?v=20260711-date-labels").then((response) => response.json()),
-  fetch("./data/state.json?v=20260711-date-labels").then((response) => response.json()),
+  fetch("./data/events.json?v=20260711-prompt-tips").then((response) => response.json()),
+  fetch("./data/state.json?v=20260711-prompt-tips").then((response) => response.json()),
   fetch("./config/pricing.json?v=20260710-pricing2").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
 ]);
 
