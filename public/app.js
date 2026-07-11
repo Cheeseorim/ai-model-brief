@@ -13,6 +13,8 @@ const ui = {
   coverageMeta: document.querySelector("#coverageMeta"),
   headlines: document.querySelector("#headlines"),
   headlineMeta: document.querySelector("#headlineMeta"),
+  promptTips: document.querySelector("#promptTips"),
+  promptMeta: document.querySelector("#promptMeta"),
   pricingRows: document.querySelector("#pricingRows"),
   pricingMeta: document.querySelector("#pricingMeta"),
   pricingSources: document.querySelector("#pricingSources"),
@@ -78,16 +80,17 @@ ui.health.classList.add(failures.length ? "bad" : "ok");
 
 renderCoverage();
 renderHeadlines();
+renderPromptTips();
 renderPricing();
 activateTab(initialTab());
 
 function initialTab() {
   const hash = window.location.hash.replace("#", "");
-  return ["briefing", "vendors", "pricing"].includes(hash) ? hash : "briefing";
+  return dashboardTabs().includes(hash) ? hash : "briefing";
 }
 
 function activateTab(tabName) {
-  const safeTab = ["briefing", "vendors", "pricing"].includes(tabName) ? tabName : "briefing";
+  const safeTab = dashboardTabs().includes(tabName) ? tabName : "briefing";
   for (const tab of ui.tabs) {
     const active = tab.dataset.tab === safeTab;
     tab.classList.toggle("active", active);
@@ -99,6 +102,180 @@ function activateTab(tabName) {
   if (window.location.hash.replace("#", "") !== safeTab) {
     history.replaceState(null, "", `#${safeTab}`);
   }
+}
+
+function dashboardTabs() {
+  return ["briefing", "prompting", "vendors", "pricing"];
+}
+
+function renderPromptTips() {
+  if (!ui.promptTips) return;
+  const tips = promptTipPool().slice(0, 7);
+  ui.promptMeta.textContent = tips.length
+    ? `실무 적용 후보 ${tips.length}건`
+    : "기본 체크리스트";
+  ui.promptTips.replaceChildren(...tips.map(promptTipCard));
+}
+
+function promptTipPool() {
+  const candidates = [];
+  for (const event of events) {
+    const tip = promptTip(event);
+    if (tip) candidates.push({ event, tip });
+  }
+  return uniquePromptTips(candidates)
+    .sort((a, b) => promptTipScore(b.event, b.tip) - promptTipScore(a.event, a.tip));
+}
+
+function uniquePromptTips(items) {
+  const seen = new Set();
+  const result = [];
+  for (const item of items) {
+    const key = `${item.tip.lane}|${normalizeTitle(item.tip.title)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(item);
+  }
+  return result;
+}
+
+function promptTip(event) {
+  const text = `${event.title || ""} ${event.summary || ""}`.replace(/\s+/g, " ");
+  const lower = text.toLowerCase();
+  if (!isPromptTipCandidate(event, lower)) return null;
+  if (event.routes?.includes("prompt_tip") && event.summaryMeta?.promptTipKo) {
+    return {
+      lane: laneLabel(event.summaryMeta.promptTipLane || "prompt"),
+      title: cleanDisplayTitle(event.briefKo?.title || event.titleKo || koreanizeTitle(event), event),
+      signal: event.briefKo?.change || event.summaryKo || usefulExcerpt(event),
+      practice: event.summaryMeta.promptTipKo,
+      checklist: event.actionKo || "이 팁을 적용할 샘플 프롬프트와 실패 케이스를 하나씩 골라 회귀 테스트에 넣으세요."
+    };
+  }
+  if (/reflect on how you use claude|reflect-with-claude/.test(lower)) {
+    return {
+      lane: "Prompt",
+      title: "Claude 사용 패턴을 프롬프트 개선 재료로 쓰기",
+      signal: "Claude 사용 방식을 되돌아보는 기능이 공개됐습니다.",
+      practice: "이런 기능은 단순한 회고용이 아니라, 내가 매번 비슷하게 고쳐 쓰는 지시를 찾는 데 유용합니다. 예를 들어 ‘더 짧게’, ‘근거를 붙여’, ‘표로 정리해’ 같은 반복 수정이 보이면 그 문장을 기본 프롬프트에 미리 넣을 수 있습니다.",
+      checklist: "최근 자주 한 요청 5개를 골라 목표, 싫었던 답변, 좋았던 답변 기준을 한 줄씩 적어보세요."
+    };
+  }
+  if (/agent-memory|memory_stores|listing memories|stable order/.test(lower)) {
+    return {
+      lane: "Context",
+      title: "에이전트 메모리는 정렬·갱신 규칙까지 테스트",
+      signal: "Claude API에 agent memory 관련 beta 동작 변경이 추가됐습니다.",
+      practice: "메모리는 많이 저장하는 것보다 ‘무엇을 먼저 믿을지’가 더 중요합니다. 오래된 선호가 새 지시를 덮어버리면 사용자는 모델이 말을 안 듣는다고 느낍니다.",
+      checklist: "같은 사용자에게 ‘예전 선호’와 ‘새 선호’를 동시에 넣고, 모델이 새 선호를 우선하는지 테스트하세요."
+    };
+  }
+  if (/mcp tunnels.*management api moved|organizations\/tunnels|\/v1\/tunnels/.test(lower)) {
+    return {
+      lane: "Harness",
+      title: "MCP 도구 연결은 프롬프트 밖 하니스로 검증",
+      signal: "Claude MCP tunnels의 관리 API 경로 변경이 확인됐습니다.",
+      practice: "툴 호출형 에이전트는 프롬프트가 좋아도 도구 연결이 흔들리면 실패합니다. 그래서 ‘모델이 똑똑한가’와 ‘도구를 실제로 잘 부르는가’를 나눠서 봐야 합니다.",
+      checklist: "각 도구마다 정상 호출, 권한 부족, timeout, 잘못된 인자 4가지를 최소 테스트로 넣어보세요."
+    };
+  }
+  if (/coding evaluations|swe-bench|benchmark reliability|separating signal from noise/.test(lower)) {
+    return {
+      lane: "Harness",
+      title: "벤치마크 점수보다 내 작업셋 회귀 테스트 우선",
+      signal: "코딩 벤치마크 신뢰도에 대한 OpenAI 분석이 공개됐습니다.",
+      practice: "공개 벤치마크는 모델 후보를 고르는 참고 자료일 뿐입니다. 실제 품질은 우리 팀이 자주 맡기는 작업에서 잘 되는지로 봐야 합니다.",
+      checklist: "성공 사례 10개, 실패 사례 10개, 애매한 사례 5개를 모아 모델·프롬프트 변경 때마다 다시 돌리세요."
+    };
+  }
+  if (/prompt caching|explicit prompt caching|persisted reasoning|max reasoning effort|programmatic tool calling/.test(lower)) {
+    return {
+      lane: "Context",
+      title: "긴 시스템 지시문은 캐싱·추론 설정까지 함께 설계",
+      signal: "OpenAI 모델 변경 로그에서 prompt caching, persisted reasoning, reasoning effort, tool calling 관련 변화가 확인됐습니다.",
+      practice: "항상 반복해서 넣는 정책, 예시, 도구 설명은 요청마다 새로 붙이는 대신 ‘고정 컨텍스트’로 분리하는 편이 좋습니다. 그래야 비용도 줄이고, 어떤 부분을 바꿨을 때 답이 흔들렸는지도 보기 쉽습니다.",
+      checklist: "프롬프트를 고정 지시문, 이번 요청의 자료, 도구 결과, 출력 형식 네 블록으로 나눠보세요."
+    };
+  }
+  if (/computer use preview|perform ui actions|clicking, typing, and navigating|browser tasks/.test(lower)) {
+    return {
+      lane: "Harness",
+      title: "컴퓨터 사용형 에이전트는 화면 상태 검증이 핵심",
+      signal: "Gemini 모델 문서에서 Computer Use Preview 항목이 확인됐습니다.",
+      practice: "브라우저를 조작하는 에이전트는 말로만 잘 설명한다고 안정적이지 않습니다. 클릭하기 전 화면에 무엇이 보여야 하는지, 클릭한 뒤 무엇이 바뀌어야 하는지를 검사해야 합니다.",
+      checklist: "각 액션마다 ‘클릭 전 확인할 문구’와 ‘클릭 후 기대 상태’를 테스트 로그에 남기세요."
+    };
+  }
+  if (/prompt and output performance|long-context handling|reasoning, coding/.test(lower)) {
+    return {
+      lane: "Prompt",
+      title: "모델 강점은 프롬프트 역할 배분으로 살리기",
+      signal: "Claude 모델 문서에서 reasoning, coding, long-context 성능 특성이 강조됐습니다.",
+      practice: "모든 일을 한 모델·한 프롬프트에 몰아넣지 않아도 됩니다. 어려운 판단과 검토는 강한 모델에, 정리·변환처럼 반복적인 일은 저렴한 모델에 맡기면 품질과 비용을 같이 잡을 수 있습니다.",
+      checklist: "복잡한 작업 하나를 계획, 초안, 검토, 최종화 단계로 쪼개고 각 단계에 맞는 모델 등급을 적어보세요."
+    };
+  }
+  return null;
+}
+
+function isPromptTipCandidate(event, lowerText) {
+  const title = normalizeTitle(event.title);
+  if (/^(recent|foundations|workflows|capabilities|agent configuration|development workflows|build with codex|permissions|tools|run and scale|core concepts|resources|plan|measurement|legacy apis)$/i.test(title)) {
+    return false;
+  }
+  if (/overview quickstart|table of contents|send feedback|terms and policies/.test(lowerText)) return false;
+  if (event.sourceId?.endsWith("-deprecations") && !event.routes?.includes("prompt_tip")) return false;
+  return true;
+}
+
+function laneLabel(value) {
+  return {
+    prompt: "Prompt",
+    context: "Context",
+    harness: "Harness",
+    Prompt: "Prompt",
+    Context: "Context",
+    Harness: "Harness"
+  }[value] || "Prompt";
+}
+
+function promptTipScore(event, tip) {
+  let score = eventTime(event);
+  if (tip.lane === "Harness") score += 6 * 86_400_000;
+  if (tip.lane === "Context") score += 4 * 86_400_000;
+  if (/openai|anthropic/.test(event.vendor || "")) score += 2 * 86_400_000;
+  if (event.sourceId === "openai-news" && /coding evaluations/i.test(`${event.title} ${event.summary}`)) score += 10 * 86_400_000;
+  if (event.sourceId === "anthropic-news" && /reflect/i.test(`${event.title} ${event.summary}`)) score += 8 * 86_400_000;
+  return score;
+}
+
+function promptTipCard({ event, tip }) {
+  const article = document.createElement("article");
+  article.className = `prompt-tip-card vendor-${event.vendor || ""}`;
+  article.innerHTML = `
+    <div class="prompt-tip-top">
+      <span class="lane">${escapeHtml(tip.lane)}</span>
+      <span>${escapeHtml(vendorLabels[event.vendor] || event.vendor || "")}</span>
+      <span>${escapeHtml(dateBadge(event))}</span>
+    </div>
+    <h3>${escapeHtml(tip.title)}</h3>
+    <dl>
+      <div>
+        <dt>무슨 일</dt>
+        <dd>${escapeHtml(tip.signal)}</dd>
+      </div>
+      <div>
+        <dt>왜 중요</dt>
+        <dd>${escapeHtml(tip.practice)}</dd>
+      </div>
+      <div>
+        <dt>바로 해볼 것</dt>
+        <dd>${escapeHtml(tip.checklist)}</dd>
+      </div>
+    </dl>
+    <a href="${escapeHtml(event.sourceUrl || "#")}" target="_blank" rel="noreferrer">원문 보기 ↗</a>
+  `;
+  return article;
 }
 
 function renderCoverage() {
@@ -753,6 +930,7 @@ function isBriefingCandidate(event) {
   const title = normalizeTitle(event.title);
   const source = event.sourceId || "";
   const text = `${event.title} ${event.summary}`.toLowerCase();
+  if (Array.isArray(event.routes) && event.routes.length && !event.routes.includes("news")) return false;
   if (!title || title.length < 4) return false;
   if (/^(latest|experimental|active versions|latest models comparison|model cards|models|overview|documentation|table of contents|notifications|best practices|deprecation history|past deprecations|deprecation vs\.? legacy|migrating to replacements|auditing model usage|api parameter deprecations|model deprecation notice periods)$/i.test(title)) return false;
   if (/^(home|documentation|resources|send feedback|api|topics|programs|spaces|core concepts|tools|guides|learn|plan|build|deploy|configuration|administration|recent|frontier models|windows|development workflows|extend and automate|environments|build with codex|permissions|codex security|getting started|identity and authentication|workspace access, policy, and models|plugin and connector controls|usage, governance, and compliance|deployment and model providers|community|foundations|explore|available on|workflows|capabilities|reference|config file|agent configuration|run and scale)$/i.test(title)) return false;

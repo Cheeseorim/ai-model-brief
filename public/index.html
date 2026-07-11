@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="OpenAI, Claude, Gemini, Vertex AI, Amazon Bedrock 모델 변경사항을 핵심만 추려 보여주는 AI 브리핑" />
     <title>AI Model Brief</title>
-    <link rel="stylesheet" href="./styles.css?v=20260710-6" />
+    <link rel="stylesheet" href="./styles.css?v=20260711-prompt-tips" />
   </head>
   <body>
     <header>
@@ -20,6 +20,7 @@
     <main>
       <nav class="section-tabs" aria-label="대시보드 섹션">
         <button type="button" class="active" data-tab="briefing">주요 뉴스</button>
+        <button type="button" data-tab="prompting">프롬프트 팁</button>
         <button type="button" data-tab="vendors">공급사별 이슈</button>
         <button type="button" data-tab="pricing">가격 비교</button>
       </nav>
@@ -33,6 +34,35 @@
           <span id="headlineMeta"></span>
         </div>
         <div id="headlines" class="headline-list"></div>
+      </section>
+      <section class="prompt-panel tab-panel" data-panel="prompting" aria-labelledby="promptTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">프롬프트·컨텍스트·하니스</p>
+            <h2 id="promptTitle">엔지니어링 팁</h2>
+          </div>
+          <span id="promptMeta"></span>
+        </div>
+        <div class="prompt-layout">
+          <div class="prompt-principles" aria-label="엔지니어링 체크리스트">
+            <article>
+              <span>Prompt</span>
+              <h3>요청보다 “좋은 답의 기준”을 먼저 적기</h3>
+              <p>“요약해줘”보다 “의사결정자가 1분 안에 읽고, 리스크와 다음 행동을 알 수 있게 요약해줘”가 훨씬 안정적입니다.</p>
+            </article>
+            <article>
+              <span>Context</span>
+              <h3>자료를 많이 넣을수록 “우선순위”도 같이 주기</h3>
+              <p>문서, 로그, 정책을 한꺼번에 넣을 때는 “정책 &gt; 최신 공지 &gt; 과거 로그”처럼 어떤 정보를 더 믿어야 하는지 알려주세요.</p>
+            </article>
+            <article>
+              <span>Harness</span>
+              <h3>프롬프트도 바꾸기 전에 작은 시험지를 만들기</h3>
+              <p>자주 묻는 질문 10개와 실패하면 안 되는 답변 5개만 모아도, 모델 교체나 프롬프트 수정 때 품질 흔들림을 빨리 잡을 수 있습니다.</p>
+            </article>
+          </div>
+          <div id="promptTips" class="prompt-tip-list"></div>
+        </div>
       </section>
       <section class="coverage tab-panel" data-panel="vendors" aria-labelledby="coverageTitle">
         <div class="section-heading compact">
@@ -92,6 +122,6 @@
         <div id="pricingSources" class="pricing-sources"></div>
       </section>
     </main>
-    <script type="module" src="./app.js?v=20260711-briefing10d"></script>
+    <script type="module" src="./app.js?v=20260711-prompt-tips"></script>
   </body>
 </html>

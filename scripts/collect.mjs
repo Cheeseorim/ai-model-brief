@@ -188,6 +188,7 @@ function mergeExistingEvent(next, previous) {
     confidence: previous.confidence || next.confidence,
     isProbablyNoise: previous.isProbablyNoise ?? next.isProbablyNoise,
     clusterKey: previous.clusterKey || next.clusterKey,
+    routes: previous.routes || next.routes,
     briefKo: previous.briefKo,
     summaryMeta: previous.summaryMeta,
     summaryError: previous.summaryError
