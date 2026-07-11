@@ -34,6 +34,8 @@ npm run dev
 
 로컬에서 키를 붙여 테스트하려면 `.env.example`을 `.env`로 복사한 뒤 값을 채웁니다. 자연스러운 한국어 번역·요약을 사용하려면 저장소의 Actions secret에 `OPENAI_API_KEY`를 추가합니다. 기본 모델은 `gpt-5.4-mini`이며, 하루 최대 요약 항목 수는 `SUMMARY_MAX_EVENTS`로 제한합니다.
 
+LLM 요약은 2단계로 동작합니다. 먼저 라우터가 새 이벤트를 `news`, `prompt_tip`으로 분류하고 중요도·노이즈 여부·프롬프트 팁 유형을 판단합니다. 그다음 작성자가 라우터 결과를 바탕으로 한국어 브리핑과 필요한 프롬프트 노트를 작성합니다. 따라서 기본 구조에서는 요약 후보 1건당 OpenAI API를 2회 호출합니다.
+
 Discord 알림을 사용하려면 저장소의 Actions secret에 `DISCORD_WEBHOOK_URL`을 추가합니다. 환경변수 전체 목록은 `.env.example`을 참고하세요.
 
 ## 데이터
