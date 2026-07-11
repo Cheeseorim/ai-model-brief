@@ -978,12 +978,19 @@ function dateBadge(event) {
     return `적용 ${fullDate(event.publishedAt)}`;
   }
   if (event.publishedAt) {
-    return `공개 ${shortDate(event.publishedAt)}`;
+    return `${dateLabel(event)} ${shortDate(event.publishedAt)}`;
   }
   if (event.detectedAt) {
     return `수집 ${shortDate(event.detectedAt)}`;
   }
   return "날짜 없음";
+}
+
+function dateLabel(event) {
+  if (["openai-news", "anthropic-news", "gemini-news"].includes(event.sourceId)) {
+    return "공개";
+  }
+  return "업데이트";
 }
 
 function cardDateLabel(event) {
