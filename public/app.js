@@ -25,7 +25,7 @@ const ui = {
 
 let selectedPricingModelId = "";
 let selectedCoverageVendor = "";
-const HEADLINE_LIMIT = 5;
+const HEADLINE_LIMIT = 10;
 const labels = {
   deprecation: "지원 종료",
   "breaking-change": "호환성 변경",
@@ -340,6 +340,8 @@ function renderHeadlines() {
   const anchor = new Date();
   const windowStart = new Date(anchor);
   windowStart.setDate(windowStart.getDate() - 7);
+  const fallbackStart = new Date(anchor);
+  fallbackStart.setDate(fallbackStart.getDate() - 45);
   const recent = events.filter((event) => {
     const date = eventDateForBriefing(event);
     return date && date >= windowStart && date <= anchor;
@@ -347,7 +349,11 @@ function renderHeadlines() {
   const recentPool = recent.filter(isBriefingCandidate).sort((a, b) => briefingScore(b) - briefingScore(a));
   const recentKeys = new Set(recentPool.map(eventKey));
   const fallbackPool = events
-    .filter((event) => isBriefingCandidate(event) && !recentKeys.has(eventKey(event)))
+    .filter((event) => {
+      if (!isBriefingCandidate(event) || recentKeys.has(eventKey(event))) return false;
+      const date = eventDate(event);
+      return date && date >= fallbackStart && date <= anchor;
+    })
     .sort((a, b) => briefingScore(b) - briefingScore(a));
   const pool = [...recentPool, ...fallbackPool];
   const vendorCounts = new Map();
@@ -369,7 +375,7 @@ function renderHeadlines() {
 
   ui.headlineMeta.textContent = recent.length
     ? `최근 7일 기준 · ${headlines.length}건`
-    : `최근 7일 업데이트 없음 · 최신 고위험 ${headlines.length}건`;
+    : `최근 45일 기준 · ${headlines.length}건`;
   ui.headlines.replaceChildren(...headlines.map(headlineCard));
 }
 
@@ -676,6 +682,46 @@ function earlyRuleBriefing(event) {
       action: "지원되는 GPT-OSS 모델 버전, 라이선스, 리전, 추론 비용과 기존 배포 방식의 차이를 비교하세요."
     };
   }
+  if (/access transparency.*cmek_preserve|preservation reason codes|cmek_preserve/.test(lower)) {
+    return {
+      title: "Claude Access Transparency 문서 보강",
+      change: "Anthropic이 Claude Access Transparency 문서에 CMEK 보존 이벤트 예시와 보존 사유 코드를 추가했습니다.",
+      impact: "CMEK, 감사 로그, 데이터 보존 정책을 보는 보안·컴플라이언스 팀에는 확인할 만한 문서 변경입니다.",
+      action: "Access Transparency 로그를 수집 중이라면 새 이벤트 예시와 reason code가 내부 파서·대시보드에 필요한지 확인하세요."
+    };
+  }
+  if (/mcp tunnels.*management api moved|organizations\/tunnels|\/v1\/tunnels/.test(lower)) {
+    return {
+      title: "Claude MCP tunnels API 경로 변경",
+      change: "Anthropic의 MCP tunnels 연구 프리뷰에서 관리 API 경로가 Admin API의 /v1/organizations/tunnels에서 Claude API의 /v1/tunnels로 이동했습니다.",
+      impact: "MCP tunnels를 실험 중인 팀은 기존 관리 호출이 깨질 수 있어, 프리뷰 기능이라도 래퍼나 내부 도구의 엔드포인트를 확인해야 합니다.",
+      action: "MCP tunnels 관련 호출부와 문서 링크를 찾아 새 경로로 바꾸고, 인증 방식과 권한 범위가 함께 바뀌었는지 확인하세요."
+    };
+  }
+  if (/removed fast mode for claude opus 4\.6|fast mode.*claude opus 4\.6/.test(lower)) {
+    return {
+      title: "Claude Opus 4.6 fast mode 제거",
+      change: "Anthropic이 Claude Opus 4.6의 fast mode를 제거했습니다.",
+      impact: "Opus 4.6에서 fast mode를 전제로 지연시간이나 비용을 계산했다면 실제 응답 특성과 운영 비용이 달라질 수 있습니다.",
+      action: "Opus 4.6 호출 설정에 fast mode 의존이 있는지 확인하고, 지연시간·비용 기준을 다시 측정하세요."
+    };
+  }
+  if (/vertex ai documentation is no longer being updated|instead, see the google genai sdk documentation/.test(lower)) {
+    return {
+      title: "Vertex AI 문서 업데이트 경로 변경",
+      change: "일부 Vertex AI 문서가 더 이상 업데이트되지 않으며 Google GenAI SDK 문서를 보라는 안내가 확인됐습니다.",
+      impact: "Vertex AI 기반 Gemini 호출 예제나 SDK 사용법을 참고하는 팀은 최신 안내 위치가 바뀌었을 수 있습니다.",
+      action: "내부 문서·샘플 코드가 오래된 Vertex AI 문서를 가리키는지 확인하고, GenAI SDK 문서 링크로 교체하세요."
+    };
+  }
+  if (/legacy and end-of-life.*eol.*models|legacy and end-of-life.*models|end-of-life.*eol.*models/.test(lower)) {
+    return {
+      title: "Amazon Bedrock 모델 수명주기 변경 확인",
+      change: "Amazon Bedrock 모델 수명주기 문서에서 legacy 또는 EOL 모델 안내가 확인됐습니다.",
+      impact: "Bedrock에서 특정 foundation model ID를 고정해 쓰는 서비스는 지원 상태와 종료 일정을 다시 확인해야 합니다.",
+      action: "사용 중인 Bedrock model ID 목록을 뽑아 문서의 legacy/EOL 항목과 대조하고, 대체 모델 후보를 미리 정하세요."
+    };
+  }
   return null;
 }
 
@@ -709,22 +755,22 @@ function isBriefingCandidate(event) {
   const text = `${event.title} ${event.summary}`.toLowerCase();
   if (!title || title.length < 4) return false;
   if (/^(latest|experimental|active versions|latest models comparison|model cards|models|overview|documentation|table of contents|notifications|best practices|deprecation history|past deprecations|deprecation vs\.? legacy|migrating to replacements|auditing model usage|api parameter deprecations|model deprecation notice periods)$/i.test(title)) return false;
-  if (/^(home|documentation|resources|send feedback|api|topics|programs|spaces|core concepts|tools|guides|learn|plan|build|deploy|configuration|administration)$/i.test(title)) return false;
+  if (/^(home|documentation|resources|send feedback|api|topics|programs|spaces|core concepts|tools|guides|learn|plan|build|deploy|configuration|administration|recent|frontier models|windows|development workflows|extend and automate|environments|build with codex|permissions|codex security|getting started|identity and authentication|workspace access, policy, and models|plugin and connector controls|usage, governance, and compliance|deployment and model providers|community|foundations|explore|available on|workflows|capabilities|reference|config file|agent configuration|run and scale)$/i.test(title)) return false;
   if (/government and national security|educators|workforce opportunity|payments plus|mufg|case study|personalized image creation/i.test(title)) return false;
   if (/listed below|we use the term|notifies customers|regularly check|deprecated parameters remain|deprecates and retires models to ensure capacity|advance notice before retiring/.test(text)) return false;
   if (/deprecations/.test(source) && !event.publishedAt && !event.modelIds?.length && !/(update|retire|retired|will be|until|deadline|migrate to|replaced by)/.test(text)) return false;
-  if (source.endsWith("-models") && event.kind === "models" && !/(preview|released|new|deprecat|imagen|gemini|claude|gpt|veo|lyria|computer use)/.test(text)) {
+  if (source.endsWith("-models") && event.kind === "models" && !/(preview|released|new|deprecat|imagen|gemini|claude|gpt|veo|lyria|computer use|gpt[-\s]?5\.6|nano banana)/.test(text)) {
     return false;
   }
   if (source === "bedrock-lifecycle" && /active versions/i.test(event.title)) return false;
-  if (event.kind === "news" && isLowPriorityNews(event)) return false;
+  if ((event.kind === "news" || source === "anthropic-news" || /news/.test(source)) && isLowPriorityNews(event)) return false;
   if (event.kind === "news" && !/(gpt|claude|gemini|model|coding|benchmark|voice|realtime|sonnet|fable|mythos|omni|nano banana|computer use|api|codex)/i.test(`${event.title} ${event.summary}`)) return false;
   return true;
 }
 
 function isLowPriorityNews(event) {
   const text = `${event.title} ${event.summary}`.toLowerCase();
-  return /case study|customer story|deutsche telekom|telco|bio bounty|bug bounty|partner for your most ambitious work|coding evaluations|swe-bench|benchmark reliability|seoul office|appointed|trust|partnership|\bpartner\b|public record|hard questions|pixel drop|new features for creators|smarter, more proactive android|android with gemini intelligence/.test(text);
+  return /case study|customer story|deutsche telekom|telco|government of alberta|cybersecurity vulnerabilities across government systems|bio bounty|bug bounty|partner for your most ambitious work|coding evaluations|swe-bench|benchmark reliability|seoul office|appointed|trust|partnership|\bpartner\b|public record|hard questions|pixel drop|new features for creators|smarter, more proactive android|android with gemini intelligence|study notebooks|personalized lessons|physical ai|long-term benefit trust|bringing claude to physical ai|reflect on how you use claude|introducing claude tag/.test(text);
 }
 
 function briefingScore(event) {
@@ -743,6 +789,9 @@ function briefingScore(event) {
   if (event.kind === "pricing") score += 24;
   if (event.kind === "release") score += 18;
   if (/changelog|release-notes|doc-history|deprecations|news/.test(source)) score += 16;
+  if (source === "bedrock-lifecycle") score += 38;
+  if (source === "vertex-deprecations") score += 32;
+  if (source === "anthropic-release-notes") score += 12;
   if (/released|introduc|launch|preview|generally available|deprecat|retir|pricing|billing|computer use/i.test(text)) score += 14;
   if (/gpt[-\s]?5\.6|gpt-5\.6-sol|gpt-5\.6-terra|gpt-5\.6-luna/.test(text)) score += 100;
   if (/gpt[-\s]?5\.6/.test((event.title || "").toLowerCase())) score += 80;
@@ -977,8 +1026,9 @@ function dateBadge(event) {
   if (event.publishedAt && isFutureDate(event.publishedAt)) {
     return `적용 ${fullDate(event.publishedAt)}`;
   }
-  if (event.publishedAt) {
-    return `${dateLabel(event)} ${shortDate(event.publishedAt)}`;
+  const date = displayDate(event);
+  if (date) {
+    return `${dateLabel(event)} ${shortDate(date)}`;
   }
   if (event.detectedAt) {
     return `수집 ${shortDate(event.detectedAt)}`;
@@ -998,12 +1048,46 @@ function cardDateLabel(event) {
   if (event.publishedAt && isFutureDate(event.publishedAt)) {
     return `수집 ${collected} · 적용 ${event.publishedAt}`;
   }
-  return event.publishedAt || collected;
+  return displayDate(event) || collected;
 }
 
 function displayDate(event) {
+  const precise = preciseDateFromSourceText(event);
+  if (precise) return precise;
   if (event.publishedAt && !isFutureDate(event.publishedAt)) return event.publishedAt;
   return event.detectedAt;
+}
+
+function preciseDateFromSourceText(event) {
+  const text = `${event.title || ""} ${event.summary || ""}`;
+  const year = event.publishedAt ? new Date(event.publishedAt).getFullYear() : new Date(event.detectedAt || Date.now()).getFullYear();
+  const monthMap = {
+    jan: 0, january: 0,
+    feb: 1, february: 1,
+    mar: 2, march: 2,
+    apr: 3, april: 3,
+    may: 4,
+    jun: 5, june: 5,
+    jul: 6, july: 6,
+    aug: 7, august: 7,
+    sep: 8, sept: 8, september: 8,
+    oct: 9, october: 9,
+    nov: 10, november: 10,
+    dec: 11, december: 11
+  };
+  const rss = text.match(/\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})\b/);
+  if (rss) {
+    const month = monthMap[rss[2].toLowerCase()];
+    if (month !== undefined) return new Date(Date.UTC(Number(rss[3]), month, Number(rss[1]))).toISOString().slice(0, 10);
+  }
+  if (event.sourceId === "openai-changelog") {
+    const inline = text.match(/\b([A-Z][a-z]{2})\s+(\d{1,2})(?=Feature|Update|Breaking|Deprecation|Released|\s)/);
+    if (inline) {
+      const month = monthMap[inline[1].toLowerCase()];
+      if (month !== undefined) return new Date(Date.UTC(year, month, Number(inline[2]))).toISOString().slice(0, 10);
+    }
+  }
+  return null;
 }
 
 function eventDate(event) {
