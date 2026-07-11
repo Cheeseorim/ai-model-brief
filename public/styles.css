@@ -180,7 +180,9 @@ h2 {
   padding: 22px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(37, 99, 235, .08), transparent 34%),
+    linear-gradient(180deg, #fff, #f8fafc);
   box-shadow: var(--shadow);
 }
 
@@ -191,8 +193,8 @@ h2 {
 
 .prompt-layout {
   display: grid;
-  grid-template-columns: minmax(260px, .86fr) minmax(0, 1.4fr);
-  gap: 14px;
+  grid-template-columns: minmax(250px, .74fr) minmax(0, 1.5fr);
+  gap: 18px;
   align-items: start;
 }
 
@@ -206,7 +208,8 @@ h2 {
   padding: 16px;
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, #fbfcff, #fff);
+  background: rgba(255, 255, 255, .74);
+  backdrop-filter: blur(10px);
 }
 
 .prompt-principles span,
@@ -238,11 +241,31 @@ h2 {
 .prompt-tip-card {
   --vendor-color: var(--primary);
   --vendor-soft: var(--primary-soft);
-  padding: 17px;
-  border: 1px solid var(--line-soft);
-  border-left: 3px solid var(--vendor-color);
-  border-radius: var(--radius-md);
-  background: #fbfcff;
+  position: relative;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--vendor-color) 14%, var(--line-soft));
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--vendor-color) 9%, #fff) 0%, #fff 36%, #fbfcff 100%);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, .07);
+}
+
+.prompt-tip-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--vendor-color), color-mix(in srgb, var(--vendor-color) 20%, transparent));
+}
+
+.prompt-tip-card.featured {
+  padding: 26px;
+  border-radius: 28px;
+}
+
+.prompt-tip-card.featured h3 {
+  font-size: 1.28rem;
 }
 
 .prompt-tip-card.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
@@ -265,34 +288,83 @@ h2 {
   background: var(--surface-alt);
 }
 
+.prompt-tip-top .note-index {
+  background: color-mix(in srgb, var(--vendor-color) 12%, #fff);
+  color: var(--vendor-color);
+  font-weight: 850;
+}
+
 .prompt-tip-top .lane {
   border: 1px solid color-mix(in srgb, var(--vendor-color) 18%, var(--line-soft));
   background: #fff;
   color: var(--vendor-color);
 }
 
-.prompt-tip-card dl {
-  display: grid;
-  gap: 8px;
-  margin: 0 0 12px;
+.prompt-tip-kicker {
+  margin: 0 0 14px;
+  color: #475267;
+  font-size: .92rem;
+  line-height: 1.6;
 }
 
-.prompt-tip-card dl div {
-  display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 10px;
+.prompt-tip-card blockquote {
+  margin: 0 0 15px;
+  padding: 13px 14px;
+  border: 1px solid color-mix(in srgb, var(--vendor-color) 14%, var(--line-soft));
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .76);
 }
 
-.prompt-tip-card dt {
-  color: var(--primary);
-  font-size: .78rem;
-  font-weight: 800;
+.prompt-tip-card blockquote strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--vendor-color);
+  font-size: .76rem;
+  letter-spacing: .01em;
 }
 
-.prompt-tip-card dd {
+.prompt-tip-card blockquote span,
+.prompt-tip-story p,
+.prompt-tip-action p {
   margin: 0;
   color: #344054;
-  font-size: .86rem;
+  font-size: .9rem;
+  line-height: 1.65;
+}
+
+.prompt-tip-story {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.prompt-tip-story .example {
+  padding-left: 13px;
+  border-left: 2px solid color-mix(in srgb, var(--vendor-color) 24%, var(--line-soft));
+  color: #526071;
+}
+
+.prompt-tip-action {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 13px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--vendor-color) 8%, #f8fafc);
+}
+
+.prompt-tip-action span {
+  color: var(--vendor-color);
+  font-size: .75rem;
+  font-weight: 850;
+}
+
+.prompt-tip-card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--vendor-color);
+  font-size: .84rem;
 }
 
 .headline-card {
@@ -1053,10 +1125,6 @@ a:hover { text-decoration: underline; }
   .prompt-tip-card {
     padding: 14px;
     border-radius: 14px;
-  }
-  .prompt-tip-card dl div {
-    grid-template-columns: 38px minmax(0, 1fr);
-    gap: 8px;
   }
   .headline-card {
     grid-template-columns: 1fr;
