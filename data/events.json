@@ -1,5 +1,582 @@
 [
   {
+    "id": "9268524fd8096f38487ffa90",
+    "fingerprint": "2e1f814fa18f563b50f31c44",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Mistral models sold by Azure",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities mistral-document-ai-2512 Image-to-Text - Input: image or PDF pages (30 pages, max 30MB PDF file) - Output: text - Languages: en - Tool calling: no - Response formats: Text, JSON, Markdown mistral-medium-3-5 Preview chat-completion - Input: text (128,000 tokens), image - Output: text (128,000 tokens) - Tool calling: No - Response formats: Text, JSON mistral-ocr-4-0 Preview Image-to-Text - Input: image or PDF pages (30 pages, max 30MB PDF file) - Output: text - Languages: en - Tool calling: no - Response formats: Text, JSON, Markdown Mistral-Large-3 chat-completion - Input: text, image - Output: text - Languages: en, fr, de, es, it, pt, nl, zh, ja, ko, and ar - Tool calling: Yes - Response formats: Text, JSON Several Mistral models are also available from partners and community.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.255Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "52610c4492c23f9fc28bb3b9",
+    "fingerprint": "bc1690ea89f29f8e6e65e97e",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Moonshot AI models sold by Azure",
+    "summary": "Moonshot AI models include Kimi K2.6 (Preview) and Kimi K2.5 (Preview), multimodal reasoning models that accept text and image input. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities Kimi-K2.7-Code Preview chat-completion (with reasoning content) - Input: text and image (262,144 tokens) - Output: text (262,144 tokens) - Languages: en and zh - Tool calling: Yes - Response formats: Text Kimi-K2.6 Preview chat-completion (with reasoning content) - Input: text and image (262,144 tokens) - Output: text (262,144 tokens) - Languages: en and zh - Tool calling: Yes - Response formats: Text Kimi-K2.5 Preview chat-completion (with reasoning content) - Input: text and image (262,144 tokens) - Output: text (262,144 tokens) - Languages: en and zh - Tool calling: Yes - Response formats: Text See this model collection in the Foundry portal.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.255Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "c22f6a7d9e8d5d4ec1d1196a",
+    "fingerprint": "258ae694e94e5c617047f920",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "xAI models sold by Azure",
+    "summary": "xAI's Grok models in Foundry Models include a diverse set of reasoning and non-reasoning models designed for enterprise use cases such as data extraction, coding, text summarization, and agentic applications. Registration is required for access to grok-code-fast-1 (Preview) and grok-4. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities grok-4.3 Preview chat-completion - Input: text (200,000 tokens) - Output: text (8,192 tokens) - Languages: en - Tool calling: yes - Response formats: text grok-4-20-reasoning Preview chat-completion - Input: text (262,000 tokens) - Output: text (8,192 tokens) - Languages: en - Tool calling: yes - Response formats: text grok-4-20-non-reasoning Preview chat-completion - Input: text (262,000 tokens) - Output: text (8,192 tokens) - Languages: en - Tool calling: yes - Response formats: text grok-4.1-fast-reasoning chat-completion - Input: text, image (128",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.255Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "52f5fe99b6974060b8579e03",
+    "fingerprint": "c4062a0be74850b67790c376",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "pricing",
+    "title": "Black Forest Labs models sold by Azure",
+    "summary": "Black Forest Labs (BFL) FLUX models bring state-of-the-art image generation to Microsoft Foundry, enabling you to generate and edit high-quality images from text prompts and reference images. FLUX models support a range of capabilities including text-to-image generation, multi-reference image editing, and in-context generation and editing. You can run these models through the BFL service provider API and through the images/generations and images/edits endpoints. To work with FLUX models in Foundry, see Deploy and use FLUX models in Microsoft Foundry. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type & API endpoint Capabilities FLUX.2-flex Image generation - BFL service provider API: <resource-name>/providers/blackforestlabs/v1/flux-2-flex - Input: text and image (32,000 tokens and up to 10 imagesi) - Output: One Image - Tool calling: No - Response formats: Image (PNG and JPG) - Key features: F",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 80,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.254Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "692fe10d4a271e9b7cdf5467",
+    "fingerprint": "1d3ddfca7c45c42c7b0eb631",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Cohere models sold by Azure",
+    "summary": "The Cohere family of models includes various models optimized for different use cases, including chat completions, rerank/text classification, and embeddings. Cohere models are optimized for various use cases that include reasoning, summarization, and question answering. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities Cohere-rerank-v4.0-pro text classification (rerank) - Input: text - Output: text - Languages: en, fr, es, it, de, pt-br, ja, zh-cn, ar, vi, hi, ru, id, and nl - Tool calling: No - Response formats: JSON Cohere-rerank-v4.0-fast text classification (rerank) - Input: text - Output: text - Languages: en, fr, es, it, de, pt-br, ja, zh-cn, ar, vi, hi, ru, id, and nl - Tool calling: No - Response formats: JSON Cohere-command-a-plus-05-2026 Preview chat-completion (with reasoning content) - Input: text (128,000 tokens) - Output: text (64,000 tokens) - Languages: en, fr, es",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.254Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "91af9115930e6ebf9b812334",
+    "fingerprint": "599eda06883d87af90a3400f",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "DeepSeek models sold by Azure",
+    "summary": "The DeepSeek family of models includes several reasoning models, which excel at reasoning tasks by using a step-by-step training process, such as language, scientific reasoning, and coding tasks. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities DeepSeek-V4-Pro chat-completion (with reasoning content) - Input: text (1,000,000 tokens) - Output: text (384,000 tokens) - Languages: en and zh - Tool calling: No - Response formats: Text, JSON DeepSeek-V4-Flash chat-completion (with reasoning content) - Input: text (1,000,000 tokens) - Output: text (384,000 tokens) - Languages: en and zh - Tool calling: No - Response formats: Text, JSON DeepSeek-V3.2-Speciale chat-completion (with reasoning content) - Input: text (128,000 tokens) - Output: text (128,000 tokens) - Languages: en and zh - Tool calling: No - Response formats: Text, JSON DeepSeek-V3.2 chat-completion (with reasoning content) ",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.254Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "8ddca8445f1e4059366b8f11",
+    "fingerprint": "864f907fd27dcae7459d7bd8",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Meta models sold by Azure",
+    "summary": "Meta Llama models and tools are a collection of pretrained and fine-tuned generative AI text and image reasoning models. Meta models range in scale to include: Small language models (SLMs) like 1B and 3B Base and Instruct models for on-device and edge inferencing Mid-size large language models (LLMs) like 7B, 8B, and 70B Base and Instruct models High-performance models like Meta Llama 3.1-405B Instruct for synthetic data generation and distillation use cases. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities Llama-4-Maverick-17B-128E-Instruct-FP8 chat-completion - Input: text and images (1M tokens) - Output: text (1M tokens) - Languages: ar, en, fr, de, hi, id, it, pt, es, tl, th, and vi - Tool calling: No - Response formats: Text Llama-3.3-70B-Instruct chat-completion - Input: text (128,000 tokens) - Output: text (8,192 tokens) - Languages: en, de, fr, it, pt, hi, es, and th - To",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.254Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "f1000482c5e11fc907f1b45c",
+    "fingerprint": "4d01e3e1592e49f1e780e8c1",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "deprecation",
+    "title": "Model retirement",
+    "summary": "For the latest information on model retirements, refer to the Model retirement schedule.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 100,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.253Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "ec678dde2ed14d07f927931a",
+    "fingerprint": "5b561c57a95fbb9453a9221f",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Embeddings",
+    "summary": "text-embedding-3-large is the latest and most capable embedding model. You can't upgrade between embedding models. To move from text-embedding-ada-002 to text-embedding-3-large, you need to generate new embeddings. text-embedding-3-large text-embedding-3-small text-embedding-ada-002 For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "text-embedding-3-large",
+      "text-embedding-ada-002",
+      "text-embedding-3-small"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.252Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "9be256442fd26f0a626f83ef",
+    "fingerprint": "362a3b5fb3d06437d235336d",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Image generation models",
+    "summary": "The image generation models generate images from text prompts that the user provides. Image generation models include gpt-image-1, gpt-image-1-mini, gpt-image-1.5, and gpt-image-2. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model ID Max request (characters) gpt-image-1 4,000 gpt-image-1-mini 4,000 gpt-image-1.5 4,000",
+    "modelIds": [
+      "gpt-image-1-mini",
+      "gpt-image-1.5",
+      "gpt-image-2"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.252Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "f465c51dfba9efa1f5613675",
+    "fingerprint": "a878dedddde2691d1035dec9",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Video generation models",
+    "summary": "Sora is an AI model from OpenAI that can create realistic and imaginative video scenes from text instructions. Sora is in preview. Video generation models include sora and sora-2. Model ID Max request (characters) sora 4,000 For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.252Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "dfd6a3c48c43bd5ced9aa7e2",
+    "fingerprint": "1050bedda95a69417cfe2e5e",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Audio models",
+    "summary": "Audio models in Azure OpenAI are available via the realtime, completions, and audio APIs. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.252Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "591fe1a0f8d645ceb6b014ae",
+    "fingerprint": "727a00894b6e8c029baebf87",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Known issue",
+    "summary": "A known issue affects all GPT-4.1 series models. Large tool or function call definitions that exceed 300,000 tokens cause failures, even though the models' 1 million token context limit isn't reached. The errors can vary based on API call and underlying payload characteristics. Here are the error messages for the Chat Completions API: Error code: 400 - {'error': {'message': \"This model's maximum context length is 300000 tokens. However, your messages resulted in 350564 tokens (100 in the messages, 350464 in the functions). Please reduce the length of the messages or functions.\", 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}} Error code: 400 - {'error': {'message': \"Invalid 'tools[0].function.description': string too long. Expected a string with maximum length 1048576, but got a string with length 2778531 instead.\", 'type': 'invalid_request_error', 'param': 'tools[0].function.description', 'code': 'string_above_max_length'}} Here's the error me",
+    "modelIds": [
+      "GPT-4.1"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.251Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "81ae546ff8476f248786c1d7",
+    "fingerprint": "e6a661c4e80dcf5473d0278f",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "computer-use-preview",
+    "summary": "An experimental model trained for use with the Responses API computer use tool. It can be used with third-party libraries to allow the model to control mouse and keyboard input, while getting context from screenshots of the current environment. Caution We don't recommend using preview models in production. We'll upgrade all deployments of preview models to either future preview versions or to the latest stable, generally available version. Models that are designated preview don't follow the standard Azure OpenAI model lifecycle. Registration is required to access computer-use-preview. Access is granted based on Microsoft's eligibility criteria. Customers who have access to other limited access models still need to request access for this model. To request access, go to computer-use-preview limited access model application. When access is granted, you need to create a deployment for the model. For model availability across all regions, grouped by deployment category, see Region availabi",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 65,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.251Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "52b69b08298f8f12784cb8df",
+    "fingerprint": "7f93f238d787b4072acf5beb",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "o-series models",
+    "summary": "The Azure OpenAI o-series models are designed to tackle reasoning and problem-solving tasks with increased focus and capability. These models spend more time processing and understanding the user's request, making them exceptionally strong in areas like science, coding, and math, compared to previous iterations. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.251Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "e4404f87cf66c24ab418703d",
+    "fingerprint": "7b152e770faf4e589612a2e8",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-4o and GPT-4 Turbo",
+    "summary": "GPT-4o integrates text and images in a single model, which enables it to handle multiple data types simultaneously. This multimodal approach enhances accuracy and responsiveness in human-computer interactions. GPT-4o matches GPT-4 Turbo in English text and coding tasks while offering superior performance in non-English language tasks and vision tasks, setting new benchmarks for AI capabilities. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-4o"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.251Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "3f39233200c402ea9e902f08",
+    "fingerprint": "912063637fdc946ecb31bc1a",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-4 and GPT-4 Turbo models",
+    "summary": "You can use these models only with the Chat Completions API. To learn how Azure OpenAI handles model version upgrades, see Model versions. To learn how to view and configure the model version settings of your GPT-4 deployments, see Working with models. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-4"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.251Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "ea64a04837b984b50e51da3f",
+    "fingerprint": "02368699b76766b0f15c909d",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.1",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.1"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.250Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "ae746eefea0e3d813662833f",
+    "fingerprint": "7e86891a4b52f4f0d4a28b8e",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.250Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "ae6f7853964341672520ede5",
+    "fingerprint": "6324e3f2f8b479adcc6a95bd",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "gpt-oss",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "gpt-oss"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.250Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "995b05b5bd24ecda26eae12f",
+    "fingerprint": "373549f7251f360d27ed6f6b",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Deploy with code",
+    "summary": "az cognitiveservices account deployment create \\ --name \"Foundry-project-resource\" \\ --resource-group \"test-rg\" \\ --deployment-name \"gpt-oss-120b\" \\ --model-name \"gpt-oss-120b\" \\ --model-version \"1\" \\ --model-format \"OpenAI-OSS\" \\ --sku-capacity 10 \\ --sku-name \"GlobalStandard\"",
+    "modelIds": [
+      "gpt-oss-120b"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.250Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "1c26a5d10041e2839e18d273",
+    "fingerprint": "1d397c12303590bd2e9c704e",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-4.1 series",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-4.1"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.250Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "2f07e5258f99d2f4bb5c7da6",
+    "fingerprint": "eb4c5e71e34cd98d50cec0d9",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Model highlights",
+    "summary": "Models Description GPT-5.6 series NEW gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna Preview GPT-chat-latest (preview) NEW gpt-chat-latest Preview GPT-5.5 series NEW gpt-5.5 GPT-5.4 series gpt-5.4-mini, gpt-5.4-nano, gpt-5.4, gpt-5.4-pro GPT-5.3 series gpt-5.3-chat, gpt-5.3-codex GPT-5.2 series gpt-5.2-codex, gpt-5.2, gpt-5.2-chat Preview GPT-5.1 series gpt-5.1, gpt-5.1-chat Preview, gpt-5.1-codex, gpt-5.1-codex-mini Sora NEW sora-2 GPT-5 series gpt-5, gpt-5-mini, gpt-5-nano, gpt-5-chat Preview gpt-oss open-weight reasoning models codex-mini Fine-tuned version of o4-mini. GPT-4.1 series gpt-4.1, gpt-4.1-mini, gpt-4.1-nano computer-use-preview An experimental model trained for use with the Responses API computer use tool. o-series models Reasoning models with advanced problem solving and increased focus and capability. GPT-4o, GPT-4o mini, and GPT-4 Turbo Capable Azure OpenAI models with multimodal versions, which can accept both text and images as input. Embeddings A set of models that can c",
+    "modelIds": [
+      "GPT-5.6",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-5.6-luna",
+      "GPT-chat-latest",
+      "gpt-chat-latest",
+      "GPT-5.5",
+      "gpt-5.5",
+      "GPT-5.4",
+      "gpt-5.4-mini",
+      "gpt-5.4-nano",
+      "gpt-5.4-pro",
+      "GPT-5.3",
+      "gpt-5.3-chat",
+      "gpt-5.3-codex",
+      "GPT-5.2",
+      "gpt-5.2-codex",
+      "gpt-5.2-chat",
+      "GPT-5.1",
+      "gpt-5.1-chat",
+      "gpt-5.1-codex-mini",
+      "gpt-5-mini",
+      "gpt-5-nano",
+      "gpt-5-chat",
+      "gpt-oss",
+      "o4-mini",
+      "GPT-4.1",
+      "gpt-4.1-mini",
+      "gpt-4.1-nano",
+      "GPT-4o"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "76e7b22b98a6b82bb8926d6c",
+    "fingerprint": "5f3402351ef83deb759e0e60",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-chat-latest",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-chat-latest"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "29084621a616f1b34713f49c",
+    "fingerprint": "2fba7e55495238a0dcd8a69b",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.6",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.6"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "1e8bd86c4965bc20b0629266",
+    "fingerprint": "1d88b9b422c2ee8533e4fb66",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.5",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.5"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "fd0171a5212d0c9adc3ca58d",
+    "fingerprint": "7305194e9f3e1fdcf8419e04",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.4",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.4"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "bcb8776be9ee2455f236ec78",
+    "fingerprint": "4b648225dc63fbd9f13eb4db",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.3",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.3"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "ce4e814349ab1c9ae4ccabb8",
+    "fingerprint": "73dcb4cfd65867c97c275a82",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "GPT-5.2",
+    "summary": "For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure.",
+    "modelIds": [
+      "GPT-5.2"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
+    "id": "7f083031d5fccd5cef834a9e",
+    "fingerprint": "59a064ed0d19df24f89fd92a",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "pricing",
+    "title": "Azure OpenAI in Microsoft Foundry models",
+    "summary": "Azure OpenAI is powered by a diverse set of models with different capabilities and price points. Model availability varies by region and cloud. To see region availability for Azure OpenAI in Microsoft Foundry models grouped by deployment category, see Region availability for Foundry Models sold by Azure. For Azure Government model availability, refer to Azure OpenAI in Azure Government.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 80,
+    "publishedAt": null,
+    "detectedAt": "2026-07-13T00:51:56.248Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "d60824a32e02a08ae8bf3133",
     "fingerprint": "7c83f9163cd3e44dce1564e3",
     "sourceId": "gemini-models",
@@ -3415,6 +3992,26 @@
     "watched": false
   },
   {
+    "id": "730e3fc11bae421b3687a7b5",
+    "fingerprint": "1d4982c17453995d925cc8ab",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Capabilities",
+    "summary": "Model ID Description Context Window Max Output Tokens Training Data (up to) gpt-chat-latest (2026-06-24)Preview - Reasoning - Chat Completions API. - Responses API. - Structured outputs - Functions, tools, and parallel tool calling. 128,000 Input: 111,616 Output: 16,384 16,384 August 2025 gpt-chat-latest (2026-05-28)Preview - Reasoning - Chat Completions API. - Responses API. - Structured outputs - Functions, tools, and parallel tool calling. 128,000 Input: 111,616 Output: 16,384 16,384 August 2025 gpt-chat-latest (2026-05-05)Preview - Reasoning - Chat Completions API. - Responses API. - Structured outputs - Functions, tools, and parallel tool calling. 128,000 Input: 111,616 Output: 16,384 16,384 August 2025 Note You might also see this model referred to by OpenAI as GPT-5.5 Instant or in the OpenAI API as chat-latest. In Microsoft Foundry, the product name for this release is gpt-chat-latest. The model continues to follow the existing Preview lifecycle and standard notice periods. The",
+    "modelIds": [
+      "gpt-chat-latest",
+      "GPT-5.5"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": "2026-06-24",
+    "detectedAt": "2026-07-13T00:51:56.249Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "ff0d299f2b54fb7d9f355bcc",
     "fingerprint": "93acb82ece1620476ebd9a17",
     "sourceId": "anthropic-news",
@@ -6139,6 +6736,23 @@
     "publishedAt": "2026-05-01",
     "detectedAt": "2026-07-09T09:02:38.509Z",
     "watched": false
+  },
+  {
+    "id": "13955a6558438e661d8dfa0a",
+    "fingerprint": "c56f62040ee635d36a2749ed",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "title": "May 2026",
+    "summary": "GPT Realtime 2.0 concept articles New concept articles describe the capabilities and key concepts for the latest realtime model: GPT Realtime 2.0 (preview) overview — covers reasoning support, response phases (preamble and final answer), and stricter instruction following. GPT Realtime Translate and GPT Realtime Whisper New concept articles describe the capabilities and use cases for the latest real-time translation and transcription models: GPT Realtime Translate — covers continuous stream-based audio translation for live multilingual events, customer support, and voice assistants. GPT Realtime Whisper — covers low-latency streaming transcription for live captions, monitoring, and archival workflows.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 55,
+    "publishedAt": "2026-05-01",
+    "detectedAt": "2026-07-13T00:51:56.165Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "1cd4feac8d63a1e559f17e6c",
@@ -9748,6 +10362,28 @@
     "watched": false
   },
   {
+    "id": "43229667af1b90a882ae689c",
+    "fingerprint": "75b0367c1123bbe053c49796",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "February 2026",
+    "summary": "GPT-Realtime-1.5 and GPT-Audio-1.5 models released The gpt-realtime-1.5 and gpt-audio-1.5 models are now available. These models build on last year's GPT-Realtime and GPT-Audio with improvements in instruction following, multilingual support, and tool calling, while preserving the low-latency, real-time interactions developers need for voice-first applications. Try them with the existing chat completion APIs in Microsoft Foundry.",
+    "modelIds": [
+      "GPT-Realtime-1.5",
+      "GPT-Audio-1.5",
+      "gpt-realtime-1.5",
+      "gpt-audio-1.5"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2026-02-01",
+    "detectedAt": "2026-07-13T00:51:56.165Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "4d497c863d1a4a2d57ca881e",
     "fingerprint": "0a4bf5834e07441ad0df0d77",
     "sourceId": "anthropic-release-notes",
@@ -11840,6 +12476,29 @@
     "watched": false
   },
   {
+    "id": "6aba507ee98603b2415ea30d",
+    "fingerprint": "6dd98b836698c6ba886d9908",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "title": "December 2025",
+    "summary": "GPT-image-1.5 model is now available GPT-image-1.5 is OpenAI's latest cutting-edge image generation model. It features improved performance, quality, editing controls, and face preservation. In editing mode, the model supports high input_fidelity and adding or removing one aspect of the input image while retaining others. Request access: limited access model application Key model capabilities: Includes all capabilities of GPT-image-1: Text to image generation Image to image generation (editing) Inpainting High quality image generations, up to 1024x1536 and 1536x1024 pixels Face preservation Follow the image generation how-to guide to get started with this model. Automatic speech recognition (ASR) model update gpt-4o-mini-transcribe-2025-12-15 Improved transcription accuracy and robustness for real-time scenarios, with approximately 50% lower word error rate (WER) than the previous gpt-4o-transcribe-mini model on English benchmarks. Improves multilingual performance across Japanese, Ind",
+    "modelIds": [
+      "GPT-image-1.5",
+      "gpt-4o-mini-transcribe-2025-12-15",
+      "gpt-4o-transcribe-mini",
+      "gpt-realtime-mini-2025-12-15",
+      "gpt-4o-mini-tts-2025-12-15"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 55,
+    "publishedAt": "2025-12-01",
+    "detectedAt": "2026-07-13T00:51:56.166Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "68e72a53183b1c0003430ee8",
     "fingerprint": "fb1ab9b2d3c68e2c072a4c39",
     "sourceId": "bedrock-doc-history",
@@ -12084,6 +12743,27 @@
     "publishedAt": "2025-11-18",
     "detectedAt": "2026-07-09T09:02:45.899Z",
     "watched": true
+  },
+  {
+    "id": "60243daa8224049fac2b7ae6",
+    "fingerprint": "a28ddcbcc6068d9e4ec343c2",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Microsoft models sold by Azure",
+    "summary": "Microsoft models include various model groups such as Model Router, MAI models, Phi models, healthcare AI models, and more. Several Microsoft models are also available from partners and community. To work with MAI image models in Foundry, see Deploy and use MAI image models in Microsoft Foundry. For model availability across all regions, grouped by deployment category, see Region availability for Foundry Models sold by Azure. Model Type Capabilities MAI-Image-2.5-Flash Preview Image-to-Image and Text-to-Image. See API endpoints for details. - Input: text, image (JPEG or PNG format for image editing workflows) - Output: One image - Context length: 32,000 tokens - Tool calling: No - Response formats: Image (PNG) - Languages: en - Key features: High-quality text-to-image generation; Image editing that supports precise, surgical edits without disrupting the rest of the image; Capability to generate realistic imagery with consistent visual structure. Well suited for tasks such as concept vi",
+    "modelIds": [
+      "GPT-4.1",
+      "o4-mini",
+      "gpt-5-chat"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": "2025-11-18",
+    "detectedAt": "2026-07-13T00:51:56.255Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "b9bd69846ba218e85cc5cd03",
@@ -14103,6 +14783,28 @@
     "watched": false
   },
   {
+    "id": "b357c3181eec5d4320dc4623",
+    "fingerprint": "ead4b46be87353ca6a7fc728",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "October 2025",
+    "summary": "Realtime API support for SIP The Realtime API now supports SIP, enabling telephony connections to realtimeapi. For more information, see the Realtime SIP documentation. GPT-4o audio model released The gpt-4o-transcribe-diarize speech to text model is released. This model is an Automatic Speech Recognition (ASR) model that converts spoken language into text in real time. It enables organizations to unlock insights from conversations instantly with ultra-low latency and high accuracy across 100+ languages. This capability is essential for workflows where voice data drives decisions—such as customer support, virtual meetings, and live events. Diarization is the process of identifying who spoke when in an audio stream. It transforms conversations into speaker-attributed transcripts, enabling businesses to extract actionable insights from meetings, customer calls, and live events. With advanced models like gpt-4o-transcribe-diarize, organizations gain real-time clarity and context—turning v",
+    "modelIds": [
+      "GPT-4o",
+      "gpt-4o-transcribe-diarize",
+      "GPT-image-1-mini",
+      "gpt-image-1-mini"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-10-01",
+    "detectedAt": "2026-07-13T00:51:56.166Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "a715595d3ee0479eb131b2c4",
     "sourceId": "vertex-release-notes",
@@ -15457,6 +16159,26 @@
     "watched": true
   },
   {
+    "id": "99dfc79a464650299f9b9191",
+    "fingerprint": "e61d2fdfb3e1f81edfe6bade",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "title": "September 2025",
+    "summary": "GPT-5-codex is now available To learn more about gpt-5-codex, see the getting started with reasoning models page. gpt-5-codex is designed for use with the Codex CLI and the Visual Studio Code Codex extension. Registration is required for access to the gpt-5-codex model. If you have previously registered and obtained access to other limited access models like gpt-5, you don't need to reapply and will automatically be granted access. Sora video-to-video support The Sora model from OpenAI now supports video-to-video generation. You can provide a short video as input to generate a new, longer video that incorporates the input video. See the quickstart to get started.",
+    "modelIds": [
+      "GPT-5-codex",
+      "gpt-5-codex"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 55,
+    "publishedAt": "2025-09-01",
+    "detectedAt": "2026-07-13T00:51:56.166Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "2c43e7ef6fb932e0beb14821",
     "sourceId": "vertex-release-notes",
@@ -16527,6 +17249,28 @@
     "watched": false
   },
   {
+    "id": "3219ba679d53d35a2f8f4fd4",
+    "fingerprint": "9c6db7c38967e463942d6ecd",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "August 2025",
+    "summary": "Sora image-to-video support The Sora model from OpenAI now supports image-to-video generation. You can provide an image as input to the model to generate a video that incorporates the content of the image. You can also specify the frame of the video in which the image should appear: it doesn't need to be the beginning. See the quickstart to get started. This Sora model is now available in the Sweden Central region and East US 2. Realtime API audio model GA OpenAI's GPT RealTime and Audio models are now generally available in Microsoft Foundry Models. Model improvements: Improved instruction following: Enhanced capabilities to follow tone, pacing, and escalation instructions more accurately and reliably. Can also switch languages. New standard voices, Marin and Cedar, that bring improved naturalness and clarity to speech synthesis. Improved audio quality: Glitch-free output, improved alphanumeric reproduction, and modality control. Realtime API service improvements: Image Input: Add and",
+    "modelIds": [
+      "GPT-5",
+      "gpt-5-mini",
+      "gpt-5-nano",
+      "gpt-5-chat"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-08-01",
+    "detectedAt": "2026-07-13T00:51:56.167Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "6721b21ae45d870209f7265f",
     "fingerprint": "28206ddb539dae57cf0e645d",
     "sourceId": "gemini-changelog",
@@ -17309,6 +18053,25 @@
     "watched": false
   },
   {
+    "id": "7b587b4e275d455617dcf3a5",
+    "fingerprint": "ff09720bd9fd0fed42e9cf07",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "title": "July 2025",
+    "summary": "GPT-image-1 update (preview) Input fidelity parameter: The input_fidelity parameter in the image edits API lets you control how closely the model conveys the style and features of the subjects in the original (input) image. This is useful for: Editing photos while preserving facial features; creating avatars that look like original person across different styles; combining faces from multiple people into one image. Maintaining brand identity in generated images for marketing assets, mockups, product photography. E-commerce and fashion, where you need to edit images of outfits or product details without compromising realism. Partial image streaming: The image generation and image edits APIs support partial image streaming, where they return images with partially rendered content throughout the image generation process. Display these images to the user to provide earlier visual feedback and show the progress of the image generation operation.",
+    "modelIds": [
+      "GPT-image-1"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 55,
+    "publishedAt": "2025-07-01",
+    "detectedAt": "2026-07-13T00:51:56.167Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "8ec0c56d2e0f3fdcd015b73e",
     "fingerprint": "4a7137c1c1669abfb84ac6b3",
     "sourceId": "bedrock-doc-history",
@@ -18045,6 +18808,25 @@
     "watched": false
   },
   {
+    "id": "5602c4095e3a2375a5c0bea5",
+    "fingerprint": "670fef6672eb1617024121f4",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "June 2025",
+    "summary": "New models codex-mini & o3-pro released codex-mini and o3-pro are now available. To learn more, see the getting started with reasoning models page",
+    "modelIds": [
+      "o3-pro"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-06-01",
+    "detectedAt": "2026-07-13T00:51:56.167Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "2ae3d60130996af5212419e2",
     "sourceId": "vertex-release-notes",
@@ -18776,6 +19558,23 @@
     "watched": true
   },
   {
+    "id": "f45b9e38c3a10bcbed27c621",
+    "fingerprint": "74acf7cbe6372cdaaa3ef4ab",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "May 2025",
+    "summary": "Sora video generation released (preview) The Sora (2025-05-02) model is a video generation model from OpenAI that can create realistic and imaginative video scenes from text instructions. Follow the Video generation quickstart to get started. For more information, see the Video generation concepts guide. Spotlighting for prompt shields (preview) Spotlighting is a sub-feature of prompt shields that enhances protection against indirect (embedded document) attacks by tagging input documents with special formatting to indicate lower trust to the model. For more information, see the Prompt shields filter documentation. Model router (preview) Model router for Microsoft Foundry is a deployable AI chat model that automatically selects the best underlying chat model to respond to a given prompt. For more information on how model router works and its advantages and limitations, see the Model router concepts guide. To use model router with the Completions API, follow the How-to guide.",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-05-01",
+    "detectedAt": "2026-07-13T00:51:56.167Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "9c350e61ce9ec2a26ad2b7d6",
     "sourceId": "vertex-release-notes",
@@ -19467,6 +20266,31 @@
     "watched": false
   },
   {
+    "id": "847d02e45fbabeaa4f0402bd",
+    "fingerprint": "a519ad4e993e3f004b26167f",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "April 2025",
+    "summary": "Realtime API (preview) support for WebRTC The Realtime API (preview) now supports WebRTC, enabling real-time audio streaming and low-latency interactions. This feature is ideal for applications requiring immediate feedback, such as live customer support or interactive voice assistants. For more information, see the Realtime API (preview) documentation. GPT-image-1 released (preview, limited access) GPT-image-1 (2025-04-15) is the latest image generation model from Azure OpenAI. It features major improvements over DALL-E, including: Better at responding to precise instructions. Reliably renders text. Accepts images as input, which enables the new capabilities of image editing and inpainting. Request access: Limited access model application Follow the image generation how-to guide to get started with the new model. o4-mini and o3 models released o4-mini and o3 models are now available. These models are the latest reasoning models from Azure OpenAI offering enhanced reasoning, quality, an",
+    "modelIds": [
+      "GPT-image-1",
+      "o4-mini",
+      "GPT-4.1",
+      "GPT-4o",
+      "gpt-4o-transcribe",
+      "gpt-4o-mini-transcribe",
+      "gpt-4o-mini-tts"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-04-01",
+    "detectedAt": "2026-07-13T00:51:56.168Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "60aeb756fce6d771f16203f9",
     "sourceId": "vertex-release-notes",
@@ -19611,6 +20435,28 @@
     "publishedAt": "2025-03-20",
     "detectedAt": "2026-07-09T09:02:48.956Z",
     "watched": false
+  },
+  {
+    "id": "e36f7bcfcdd84864fd0f6f50",
+    "fingerprint": "b74c44f5b1bbb98201c025b0",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Audio API",
+    "summary": "The audio models via the /audio API can be used for speech to text, translation, and text to speech. Speech-to-text models Model ID Description Max request (audio file size) whisper General-purpose speech recognition model. 25 MB gpt-4o-transcribe (2025-03-20)Preview Speech-to-text model powered by GPT-4o. 25 MB gpt-4o-mini-transcribe (2025-03-20)Preview Speech-to-text model powered by GPT-4o mini. 25 MB gpt-4o-transcribe-diarize (2025-10-15)Preview Speech-to-text model with automatic speech recognition. 25 MB gpt-4o-mini-transcribe (2025-12-15)Preview Speech-to-text model with automatic speech recognition. Improved transcription accuracy and robustness. 25 MB Speech translation models Model ID Description Max request (audio file size) whisper General-purpose speech recognition model. 25 MB Text-to-speech models (preview) Model ID Description ttsPreview Text-to-speech model optimized for speed. tts-hdPreview Text-to-speech model optimized for quality. gpt-4o-mini-tts (2025-03-20) Text-",
+    "modelIds": [
+      "GPT-4o",
+      "gpt-4o-mini-transcribe",
+      "gpt-4o-transcribe-diarize",
+      "gpt-4o-mini-tts"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": "2025-03-20",
+    "detectedAt": "2026-07-13T00:51:56.253Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "b25433167287a1d9b985b44e",
@@ -20247,6 +21093,23 @@
     "publishedAt": "2025-03-01",
     "detectedAt": "2026-07-09T09:02:38.536Z",
     "watched": false
+  },
+  {
+    "id": "82a9c4a35ef365c42cbaabcd",
+    "fingerprint": "1a49d4be581318701a6ed1c7",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "title": "March 2025",
+    "summary": "Responses API & computer-use-preview model The Responses API is a new stateful API from Azure OpenAI. It brings together the best capabilities from the chat completions and assistants API in one unified experience. The Responses API also adds support for the new computer-use-preview model, which powers the Computer use capability. For access to computer-use-preview registration is required, and access will be granted based on Microsoft's eligibility criteria. Customers who have access to other limited access models still need to request access for this model. Request access: computer-use-preview limited access model application For more information on model capabilities, and region availability see the models documentation. Playwright integration demo code. Provisioned spillover (preview) Spillover manages traffic fluctuations on provisioned deployments by routing overages to a designated standard deployment. To learn more about how to maximize utilization for your provisioned deployme",
+    "modelIds": [],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 55,
+    "publishedAt": "2025-03-01",
+    "detectedAt": "2026-07-13T00:51:56.168Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -20916,6 +21779,29 @@
     "watched": false
   },
   {
+    "id": "5a2f2146b5865a5c565f7601",
+    "fingerprint": "306db9ed947cb9aad05e61fd",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "February 2025",
+    "summary": "GPT-4.5 Preview The latest GPT model that excels at diverse text and image tasks is now available on Azure OpenAI. For more information on model capabilities, and region availability see the models documentation. Stored completions API Stored completions allow you to capture the conversation history from chat completions sessions to use as datasets for evaluations and fine-tuning. o3-mini data zone standard deployments o3-mini is now available for global standard, and data zone standard deployments for registered limited access customers. For more information, see our reasoning model guide. gpt-4o mini audio released The gpt-4o-mini-audio-preview (2024-12-17) model is the latest audio completions model. For more information, see the audio generation quickstart. The gpt-4o-mini-realtime-preview (2024-12-17) model is the latest real-time audio model. The real-time models use the same underlying GPT-4o audio model as the completions API, but is optimized for low-latency, real-time audio i",
+    "modelIds": [
+      "GPT-4.5",
+      "o3-mini",
+      "gpt-4o-mini-audio-preview",
+      "gpt-4o-mini-realtime-preview",
+      "GPT-4o"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-02-01",
+    "detectedAt": "2026-07-13T00:51:56.168Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "539db6d068c153fc0316fefa",
     "sourceId": "vertex-release-notes",
@@ -21294,6 +22180,28 @@
     "watched": false
   },
   {
+    "id": "d1e79184b9ff9091720ffca5",
+    "fingerprint": "95264d324be7b7fef795a0fa",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "January 2025",
+    "summary": "o3-mini released o3-mini (2025-01-31) is the latest reasoning model, offering enhanced reasoning abilities. For more information, see our reasoning model guide. GPT-4o audio completions The gpt-4o-audio-preview model is now available for global deployments in East US 2 and Sweden Central regions. Use the gpt-4o-audio-preview model for audio generation. The gpt-4o-audio-preview model introduces the audio modality into the existing /chat/completions API. The audio model expands the potential for AI applications in text and voice-based interactions and audio analysis. Modalities supported in gpt-4o-audio-preview model include: text, audio, and text + audio. For more information, see the audio generation quickstart. Note The Realtime API uses the same underlying GPT-4o audio model as the completions API, but is optimized for low-latency, real-time audio interactions. GPT Realtime API 2024-12-17 The gpt-4o-realtime-preview model version 2024-12-17 is available for global deployments in East",
+    "modelIds": [
+      "o3-mini",
+      "GPT-4o",
+      "gpt-4o-audio-preview",
+      "gpt-4o-realtime-preview"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2025-01-01",
+    "detectedAt": "2026-07-13T00:51:56.168Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a7d5e5e931de83b7b121b689",
     "fingerprint": "bd42963953491a29d85173c9",
     "sourceId": "bedrock-doc-history",
@@ -21388,6 +22296,36 @@
     "publishedAt": "2024-12-17",
     "detectedAt": "2026-07-09T09:02:48.956Z",
     "watched": false
+  },
+  {
+    "id": "7df2204cafa8767dfd707c8e",
+    "fingerprint": "7758a45e8f5bef24e6ba9e87",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "pricing",
+    "title": "GPT-4o audio models",
+    "summary": "The GPT-4o audio models are part of the GPT-4o model family and support either low-latency, speech in, speech out conversational interactions or audio generation. Caution We don't recommend using preview models in production. We'll upgrade all deployments of preview models to either future preview versions or to the latest stable, generally available version. Models that are designated preview don't follow the standard Azure OpenAI model lifecycle. Details about maximum request tokens and training data are available in the following table: Model ID Description Max request (tokens) Training data (up to) gpt-4o-mini-audio-preview (2024-12-17)Preview Audio model for audio and text generation. Input: 128,000 Output: 16,384 September 2023 gpt-4o-audio-preview (2024-12-17) Audio model for audio and text generation. Input: 128,000 Output: 16,384 September 2023 gpt-4o-realtime-preview (2025-06-03) Audio model for real-time audio processing. Input: 32,000 Output: 4,096 October 2023 gpt-4o-realt",
+    "modelIds": [
+      "GPT-4o",
+      "gpt-4o-mini-audio-preview",
+      "gpt-4o-audio-preview",
+      "gpt-4o-realtime-preview",
+      "gpt-4o-mini-realtime-preview",
+      "gpt-audio-mini",
+      "gpt-realtime-mini",
+      "gpt-audio-1.5",
+      "gpt-realtime-1.5",
+      "gpt-realtime-translate",
+      "gpt-realtime-whisper",
+      "gpt-realtime-2.1-mini"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 80,
+    "publishedAt": "2024-12-17",
+    "detectedAt": "2026-07-13T00:51:56.253Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -21881,6 +22819,30 @@
     "publishedAt": "2024-12-01",
     "detectedAt": "2026-07-09T09:02:38.538Z",
     "watched": false
+  },
+  {
+    "id": "f306f5346a7cfad83e2ac479",
+    "fingerprint": "fc9e0973da4b9f4f40077d44",
+    "sourceId": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "December 2024",
+    "summary": "o1 reasoning model released for limited access The latest o1 model is now available for API access and model deployment. Registration is required, and access will be granted based on Microsoft's eligibility criteria. Customers who previously applied and received access to o1-preview, don't need to reapply as they're automatically on the wait-list for the latest model. Request access: limited access model application To learn more about the advanced o1 series models see, getting started with o1 series reasoning models. Region availability Model Region o1 (Version: 2024-12-17) East US2 (Global Standard) Sweden Central (Global Standard) Preference fine-tuning (preview) Direct preference optimization (DPO) is a new alignment technique for large language models, designed to adjust model weights based on human preferences. Unlike reinforcement learning from human feedback (RLHF), DPO doesn't require fitting a reward model and uses simpler data (binary preferences) for training. This method i",
+    "modelIds": [
+      "o1-preview",
+      "gpt-4o-2024-08-06",
+      "GPT-4o",
+      "gpt-4o-2024-11-20",
+      "gpt-4o-2024-05-13",
+      "gpt-4o-mini-2024-07-18"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "severity": 65,
+    "publishedAt": "2024-12-01",
+    "detectedAt": "2026-07-13T00:51:56.169Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "4f1dc880ce728aedae827653",
@@ -24283,6 +25245,31 @@
     "watched": true
   },
   {
+    "id": "4b916d278d61cde12474e05e",
+    "fingerprint": "125b007351e52ab54a07a269",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "release",
+    "title": "Fine-tuning models",
+    "summary": "The following models are supported for fine-tuning: Model ID Standard regions Global Developer Methods Status Modality gpt-4o-mini (2024-07-18) North Central US Sweden Central ✅ ✅ SFT GA Text to text gpt-4o (2024-08-06) East US2 North Central US Sweden Central ✅ ✅ SFT, DPO GA Text and vision to text gpt-4.1 (2025-04-14) North Central US Sweden Central ✅ ✅ SFT, DPO GA Text and vision to text gpt-4.1-mini (2025-04-14) North Central US Sweden Central ✅ ✅ SFT, DPO GA Text to text gpt-4.1-nano (2025-04-14) North Central US Sweden Central ✅ ✅ SFT, DPO GA Text to text o4-mini (2025-04-16) East US2 Sweden Central ✅ ❌ RFT GA Text to text gpt-5 (2025-08-07) North Central US Sweden Central ✅ ✅ RFT GA* Text to text Ministral-3B (2411) Not supported ✅ ❌ SFT Public preview Text to text Qwen-32B Not supported ✅ ❌ SFT Public preview Text to text Llama-3.3-70B-Instruct Not supported ✅ ❌ SFT Public preview Text to text gpt-oss-20b Not supported ✅ ❌ SFT Public preview Text to text * GPT-5 support for rei",
+    "modelIds": [
+      "gpt-4o-mini",
+      "gpt-4.1-mini",
+      "gpt-4.1-nano",
+      "o4-mini",
+      "gpt-5",
+      "gpt-oss-20b",
+      "GPT-5"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 65,
+    "publishedAt": "2024-07-18",
+    "detectedAt": "2026-07-13T00:51:56.253Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+  },
+  {
     "id": "a871f35cceb8febb75f8432c",
     "fingerprint": "b058e3962455e21a66331251",
     "sourceId": "vertex-release-notes",
@@ -25408,6 +26395,27 @@
     "publishedAt": "2024-05-14",
     "detectedAt": "2026-07-09T09:02:48.956Z",
     "watched": false
+  },
+  {
+    "id": "badc3a73841cb1586a3ac91b",
+    "fingerprint": "2ee5bb456be8b3b1ecde6bdd",
+    "sourceId": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "title": "Assistants (preview)",
+    "summary": "For Assistants, you need a combination of a supported model and a supported region. Certain tools and capabilities require the latest models. The following models are available in the Assistants API, SDK, and Foundry. The following table is for standard deployment. For information on provisioned throughput unit availability, see Provisioned throughput models. The listed models and regions can be used with both Assistants v1 and v2. You can use Global Standard models if they're supported in the following regions. Region gpt-4o, 2024-05-13 gpt-4o, 2024-08-06 gpt-4o-mini, 2024-07-18 gpt-4, 0613 gpt-4, 1106-Preview gpt-4, 0125-Preview gpt-4, turbo-2024-04-09 gpt-4-32k, 0613 gpt-35-turbo, 0613 gpt-35-turbo, 1106 gpt-35-turbo, 0125 gpt-35-turbo-16k, 0613 australiaeast - - - ✅ ✅ - - ✅ ✅ ✅ ✅ ✅ eastus ✅ ✅ ✅ - - ✅ ✅ - ✅ - ✅ ✅ eastus2 ✅ ✅ ✅ - ✅ - ✅ - ✅ - ✅ ✅ francecentral - - - ✅ ✅ - - ✅ ✅ ✅ - ✅ japaneast - - - - - - - - ✅ - ✅ ✅ norwayeast - - - - ✅ - - - - - - - southindia - - - - ✅ - - - - ✅ ✅ ",
+    "modelIds": [
+      "gpt-4o-mini",
+      "gpt-4-32k",
+      "gpt-35-turbo-16k"
+    ],
+    "sourceUrl": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "severity": 45,
+    "publishedAt": "2024-05-13",
+    "detectedAt": "2026-07-13T00:51:56.253Z",
+    "watched": true,
+    "summaryError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
   },
   {
     "id": "6721b21ae45d870209f7265f",
