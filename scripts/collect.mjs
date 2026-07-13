@@ -95,9 +95,27 @@ run.summaries = {
   summarized: summaryResult.summarized,
   routed: summaryResult.routed || 0,
   calls: summaryResult.calls || 0,
+  failed: summaryResult.failed || 0,
+  candidates: summaryResult.candidates || 0,
   skipped: summaryResult.skipped,
   model: summaryResult.model || null
 };
+const summaryStrict = process.env.SUMMARY_STRICT !== "false";
+if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
+  throw new Error(
+    `OPENAI_API_KEY is required to summarize ${newEvents.length} new events. Set SUMMARY_STRICT=false to collect without summaries.`
+  );
+}
+if (
+  summaryStrict &&
+  !summaryResult.skipped &&
+  summaryResult.candidates > 0 &&
+  summaryResult.summarized === 0
+) {
+  throw new Error(
+    `OpenAI summaries failed for all ${summaryResult.candidates} candidate events; refusing to write unsummarized data.`
+  );
+}
 const retainedPrevious = await enrichCarriedEvents(previousEvents.filter(
   (event) => !consumedPrevious.has(previousKey(event)) && !consumedSourceUrls.has(`${event.sourceId}|${event.sourceUrl}`)
 ));
