@@ -26,6 +26,7 @@
     "openai": "OpenAI",
     "anthropic": "Anthropic",
     "google": "Google Gemini / Vertex AI",
+    "microsoft": "Microsoft Foundry / Azure OpenAI",
     "aws": "Amazon Bedrock"
   },
   "avoidPhrases": [

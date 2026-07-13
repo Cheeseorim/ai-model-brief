@@ -41,6 +41,7 @@ const vendorLabels = {
   openai: "OpenAI",
   anthropic: "Anthropic",
   google: "Google Gemini / Vertex AI",
+  microsoft: "Microsoft Foundry / Azure OpenAI",
   aws: "Amazon Bedrock"
 };
 const sourceLabels = {
@@ -58,6 +59,8 @@ const sourceLabels = {
   "gemini-news": "Gemini 블로그",
   "vertex-release-notes": "Vertex AI 릴리스 노트",
   "vertex-deprecations": "Vertex AI 지원 종료",
+  "azure-openai-whats-new": "Azure OpenAI 변경사항",
+  "azure-foundry-models": "Foundry 모델 문서",
   "bedrock-lifecycle": "모델 수명주기",
   "bedrock-doc-history": "문서 변경 이력"
 };
@@ -532,7 +535,7 @@ function formatCurrency(value) {
 }
 
 function vendorSort(vendor) {
-  return { openai: 0, anthropic: 1, google: 2, aws: 3 }[vendor] ?? 99;
+  return { openai: 0, anthropic: 1, google: 2, microsoft: 3, aws: 4 }[vendor] ?? 99;
 }
 
 function renderHeadlines() {

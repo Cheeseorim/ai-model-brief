@@ -20,6 +20,8 @@
   --anthropic-soft: #f8f5f1;
   --google: #4864a8;
   --google-soft: #f3f5fb;
+  --microsoft: #4f63a7;
+  --microsoft-soft: #f4f6fb;
   --aws: #9a6b2f;
   --aws-soft: #faf6ef;
   --shadow: 0 14px 40px rgba(20, 26, 40, .07);
@@ -271,6 +273,7 @@ h2 {
 .prompt-tip-card.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .prompt-tip-card.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .prompt-tip-card.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.prompt-tip-card.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .prompt-tip-card.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 
 .prompt-tip-top {
@@ -395,6 +398,7 @@ h2 {
 .headline-card.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .headline-card.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .headline-card.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.headline-card.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .headline-card.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .headline-card[class*="vendor-"] { border-top: 1px solid color-mix(in srgb, var(--vendor-color) 16%, var(--line-soft)); }
 .headline-card[class*="vendor-"] .headline-meta span:first-child {
@@ -502,6 +506,7 @@ h2 {
 .coverage-card.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .coverage-card.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .coverage-card.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.coverage-card.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .coverage-card.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 
 .coverage-card:hover,
@@ -638,6 +643,7 @@ h2 {
 .issue-item.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .issue-item.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .issue-item.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.issue-item.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .issue-item.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 
 .issue-meta,
@@ -770,6 +776,7 @@ h2 {
 .pricing-table tr.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .pricing-table tr.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .pricing-table tr.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.pricing-table tr.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .pricing-table tr.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .pricing-table tr[class*="vendor-"] td:first-child {
   box-shadow: inset 2px 0 0 color-mix(in srgb, var(--vendor-color) 70%, var(--line-soft));
@@ -842,6 +849,7 @@ h2 {
 .model-toggles button.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .model-toggles button.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .model-toggles button.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.model-toggles button.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .model-toggles button.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .model-toggles button:hover,
 .model-toggles button.active {
@@ -872,6 +880,7 @@ h2 {
 .pricing-estimate > div.vendor-openai { --vendor-color: var(--openai); --vendor-soft: var(--openai-soft); }
 .pricing-estimate > div.vendor-anthropic { --vendor-color: var(--anthropic); --vendor-soft: var(--anthropic-soft); }
 .pricing-estimate > div.vendor-google { --vendor-color: var(--google); --vendor-soft: var(--google-soft); }
+.pricing-estimate > div.vendor-microsoft { --vendor-color: var(--microsoft); --vendor-soft: var(--microsoft-soft); }
 .pricing-estimate > div.vendor-aws { --vendor-color: var(--aws); --vendor-soft: var(--aws-soft); }
 .pricing-estimate > div[class*="vendor-"] {
   border-color: color-mix(in srgb, var(--vendor-color) 20%, var(--line-soft));

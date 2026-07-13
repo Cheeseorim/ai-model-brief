@@ -4,6 +4,7 @@
     "openai-api",
     "claude-api",
     "gemini-api",
+    "azure-openai",
     "amazon-bedrock"
   ],
   "regions": [

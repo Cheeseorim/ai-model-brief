@@ -127,6 +127,24 @@
     "priority": 95
   },
   {
+    "id": "azure-openai-whats-new",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "changelog",
+    "url": "https://learn.microsoft.com/en-us/azure/foundry-classic/openai/whats-new",
+    "parser": "dated-sections",
+    "priority": 85
+  },
+  {
+    "id": "azure-foundry-models",
+    "vendor": "microsoft",
+    "platform": "azure-openai",
+    "kind": "models",
+    "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+    "parser": "headings",
+    "priority": 80
+  },
+  {
     "id": "bedrock-lifecycle",
     "vendor": "aws",
     "platform": "amazon-bedrock",
