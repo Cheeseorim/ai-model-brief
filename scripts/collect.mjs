@@ -98,13 +98,16 @@ run.summaries = {
   failed: summaryResult.failed || 0,
   candidates: summaryResult.candidates || 0,
   skipped: summaryResult.skipped,
-  model: summaryResult.model || null
+  model: summaryResult.model || null,
+  fatalError: summaryResult.fatalError || null
 };
 const summaryStrict = process.env.SUMMARY_STRICT !== "false";
 if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
-  throw new Error(
-    `OPENAI_API_KEY is required to summarize ${newEvents.length} new events. Set SUMMARY_STRICT=false to collect without summaries.`
-  );
+  run.summaryStatus = "blocked";
+  run.summaryMessage = `OPENAI_API_KEY is required to summarize ${newEvents.length} new events.`;
+  console.error(`${run.summaryMessage} Skipping data write so unsummarized events are not published.`);
+  logSkippedPublish(run);
+  process.exit(0);
 }
 if (
   summaryStrict &&
@@ -112,9 +115,11 @@ if (
   summaryResult.candidates > 0 &&
   summaryResult.summarized === 0
 ) {
-  throw new Error(
-    `OpenAI summaries failed for all ${summaryResult.candidates} candidate events; refusing to write unsummarized data.`
-  );
+  run.summaryStatus = "blocked";
+  run.summaryMessage = `OpenAI summaries failed for all ${summaryResult.candidates} candidate events; refusing to publish unsummarized data.`;
+  console.error(`${run.summaryMessage}${summaryResult.fatalError ? ` Last error: ${summaryResult.fatalError}` : ""}`);
+  logSkippedPublish(run);
+  process.exit(0);
 }
 const retainedPrevious = await enrichCarriedEvents(previousEvents.filter(
   (event) => !consumedPrevious.has(previousKey(event)) && !consumedSourceUrls.has(`${event.sourceId}|${event.sourceUrl}`)
@@ -137,6 +142,19 @@ console.log(
     newEvents: newEvents.length
   })
 );
+
+function logSkippedPublish(run) {
+  run.completedAt = new Date().toISOString();
+  console.log(
+    JSON.stringify({
+      sources: sources.length,
+      succeeded: Object.values(run.sources).filter((item) => item.ok).length,
+      newEvents: run.newEvents,
+      summaryStatus: run.summaryStatus,
+      published: false
+    })
+  );
+}
 
 function eventSortTime(event) {
   const published = event.publishedAt ? new Date(event.publishedAt) : null;
