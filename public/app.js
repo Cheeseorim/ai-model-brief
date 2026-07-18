@@ -28,6 +28,9 @@ const ui = {
 let selectedPricingModelId = "";
 let selectedCoverageVendor = "";
 const HEADLINE_LIMIT = 10;
+// A source page can be collected before its Korean editorial pass finishes.
+// Never present that raw fallback as a finished briefing card.
+const koreanBriefEvents = events.filter((event) => Boolean(event.summaryKo || event.briefKo?.change));
 const labels = {
   deprecation: "지원 종료",
   "breaking-change": "호환성 변경",
@@ -122,7 +125,7 @@ function renderPromptTips() {
 
 function promptTipPool() {
   const candidates = [];
-  for (const event of events) {
+  for (const event of koreanBriefEvents) {
     const tip = promptTip(event);
     if (tip) candidates.push({ event, tip });
   }
@@ -316,7 +319,7 @@ function coverageByVendor() {
   const anchor = new Date();
   const windowStart = new Date(anchor);
   windowStart.setDate(windowStart.getDate() - 7);
-  for (const event of events) {
+  for (const event of koreanBriefEvents) {
     const item = byVendor.get(event.vendor) || {
       vendor: event.vendor,
       sources: new Set(),
@@ -544,13 +547,13 @@ function renderHeadlines() {
   windowStart.setDate(windowStart.getDate() - 7);
   const fallbackStart = new Date(anchor);
   fallbackStart.setDate(fallbackStart.getDate() - 45);
-  const recent = events.filter((event) => {
+  const recent = koreanBriefEvents.filter((event) => {
     const date = eventDateForBriefing(event);
     return date && date >= windowStart && date <= anchor;
   });
   const recentPool = recent.filter(isBriefingCandidate).sort((a, b) => briefingScore(b) - briefingScore(a));
   const recentKeys = new Set(recentPool.map(eventKey));
-  const fallbackPool = events
+  const fallbackPool = koreanBriefEvents
     .filter((event) => {
       if (!isBriefingCandidate(event) || recentKeys.has(eventKey(event))) return false;
       const date = eventDate(event);
