@@ -90,7 +90,11 @@ for (const source of sources) {
 state.lastRunAt = now;
 run.completedAt = new Date().toISOString();
 run.newEvents = newEvents.length;
-const summaryResult = await enrichWithOpenAISummaries(newEvents);
+// A previous run may have been interrupted after collection but before Korean
+// copy was written. Include those carried events so they are repaired on the
+// next run instead of permanently falling back to raw English in the UI.
+const summaryTargets = collectedEvents.filter((event) => !event.summaryKo);
+const summaryResult = await enrichWithOpenAISummaries(summaryTargets);
 run.summaries = {
   summarized: summaryResult.summarized,
   routed: summaryResult.routed || 0,
@@ -112,11 +116,10 @@ if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
 if (
   summaryStrict &&
   !summaryResult.skipped &&
-  summaryResult.candidates > 0 &&
-  summaryResult.summarized === 0
+  summaryResult.candidates > summaryResult.summarized
 ) {
   run.summaryStatus = "blocked";
-  run.summaryMessage = `OpenAI summaries failed for all ${summaryResult.candidates} candidate events; refusing to publish unsummarized data.`;
+  run.summaryMessage = `OpenAI summarized ${summaryResult.summarized}/${summaryResult.candidates} display candidates; refusing to publish mixed Korean and raw-source cards.`;
   console.error(`${run.summaryMessage}${summaryResult.fatalError ? ` Last error: ${summaryResult.fatalError}` : ""}`);
   logSkippedPublish(run);
   process.exit(0);
