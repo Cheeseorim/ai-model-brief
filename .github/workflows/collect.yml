@@ -43,7 +43,8 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL }}
+          # A repository variable can deliberately override this fallback.
+          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL || 'gpt-4.1-mini' }}
           SUMMARY_MAX_EVENTS: ${{ inputs.summary_max_events || vars.SUMMARY_MAX_EVENTS }}
       - name: Commit changed data
         run: |
