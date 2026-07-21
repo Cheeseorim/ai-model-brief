@@ -30,7 +30,7 @@ let selectedCoverageVendor = "";
 const HEADLINE_LIMIT = 10;
 // A source page can be collected before its Korean editorial pass finishes.
 // Never present that raw fallback as a finished briefing card.
-const koreanBriefEvents = events.filter((event) => Boolean(event.summaryKo || event.briefKo?.change));
+const koreanBriefEvents = events.filter(hasKoreanBrief);
 const labels = {
   deprecation: "지원 종료",
   "breaking-change": "호환성 변경",
@@ -324,10 +324,16 @@ function coverageByVendor() {
       vendor: event.vendor,
       sources: new Set(),
       recent: [],
-      fallback: []
+      fallback: [],
+      records: []
     };
     item.sources.add(event.sourceId);
     if (isBriefingCandidate(event)) {
+      item.records.push(event);
+      if (!hasKoreanBrief(event)) {
+        byVendor.set(event.vendor, item);
+        continue;
+      }
       const date = eventDateForBriefing(event);
       if (date && date >= windowStart && date <= anchor) item.recent.push(event);
       else item.fallback.push(event);
@@ -390,17 +396,21 @@ function coverageInlineDetail(item, pool) {
 }
 
 function detailIssue(event) {
-  const brief = briefing(event);
+  const translated = hasKoreanBrief(event);
+  const brief = translated ? briefing(event) : sourceRecordBrief(event);
   const models = Array.isArray(event.modelIds) ? event.modelIds.slice(0, 4) : [];
+  const original = translated ? "" : usefulExcerpt(event);
   return `
     <article class="issue-item vendor-${escapeHtml(event.vendor || "")} ${escapeHtml(event.kind || "")}">
       <div class="issue-meta">
         <span>${escapeHtml(labels[event.kind] || event.kind || "업데이트")}</span>
         <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>
         <span>${escapeHtml(dateBadge(event))}</span>
+        ${translated ? "" : "<span>원문 기록</span>"}
       </div>
       <h4>${escapeHtml(brief.title)}</h4>
       <p>${escapeHtml(brief.change)}</p>
+      ${original ? `<p class="issue-original">원문 요약: ${escapeHtml(original)}</p>` : ""}
       <div class="issue-bottom">
         ${models.length ? `<span>${escapeHtml(models.join(", "))}</span>` : "<span>모델 ID 없음</span>"}
         <a href="${escapeHtml(event.sourceUrl || "#")}" target="_blank" rel="noreferrer">원문 보기 ↗</a>
@@ -417,7 +427,21 @@ function vendorPrimaryPool(item) {
 function vendorIssuePool(item) {
   const recent = [...item.recent].sort((a, b) => briefingScore(b) - briefingScore(a));
   const older = [...item.fallback].sort((a, b) => recentListScore(b) - recentListScore(a));
-  return [...recent, ...older];
+  const untranslated = [...item.records]
+    .filter((event) => !hasKoreanBrief(event))
+    .sort((a, b) => recentListScore(b) - recentListScore(a));
+  return [...recent, ...older, ...untranslated];
+}
+
+function hasKoreanBrief(event) {
+  return Boolean(event?.summaryKo || event?.briefKo?.change);
+}
+
+function sourceRecordBrief(event) {
+  return {
+    title: readableOriginalTitle(event),
+    change: `${sourceLabels[event.sourceId] || "공식 문서"}에 기록된 원문 항목입니다. 한국어 브리핑을 생성하는 동안 원문을 바로 확인할 수 있습니다.`
+  };
 }
 
 function uniqueVendorIssues(items) {
