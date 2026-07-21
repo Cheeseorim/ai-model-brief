@@ -49,12 +49,12 @@ jobs:
         run: |
           git config user.name "ai-model-brief[bot]"
           git config user.email "ai-model-brief[bot]@users.noreply.github.com"
-          # A dashboard/code deployment can land while collection is running.
-          # Rebase before staging so the bot never overwrites or conflicts with it.
-          git pull --rebase origin main
           git add data/
           git diff --cached --quiet && exit 0
           git commit -m "data: collect model updates"
+          # A dashboard/code deployment can land while collection is running.
+          # Rebase the completed data commit, not the modified working tree.
+          git pull --rebase origin main
           git push
           gh workflow run "Deploy dashboard" --ref main
         env:
