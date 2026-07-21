@@ -338,11 +338,12 @@ function coverageByVendor() {
 }
 
 function coverageCard(item) {
-  const pool = vendorIssuePool(item);
-  const primary = pool[0];
+  const primary = vendorPrimaryPool(item)[0];
   const brief = primary ? briefing(primary) : null;
   const isActive = selectedCoverageVendor === item.vendor;
-  const detailPool = uniqueVendorIssues(pool).slice(0, 6);
+  const detailPool = uniqueVendorIssues(vendorIssuePool(item))
+    .filter((event) => !primary || eventKey(event) !== eventKey(primary))
+    .slice(0, 8);
   const status = item.recent.length
     ? `최근 7일 ${item.recent.length.toLocaleString("ko-KR")}건`
     : "최근 고위험 이슈 중심";
@@ -377,7 +378,7 @@ function coverageInlineDetail(item, pool) {
       <div class="coverage-detail-head">
         <div>
           <p class="eyebrow">${escapeHtml(vendorLabels[item.vendor] || item.vendor)}</p>
-          <h3>${escapeHtml(vendorLabels[item.vendor] || item.vendor)}에서 더 볼 이슈</h3>
+          <h3>${escapeHtml(vendorLabels[item.vendor] || item.vendor)}의 이전 변경 기록</h3>
         </div>
         <span>${escapeHtml(sourceList)}</span>
       </div>
@@ -408,9 +409,15 @@ function detailIssue(event) {
   `;
 }
 
-function vendorIssuePool(item) {
+function vendorPrimaryPool(item) {
   return (item.recent.length ? item.recent : item.fallback)
     .sort((a, b) => briefingScore(b) - briefingScore(a));
+}
+
+function vendorIssuePool(item) {
+  const recent = [...item.recent].sort((a, b) => briefingScore(b) - briefingScore(a));
+  const older = [...item.fallback].sort((a, b) => recentListScore(b) - recentListScore(a));
+  return [...recent, ...older];
 }
 
 function uniqueVendorIssues(items) {
