@@ -333,7 +333,7 @@ function coverageByVendor() {
       records: []
     };
     item.sources.add(event.sourceId);
-    if (isBriefingCandidate(event)) {
+    if (isVendorHistoryRecord(event)) {
       item.records.push(event);
       if (!hasKoreanBrief(event)) {
         byVendor.set(event.vendor, item);
@@ -349,13 +349,15 @@ function coverageByVendor() {
 }
 
 function coverageCard(item) {
-  const primary = vendorPrimaryPool(item)[0];
-  const brief = primary ? briefing(primary) : null;
+  const primary = vendorPrimaryPool(item)[0] || vendorIssuePool(item)[0];
+  const brief = primary ? (hasKoreanBrief(primary) ? briefing(primary) : sourceRecordBrief(primary)) : null;
   const isActive = selectedCoverageVendor === item.vendor;
   const detailPool = uniqueVendorIssues(vendorIssuePool(item))
     .filter((event) => !primary || eventKey(event) !== eventKey(primary))
     .slice(0, 8);
-  const status = item.recent.length
+  const status = !hasKoreanBrief(primary)
+    ? "공식 원문 기록 기준"
+    : item.recent.length
     ? `최근 7일 ${item.recent.length.toLocaleString("ko-KR")}건`
     : "최근 고위험 이슈 중심";
   const article = document.createElement("article");
@@ -1008,6 +1010,21 @@ function isBriefingCandidate(event) {
   if ((event.kind === "news" || source === "anthropic-news" || /news/.test(source)) && isLowPriorityNews(event)) return false;
   if (event.kind === "news" && !/(gpt|claude|gemini|model|coding|benchmark|voice|realtime|sonnet|fable|mythos|omni|nano banana|computer use|api|codex)/i.test(`${event.title} ${event.summary}`)) return false;
   return true;
+}
+
+function isVendorHistoryRecord(event) {
+  if (isBriefingCandidate(event)) return true;
+  const title = normalizeTitle(event.title);
+  const source = event.sourceId || "";
+  const text = `${event.title || ""} ${event.summary || ""}`.toLowerCase();
+  if (!title || title.length < 4) return false;
+  if (/^(home|overview|documentation|resources|send feedback|recent|active versions|latest models comparison|model cards|models|table of contents|notifications|best practices|deprecation history|past deprecations|migrating to replacements|auditing model usage|api parameter deprecations)$/i.test(title)) return false;
+  if (isLowPriorityNews(event)) return false;
+  if (/release-notes|changelog|doc-history/.test(source)) return true;
+  if (/deprecations/.test(source)) return /model|retir|legacy|end.of.life|deprecat|migration|parameter|deadline/.test(text);
+  if (source.endsWith("-models")) return /gpt[-\s]?\d|claude|gemini|veo|imagen|lyria|realtime|preview|shut down|retir|deprecat|model id/.test(text);
+  if (/news/.test(source)) return /gpt|claude|gemini|model|api|codex|realtime|voice|computer use/.test(text);
+  return false;
 }
 
 function isLowPriorityNews(event) {
