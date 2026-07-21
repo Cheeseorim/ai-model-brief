@@ -324,7 +324,7 @@ function coverageByVendor() {
   const anchor = new Date();
   const windowStart = new Date(anchor);
   windowStart.setDate(windowStart.getDate() - 7);
-  for (const event of koreanBriefEvents) {
+  for (const event of events) {
     const item = byVendor.get(event.vendor) || {
       vendor: event.vendor,
       sources: new Set(),
