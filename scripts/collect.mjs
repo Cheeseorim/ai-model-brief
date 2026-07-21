@@ -110,7 +110,7 @@ if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
   run.summaryStatus = "blocked";
   run.summaryMessage = `OPENAI_API_KEY is required to summarize ${newEvents.length} new events.`;
   console.error(`${run.summaryMessage} Skipping data write so unsummarized events are not published.`);
-  logSkippedPublish(run);
+  await logSkippedPublish(run);
   process.exit(0);
 }
 if (
@@ -121,7 +121,7 @@ if (
   run.summaryStatus = "blocked";
   run.summaryMessage = `OpenAI summarized ${summaryResult.summarized}/${summaryResult.candidates} display candidates; refusing to publish mixed Korean and raw-source cards.`;
   console.error(`${run.summaryMessage}${summaryResult.fatalError ? ` Last error: ${summaryResult.fatalError}` : ""}`);
-  logSkippedPublish(run);
+  await logSkippedPublish(run);
   process.exit(0);
 }
 const retainedPrevious = await enrichCarriedEvents(previousEvents.filter(
@@ -146,8 +146,13 @@ console.log(
   })
 );
 
-function logSkippedPublish(run) {
+async function logSkippedPublish(run) {
   run.completedAt = new Date().toISOString();
+  const runs = fresh ? [] : await readJson(new URL("runs.json", DATA_DIR), []);
+  // Keep the dashboard's check timestamp and the reason visible, but do not
+  // write events.json: that would publish raw source text as finished Korean copy.
+  await writeJson(new URL("state.json", DATA_DIR), state);
+  await writeJson(new URL("runs.json", DATA_DIR), [run, ...runs].slice(0, 90));
   console.log(
     JSON.stringify({
       sources: sources.length,

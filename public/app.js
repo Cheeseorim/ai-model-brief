@@ -1,7 +1,8 @@
-const [events, state, pricing] = await Promise.all([
+const [events, state, pricing, runs] = await Promise.all([
   fetch(`./data/events.json?t=${Date.now()}`, { cache: "no-store" }).then((response) => response.json()),
   fetch(`./data/state.json?t=${Date.now()}`, { cache: "no-store" }).then((response) => response.json()),
-  fetch("./config/pricing.json?v=20260710-pricing2").then((response) => response.json()).catch(() => ({ models: [], sources: [] }))
+  fetch("./config/pricing.json?v=20260710-pricing2").then((response) => response.json()).catch(() => ({ models: [], sources: [] })),
+  fetch(`./data/runs.json?t=${Date.now()}`, { cache: "no-store" }).then((response) => response.json()).catch(() => [])
 ]);
 
 const ui = {
@@ -79,10 +80,14 @@ ui.tabNav?.addEventListener("click", (event) => {
 
 const sourceStates = Object.values(state.sources || {});
 const failures = sourceStates.filter((source) => !source.ok);
+const latestRun = runs[0];
+const summaryBlocked = latestRun?.summaryStatus === "blocked";
 ui.health.textContent = failures.length
   ? `수집기 ${failures.length}개 확인 필요`
-  : `마지막 수집 ${formatDateTime(state.lastRunAt)}`;
-ui.health.classList.add(failures.length ? "bad" : "ok");
+  : summaryBlocked
+    ? `마지막 확인 ${formatDateTime(state.lastRunAt)} · 한국어 요약 대기`
+    : `마지막 확인 ${formatDateTime(state.lastRunAt)}`;
+ui.health.classList.add(failures.length || summaryBlocked ? "bad" : "ok");
 
 renderCoverage();
 renderHeadlines();

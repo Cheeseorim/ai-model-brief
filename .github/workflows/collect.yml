@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: ai-model-brief-collector
@@ -52,5 +53,9 @@ jobs:
           # Rebase before staging so the bot never overwrites or conflicts with it.
           git pull --rebase origin main
           git add data/
-          git diff --cached --quiet || git commit -m "data: collect model updates"
+          git diff --cached --quiet && exit 0
+          git commit -m "data: collect model updates"
           git push
+          gh workflow run "Deploy dashboard" --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
