@@ -99,6 +99,15 @@
     "priority": 80
   },
   {
+    "id": "gemini-latest-model",
+    "vendor": "google",
+    "platform": "gemini-api",
+    "kind": "models",
+    "url": "https://ai.google.dev/gemini-api/docs/latest-model?hl=en",
+    "parser": "headings",
+    "priority": 95
+  },
+  {
     "id": "gemini-news",
     "vendor": "google",
     "platform": "gemini",
