@@ -36,6 +36,15 @@
     "priority": 45
   },
   {
+    "id": "openai-price-performance",
+    "vendor": "openai",
+    "platform": "openai-api",
+    "kind": "pricing",
+    "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
+    "parser": "headings",
+    "priority": 110
+  },
+  {
     "id": "anthropic-release-notes",
     "vendor": "anthropic",
     "platform": "claude-api",
