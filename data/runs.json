@@ -1,5 +1,124 @@
 [
   {
+    "startedAt": "2026-08-14T08:36:06.335Z",
+    "completedAt": "2026-08-14T08:37:47.328Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 34,
+        "durationMs": 335
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 100,
+        "durationMs": 144
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 65,
+        "durationMs": 249
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1129,
+        "durationMs": 564
+      },
+      "openai-price-performance": {
+        "ok": false,
+        "error": "HTTP 403",
+        "durationMs": 24
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 97,
+        "durationMs": 579
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 476
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 6,
+        "durationMs": 403
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 13,
+        "durationMs": 502
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 130,
+        "durationMs": 495
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 692
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 16,
+        "durationMs": 454
+      },
+      "gemini-latest-model": {
+        "ok": true,
+        "itemCount": 12,
+        "durationMs": 409
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 9,
+        "durationMs": 271
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 449,
+        "durationMs": 1093
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 539
+      },
+      "azure-openai-whats-new": {
+        "ok": true,
+        "itemCount": 14,
+        "durationMs": 69
+      },
+      "azure-foundry-models": {
+        "ok": true,
+        "itemCount": 38,
+        "durationMs": 144
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 298
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 190,
+        "durationMs": 157
+      }
+    },
+    "newEvents": 119,
+    "summaries": {
+      "summarized": 0,
+      "routed": 0,
+      "calls": 0,
+      "failed": 1,
+      "candidates": 10,
+      "skipped": false,
+      "model": "gpt-4.1-mini",
+      "fatalError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
+    },
+    "summaryStatus": "blocked",
+    "summaryMessage": "OpenAI summarized 0/10 display candidates; refusing to publish mixed Korean and raw-source cards."
+  },
+  {
     "startedAt": "2026-08-14T07:45:21.583Z",
     "completedAt": "2026-08-14T07:47:01.533Z",
     "sources": {
@@ -10519,120 +10638,6 @@
         "ok": true,
         "itemCount": 188,
         "durationMs": 115
-      }
-    },
-    "newEvents": 40,
-    "summaries": {
-      "summarized": 0,
-      "routed": 0,
-      "calls": 0,
-      "failed": 1,
-      "candidates": 10,
-      "skipped": false,
-      "model": "gpt-4.1-mini",
-      "fatalError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
-    },
-    "summaryStatus": "blocked",
-    "summaryMessage": "OpenAI summarized 0/10 display candidates; refusing to publish mixed Korean and raw-source cards."
-  },
-  {
-    "startedAt": "2026-07-29T03:54:31.996Z",
-    "completedAt": "2026-07-29T03:56:12.587Z",
-    "sources": {
-      "openai-changelog": {
-        "ok": true,
-        "itemCount": 33,
-        "durationMs": 281
-      },
-      "openai-deprecations": {
-        "ok": true,
-        "itemCount": 96,
-        "durationMs": 97
-      },
-      "openai-models": {
-        "ok": true,
-        "itemCount": 63,
-        "durationMs": 137
-      },
-      "openai-news": {
-        "ok": true,
-        "itemCount": 1052,
-        "durationMs": 288
-      },
-      "anthropic-release-notes": {
-        "ok": true,
-        "itemCount": 91,
-        "durationMs": 719
-      },
-      "anthropic-deprecations": {
-        "ok": true,
-        "itemCount": 18,
-        "durationMs": 369
-      },
-      "anthropic-models": {
-        "ok": true,
-        "itemCount": 6,
-        "durationMs": 408
-      },
-      "anthropic-news": {
-        "ok": true,
-        "itemCount": 13,
-        "durationMs": 470
-      },
-      "gemini-changelog": {
-        "ok": true,
-        "itemCount": 128,
-        "durationMs": 473
-      },
-      "gemini-deprecations": {
-        "ok": true,
-        "itemCount": 11,
-        "durationMs": 196
-      },
-      "gemini-models": {
-        "ok": true,
-        "itemCount": 42,
-        "durationMs": 219
-      },
-      "gemini-latest-model": {
-        "ok": true,
-        "itemCount": 17,
-        "durationMs": 239
-      },
-      "gemini-news": {
-        "ok": true,
-        "itemCount": 9,
-        "durationMs": 248
-      },
-      "vertex-release-notes": {
-        "ok": true,
-        "itemCount": 446,
-        "durationMs": 867
-      },
-      "vertex-deprecations": {
-        "ok": true,
-        "itemCount": 1,
-        "durationMs": 896
-      },
-      "azure-openai-whats-new": {
-        "ok": true,
-        "itemCount": 14,
-        "durationMs": 213
-      },
-      "azure-foundry-models": {
-        "ok": true,
-        "itemCount": 38,
-        "durationMs": 154
-      },
-      "bedrock-lifecycle": {
-        "ok": true,
-        "itemCount": 2,
-        "durationMs": 245
-      },
-      "bedrock-doc-history": {
-        "ok": true,
-        "itemCount": 188,
-        "durationMs": 175
       }
     },
     "newEvents": 40,
