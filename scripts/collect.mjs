@@ -118,6 +118,7 @@ if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
 if (
   summaryStrict &&
   !summaryResult.skipped &&
+  newEvents.length > 0 &&
   summaryResult.candidates > summaryResult.summarized
 ) {
   run.summaryStatus = "blocked";
