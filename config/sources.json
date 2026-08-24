@@ -42,7 +42,8 @@
     "kind": "pricing",
     "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/",
     "parser": "headings",
-    "priority": 110
+    "priority": 110,
+    "optional": true
   },
   {
     "id": "anthropic-release-notes",

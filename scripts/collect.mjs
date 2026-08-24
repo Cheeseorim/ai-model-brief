@@ -61,6 +61,7 @@ for (const source of sources) {
     const contentHash = hash(extracted.map((event) => event.fingerprint).join("|"));
     state.sources[source.id] = {
       ok: true,
+      optional: Boolean(source.optional),
       checkedAt: now,
       itemCount: extracted.length,
       contentHash,
@@ -75,6 +76,7 @@ for (const source of sources) {
     state.sources[source.id] = {
       ...(state.sources[source.id] || {}),
       ok: false,
+      optional: Boolean(source.optional),
       checkedAt: now,
       error: error.message
     };

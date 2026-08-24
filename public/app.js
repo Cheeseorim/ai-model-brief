@@ -80,8 +80,9 @@ ui.tabNav?.addEventListener("click", (event) => {
   activateTab(tab.dataset.tab || "briefing");
 });
 
-const sourceStates = Object.values(state.sources || {});
-const failures = sourceStates.filter((source) => !source.ok);
+const sourceStates = Object.entries(state.sources || {}).map(([id, source]) => ({ id, ...source }));
+const optionalSourceIds = new Set(["openai-price-performance"]);
+const failures = sourceStates.filter((source) => !source.ok && !source.optional && !optionalSourceIds.has(source.id));
 const latestRun = runs[0];
 const summaryBlocked = latestRun?.summaryStatus === "blocked";
 ui.health.textContent = failures.length
