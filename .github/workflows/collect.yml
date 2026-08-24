@@ -45,7 +45,9 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # A repository variable can deliberately override this fallback.
           SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL || 'gpt-4.1-mini' }}
-          SUMMARY_MAX_EVENTS: ${{ inputs.summary_max_events || vars.SUMMARY_MAX_EVENTS }}
+          # Keep the daily backfill large enough to translate the current
+          # month's backlog; manual runs can still lower it via the input.
+          SUMMARY_MAX_EVENTS: ${{ inputs.summary_max_events || '20' }}
           OPENAI_PROMPT_CACHE_RETENTION: ${{ vars.OPENAI_PROMPT_CACHE_RETENTION || '24h' }}
       - name: Commit changed data
         run: |
