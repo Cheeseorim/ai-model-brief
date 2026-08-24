@@ -600,7 +600,47 @@
     "severity": 100,
     "publishedAt": "2026-08-05",
     "detectedAt": "2026-07-09T09:02:39.782Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "Claude Opus 4.1 모델 지원 종료 안내",
+    "summaryKo": "Claude Opus 4.1 모델이 2026년 8월 5일부로 공식 지원이 종료되어 이 모델에 대한 API 요청은 에러를 반환합니다.",
+    "impactKo": "Claude Opus 4.1을 사용하는 서비스는 API 오류가 발생하므로 신속히 모델을 업그레이드해야 합니다.",
+    "actionKo": "오늘 반드시 Claude Opus 4.1 모델 사용 여부를 확인하고, 최신 버전인 Claude Opus 5로 전환 계획을 수립해야 합니다.",
+    "whoShouldCareKo": "Claude API에서 Claude Opus 4.1 모델을 사용 중인 개발자 및 운영팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "anthropic:claude-opus-4-1-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Claude Opus 4.1 모델 공식 지원 종료",
+      "change": "Claude Opus 4.1 모델이 2026년 8월 5일부로 공식 지원이 종료되어 이 모델에 대한 API 요청은 에러를 반환합니다.",
+      "impact": "Claude Opus 4.1을 사용하는 서비스는 API 오류가 발생하므로 신속히 모델을 업그레이드해야 합니다.",
+      "action": "오늘 반드시 Claude Opus 4.1 모델 사용 여부를 확인하고, 최신 버전인 Claude Opus 5로 전환 계획을 수립해야 합니다.",
+      "audience": "Claude API에서 Claude Opus 4.1 모델을 사용 중인 개발자 및 운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:45:43.267Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "anthropic:claude-opus-4-1-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Claude Opus 4.1 모델이 공식적으로 폐지되어 API 요청 시 에러가 발생하므로 운영자가 반드시 확인해야 하는 사안입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "aa3d32da2c90c1a9c2badf24",
@@ -9717,7 +9757,47 @@
     "severity": 100,
     "publishedAt": "2026-04-22",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "2026년 7월, 구형 GPT 모델 스냅샷 지원 종료",
+    "summaryKo": "2026년 7월 23일부로 구형 OpenAI GPT 모델 스냅샷에 대한 접근이 종료되며, 최신 GPT 5.6 모델군으로 대체됩니다.",
+    "impactKo": "구형 모델을 사용하는 서비스는 최신 모델로 전환하지 않으면 기능 이용이 불가능해집니다.",
+    "actionKo": "7월 23일 이전에 현재 사용 중인 모델과 대체 모델을 확인하고 마이그레이션 계획을 수립하세요.",
+    "whoShouldCareKo": "구형 GPT 모델을 운영 중인 엔지니어 및 제품 관리자, API 연동팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:legacy-gpt-deprecation-2026",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "7월 23일 구형 GPT 모델 접속 종료 예정",
+      "change": "2026년 7월 23일부로 구형 OpenAI GPT 모델 스냅샷에 대한 접근이 종료되며, 최신 GPT 5.6 모델군으로 대체됩니다.",
+      "impact": "구형 모델을 사용하는 서비스는 최신 모델로 전환하지 않으면 기능 이용이 불가능해집니다.",
+      "action": "7월 23일 이전에 현재 사용 중인 모델과 대체 모델을 확인하고 마이그레이션 계획을 수립하세요.",
+      "audience": "구형 GPT 모델을 운영 중인 엔지니어 및 제품 관리자, API 연동팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:42:18.277Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:legacy-gpt-deprecation-2026",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "2026년 7월에 예정된 구형 GPT 모델 스냅샷 종료가 운영자에게 중요한 변경 사항이기 때문에 뉴스로 분류함.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -18005,7 +18085,47 @@
     "severity": 100,
     "publishedAt": "2025-09-26",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "OpenAI, 2026년 3월 26일 구형 GPT 모델 지원 종료",
+    "summaryKo": "OpenAI가 사용량 감소에 따라 여러 구형 GPT 모델의 지원을 종료하며 2026년 3월 26일에 해당 모델들의 접근이 차단된다. 주요 대상은 gpt-4-0314, gpt-4-1106-preview, gpt-4-0125-preview 등이며, 대체 모델로 gpt-5와 gpt-4.1이 권장된다.",
+    "impactKo": "구형 모델을 사용하는 서비스는 2026년 3월까지 최신 권장 모델로 전환하지 않으면 API 호출이 중단된다.",
+    "actionKo": "현재 사용하는 GPT 모델이 종료 대상인지 확인하고, 가능한 한 빨리 gpt-5 또는 gpt-4.1 기반 모델로 전환 방안을 마련해야 한다.",
+    "whoShouldCareKo": "OpenAI API로 구형 GPT 모델을 활용하는 모든 개발자와 운영팀.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:legacy-gpt-models-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "2026년 3월 26일 구형 GPT 모델 서비스 종료 예고",
+      "change": "OpenAI가 사용량 감소에 따라 여러 구형 GPT 모델의 지원을 종료하며 2026년 3월 26일에 해당 모델들의 접근이 차단된다. 주요 대상은 gpt-4-0314, gpt-4-1106-preview, gpt-4-0125-preview 등이며, 대체 모델로 gpt-5와 gpt-4.1이 권장된다.",
+      "impact": "구형 모델을 사용하는 서비스는 2026년 3월까지 최신 권장 모델로 전환하지 않으면 API 호출이 중단된다.",
+      "action": "현재 사용하는 GPT 모델이 종료 대상인지 확인하고, 가능한 한 빨리 gpt-5 또는 gpt-4.1 기반 모델로 전환 방안을 마련해야 한다.",
+      "audience": "OpenAI API로 구형 GPT 모델을 활용하는 모든 개발자와 운영팀.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:42:45.139Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:legacy-gpt-models-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "OpenAI가 구형 모델들을 2026년 3월 26일에 종료하기 때문에 운영자가 바로 확인해야 하는 중요한 정보이기 때문이다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "29accea7cef27608357e1831",
@@ -18277,7 +18397,47 @@
     "severity": 100,
     "publishedAt": "2025-09-15",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "gpt-4o-realtime-preview 모델 공식 API 지원 종료 안내",
+    "summaryKo": "2025년 9월에 공지된 gpt-4o-realtime-preview 모델이 2026년 5월 7일부로 API에서 지원 종료되며, 이후 gpt-realtime-1.5 등의 대체 모델을 사용해야 합니다.",
+    "impactKo": "대상 모델을 사용하는 개발자와 운영자는 호환성 문제를 피하기 위해 대체 모델로 사전 전환이 필요합니다.",
+    "actionKo": "오늘 중으로 해당 모델을 사용하는 서비스와 코드 내 API 연동 여부를 점검하고, 대체 모델 적용 계획을 세우십시오.",
+    "whoShouldCareKo": "gpt-4o-realtime-preview 모델을 활용하는 개발팀과 운영팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-4o-realtime-preview",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "gpt-4o-realtime-preview 모델 2026년 5월 7일 지원 종료",
+      "change": "2025년 9월에 공지된 gpt-4o-realtime-preview 모델이 2026년 5월 7일부로 API에서 지원 종료되며, 이후 gpt-realtime-1.5 등의 대체 모델을 사용해야 합니다.",
+      "impact": "대상 모델을 사용하는 개발자와 운영자는 호환성 문제를 피하기 위해 대체 모델로 사전 전환이 필요합니다.",
+      "action": "오늘 중으로 해당 모델을 사용하는 서비스와 코드 내 API 연동 여부를 점검하고, 대체 모델 적용 계획을 세우십시오.",
+      "audience": "gpt-4o-realtime-preview 모델을 활용하는 개발팀과 운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:42:57.158Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-4o-realtime-preview",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "gpt-4o-realtime-preview 모델의 공식 API 지원 종료 공지로 운영자가 즉시 확인해야 하는 이슈이기 때문에 news로 분류함.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
@@ -21629,7 +21789,47 @@
     "severity": 100,
     "publishedAt": "2025-06-10",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "GPT-4o Realtime Preview 2024-10-01 모델 지원 종료 안내",
+    "summaryKo": "GPT-4o Realtime Preview 2024-10-01 모델이 2025년 10월 10일자로 API에서 지원이 종료되며, 이후 gpt-realtime-1.5 모델로 전환해야 합니다.",
+    "impactKo": "이 모델을 사용하는 API 호출이 종료되므로 운영자 및 개발자는 신속히 대체 모델로 전환해야 합니다.",
+    "actionKo": "오늘 당장 gpt-realtime-1.5 모델로의 이전 계획과 테스트를 시작해야 합니다.",
+    "whoShouldCareKo": "gpt-4o-realtime-preview-2024-10-01 모델을 사용하는 모든 개발팀과 운영관리자",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-4o-realtime-preview-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "GPT-4o Realtime Preview 모델, 2025년 10월 10일 API 지원 종료",
+      "change": "GPT-4o Realtime Preview 2024-10-01 모델이 2025년 10월 10일자로 API에서 지원이 종료되며, 이후 gpt-realtime-1.5 모델로 전환해야 합니다.",
+      "impact": "이 모델을 사용하는 API 호출이 종료되므로 운영자 및 개발자는 신속히 대체 모델로 전환해야 합니다.",
+      "action": "오늘 당장 gpt-realtime-1.5 모델로의 이전 계획과 테스트를 시작해야 합니다.",
+      "audience": "gpt-4o-realtime-preview-2024-10-01 모델을 사용하는 모든 개발팀과 운영관리자",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:43:24.405Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-4o-realtime-preview-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "gpt-4o-realtime-preview-2024-10-01 모델의 3개월 후 API 사용 중단이 공지되어 운영자가 즉시 대응할 필요가 있기 때문입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "ee92f7a928d209a512fbb580",
@@ -21647,7 +21847,47 @@
     "severity": 100,
     "publishedAt": "2025-06-10",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "2025년 10월 10일, gpt-4o-audio-preview 모델 API 지원 종료",
+    "summaryKo": "gpt-4o-audio-preview-2024-10-01 모델이 2025년 10월 10일부로 API에서 삭제되어 지원이 종료된다. 권장 대체 모델은 gpt-audio-1.5이다.",
+    "impactKo": "기존 gpt-4o-audio-preview 모델을 사용 중인 서비스는 차기 지원 종료 일자 이전에 대체 모델로 전환해야 한다.",
+    "actionKo": "지금 바로 gpt-4o-audio-preview 모델 사용 현황을 점검하고, 권장 대체 모델인 gpt-audio-1.5로 전환 계획을 수립하라.",
+    "whoShouldCareKo": "gpt-4o-audio-preview-2024-10-01 모델을 사용하는 개발자와 운영팀, 음성 AI 서비스 담당자들이 확인해야 한다.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-4o-audio-preview",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "gpt-4o-audio-preview 모델 2025년 10월 지원 종료 공지",
+      "change": "gpt-4o-audio-preview-2024-10-01 모델이 2025년 10월 10일부로 API에서 삭제되어 지원이 종료된다. 권장 대체 모델은 gpt-audio-1.5이다.",
+      "impact": "기존 gpt-4o-audio-preview 모델을 사용 중인 서비스는 차기 지원 종료 일자 이전에 대체 모델로 전환해야 한다.",
+      "action": "지금 바로 gpt-4o-audio-preview 모델 사용 현황을 점검하고, 권장 대체 모델인 gpt-audio-1.5로 전환 계획을 수립하라.",
+      "audience": "gpt-4o-audio-preview-2024-10-01 모델을 사용하는 개발자와 운영팀, 음성 AI 서비스 담당자들이 확인해야 한다.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:43:36.723Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-4o-audio-preview",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "gpt-4o-audio-preview 모델의 API 지원 종료 공지가 운영자 확인이 필요한 주요 뉴스이기 때문에 news로 분류함.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
@@ -23047,7 +23287,47 @@
     "severity": 100,
     "publishedAt": "2025-04-14",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "GPT-4.5-preview 모델 API 지원 종료 안내",
+    "summaryKo": "GPT-4.5-preview 모델이 2025년 7월 14일자로 API에서 지원 종료되며, GPT-4.1 모델로 교체가 권장됩니다.",
+    "impactKo": "해당 모델을 사용하는 서비스는 중단 전에 대체 모델로 전환해야 합니다.",
+    "actionKo": "지금 사용하는 모델이 GPT-4.5-preview인지 확인하고, 가능한 빨리 GPT-4.1로 전환 계획을 세우세요.",
+    "whoShouldCareKo": "OpenAI API에서 GPT-4.5-preview를 사용하는 모든 개발자와 운영자",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-4.5-preview",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "GPT-4.5-preview 모델 2025년 7월 14일 지원 종료",
+      "change": "GPT-4.5-preview 모델이 2025년 7월 14일자로 API에서 지원 종료되며, GPT-4.1 모델로 교체가 권장됩니다.",
+      "impact": "해당 모델을 사용하는 서비스는 중단 전에 대체 모델로 전환해야 합니다.",
+      "action": "지금 사용하는 모델이 GPT-4.5-preview인지 확인하고, 가능한 빨리 GPT-4.1로 전환 계획을 세우세요.",
+      "audience": "OpenAI API에서 GPT-4.5-preview를 사용하는 모든 개발자와 운영자",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:43:48.643Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-4.5-preview",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "GPT-4.5-preview 모델의 API 지원 종료 일정 공지가 있어 운영자가 즉시 확인해야 하기 때문에 news로 보냈습니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
@@ -29595,7 +29875,47 @@
     "severity": 100,
     "publishedAt": "2024-06-06",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "GPT-4-32K 및 Vision Preview 모델 지원 종료 일정 안내",
+    "summaryKo": "2024년 6월 6일에 GPT-4-32K와 GPT-4 Vision Preview 모델의 지원 종료 일정이 공지되었으며, 2024년 12월과 2025년 6월에 각각 단계적으로 서비스가 종료됩니다.",
+    "impactKo": "기존 사용자만 모델 사용이 가능하며, 이후에는 대체 모델로 전환이 필요해 운영과 비용에 영향이 있습니다.",
+    "actionKo": "대체 모델(gpt-4o)로 전환 계획을 수립하고, 사용 중인 토큰 단가 및 비용 구조를 검토하세요.",
+    "whoShouldCareKo": "GPT-4-32K 및 Vision Preview 모델을 사용하는 개발자와 서비스 운영자.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-4-32k-vision-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "GPT-4-32K와 Vision Preview 모델 지원 종료 예정",
+      "change": "2024년 6월 6일에 GPT-4-32K와 GPT-4 Vision Preview 모델의 지원 종료 일정이 공지되었으며, 2024년 12월과 2025년 6월에 각각 단계적으로 서비스가 종료됩니다.",
+      "impact": "기존 사용자만 모델 사용이 가능하며, 이후에는 대체 모델로 전환이 필요해 운영과 비용에 영향이 있습니다.",
+      "action": "대체 모델(gpt-4o)로 전환 계획을 수립하고, 사용 중인 토큰 단가 및 비용 구조를 검토하세요.",
+      "audience": "GPT-4-32K 및 Vision Preview 모델을 사용하는 개발자와 서비스 운영자.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:44:24.388Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-4-32k-vision-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "GPT-4-32K 및 Vision Preview 모델의 중단 일정 공지는 운영자에게 즉시 알려야 할 중요한 제품 정책 변화이기 때문입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
@@ -32766,7 +33086,47 @@
     "severity": 100,
     "publishedAt": "2023-11-06",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "GPT-3.5-Turbo 0613 모델 2024년 9월 13일에 지원 종료",
+    "summaryKo": "2024년 9월 13일부터 gpt-3.5-turbo-0613 및 gpt-3.5-turbo-16k-0613 모델 지원이 종료되며, 새로운 기본 모델인 16k 컨텍스트 지원 GPT-3.5-Turbo로 전환해야 합니다.",
+    "impactKo": "해당 모델을 사용하는 경우 지원 종료 이후에는 신규 사용이 불가능해 운영 중단이나 기술 검토가 필요합니다.",
+    "actionKo": "지금 사용하는 GPT-3.5-Turbo 0613 계열 모델의 사용 현황을 점검하고, 2024년 9월 이전에 대체 모델로 전환 계획을 수립하세요.",
+    "whoShouldCareKo": "GPT-3.5-Turbo 0613 또는 16k-0613 모델을 사용하는 개발자 및 운영팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-3.5-turbo-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "GPT-3.5-Turbo 0613 모델 지원 종료 및 대체 안내",
+      "change": "2024년 9월 13일부터 gpt-3.5-turbo-0613 및 gpt-3.5-turbo-16k-0613 모델 지원이 종료되며, 새로운 기본 모델인 16k 컨텍스트 지원 GPT-3.5-Turbo로 전환해야 합니다.",
+      "impact": "해당 모델을 사용하는 경우 지원 종료 이후에는 신규 사용이 불가능해 운영 중단이나 기술 검토가 필요합니다.",
+      "action": "지금 사용하는 GPT-3.5-Turbo 0613 계열 모델의 사용 현황을 점검하고, 2024년 9월 이전에 대체 모델로 전환 계획을 수립하세요.",
+      "audience": "GPT-3.5-Turbo 0613 또는 16k-0613 모델을 사용하는 개발자 및 운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:44:36.414Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-3.5-turbo-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "GPT-3.5-Turbo 특정 모델의 중단 일정과 대체 모델 안내로 운영자 확인이 필요한 주요 공지이기 때문에 news로 분류함.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
@@ -33836,7 +34196,47 @@
     "severity": 100,
     "publishedAt": "2023-07-06",
     "detectedAt": "2026-07-09T09:02:36.442Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "2024년 1월 4일 GPT-3 및 첫세대 임베딩 모델 지원 종료",
+    "summaryKo": "GPT-3 및 인스트럭트 인베딩 모델들이 2024년 1월 4일부로 정식 지원 종료되며, gpt-3.5-turbo-instruct 등으로 전환이 권장됩니다.",
+    "impactKo": "해당 모델을 사용하는 모든 서비스는 더 이상 지원 받지 못하므로 조기 대체 및 테스트가 필요합니다.",
+    "actionKo": "오늘 운영 중인 모델이 폐기 대상인지 확인하고, 권장 대체 모델로의 전환 계획을 수립하세요.",
+    "whoShouldCareKo": "GPT-3 또는 인스트럭트 임베딩 모델을 사용하는 개발자 및 운영 관리자",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:gpt-3.5-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "GPT-3 모델 및 인스트럭트 임베딩 모델 2024년 1월 4일 지원 종료",
+      "change": "GPT-3 및 인스트럭트 인베딩 모델들이 2024년 1월 4일부로 정식 지원 종료되며, gpt-3.5-turbo-instruct 등으로 전환이 권장됩니다.",
+      "impact": "해당 모델을 사용하는 모든 서비스는 더 이상 지원 받지 못하므로 조기 대체 및 테스트가 필요합니다.",
+      "action": "오늘 운영 중인 모델이 폐기 대상인지 확인하고, 권장 대체 모델로의 전환 계획을 수립하세요.",
+      "audience": "GPT-3 또는 인스트럭트 임베딩 모델을 사용하는 개발자 및 운영 관리자",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-4.1-mini",
+      "summarizedAt": "2026-08-24T07:45:34.018Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:gpt-3.5-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "2024년 1월 4일에 GPT-3 및 인스트럭트 인베딩 모델들이 폐기될 예정이라 운영자가 즉시 확인해야 하므로 news로 분류함.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
