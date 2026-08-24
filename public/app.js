@@ -27,7 +27,9 @@ const ui = {
 };
 
 let selectedPricingModelId = "";
-let selectedCoverageVendor = "";
+// null means the initial default has not been chosen yet. An empty string is
+// a deliberate user action to collapse all vendor details.
+let selectedCoverageVendor = null;
 const HEADLINE_LIMIT = 10;
 // A source page can be collected before its Korean editorial pass finishes.
 // Never present that raw fallback as a finished briefing card.
@@ -314,7 +316,7 @@ function promptTipCard({ event, tip }, index = 0) {
 function renderCoverage() {
   const byVendor = coverageByVendor();
   const items = [...byVendor.values()].sort((a, b) => vendorSort(a.vendor) - vendorSort(b.vendor));
-  if (!selectedCoverageVendor && items.length) selectedCoverageVendor = items[0].vendor;
+  if (selectedCoverageVendor === null && items.length) selectedCoverageVendor = items[0].vendor;
   ui.coverageMeta.textContent = "펼쳐서 세부 이슈를 바로 확인";
   ui.coverage.replaceChildren(...items.map(coverageCard));
 }
