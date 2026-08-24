@@ -46,6 +46,7 @@ jobs:
           # A repository variable can deliberately override this fallback.
           SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL || 'gpt-4.1-mini' }}
           SUMMARY_MAX_EVENTS: ${{ inputs.summary_max_events || vars.SUMMARY_MAX_EVENTS }}
+          OPENAI_PROMPT_CACHE_RETENTION: ${{ vars.OPENAI_PROMPT_CACHE_RETENTION || '24h' }}
       - name: Commit changed data
         run: |
           git config user.name "ai-model-brief[bot]"
