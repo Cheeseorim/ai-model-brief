@@ -1,17 +1,6 @@
 name: Collect model updates
 
 on:
-  schedule:
-    # GitHub scheduled workflows can be delayed or occasionally skipped.
-    # Keep multiple KST backup slots so one missed run does not skip the day.
-    # Morning brief: 09:10, 09:40, 10:10 KST.
-    - cron: "10 0 * * *"
-    - cron: "40 0 * * *"
-    - cron: "10 1 * * *"
-    # Weekday afternoon check: 15:10, 15:40, 16:10 KST.
-    - cron: "10 6 * * 1-5"
-    - cron: "40 6 * * 1-5"
-    - cron: "10 7 * * 1-5"
   workflow_dispatch:
     inputs:
       summary_max_events:
