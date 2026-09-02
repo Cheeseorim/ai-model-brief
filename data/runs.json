@@ -1,5 +1,124 @@
 [
   {
+    "startedAt": "2026-09-02T00:34:54.647Z",
+    "completedAt": "2026-09-02T00:37:06.765Z",
+    "sources": {
+      "openai-changelog": {
+        "ok": true,
+        "itemCount": 34,
+        "durationMs": 422
+      },
+      "openai-deprecations": {
+        "ok": true,
+        "itemCount": 102,
+        "durationMs": 124
+      },
+      "openai-models": {
+        "ok": true,
+        "itemCount": 66,
+        "durationMs": 1286
+      },
+      "openai-news": {
+        "ok": true,
+        "itemCount": 1162,
+        "durationMs": 316
+      },
+      "openai-price-performance": {
+        "ok": false,
+        "error": "HTTP 403",
+        "durationMs": 18
+      },
+      "anthropic-release-notes": {
+        "ok": true,
+        "itemCount": 103,
+        "durationMs": 575
+      },
+      "anthropic-deprecations": {
+        "ok": true,
+        "itemCount": 18,
+        "durationMs": 258
+      },
+      "anthropic-models": {
+        "ok": true,
+        "itemCount": 4,
+        "durationMs": 474
+      },
+      "anthropic-news": {
+        "ok": true,
+        "itemCount": 11,
+        "durationMs": 696
+      },
+      "gemini-changelog": {
+        "ok": true,
+        "itemCount": 133,
+        "durationMs": 484
+      },
+      "gemini-deprecations": {
+        "ok": true,
+        "itemCount": 12,
+        "durationMs": 522
+      },
+      "gemini-models": {
+        "ok": true,
+        "itemCount": 16,
+        "durationMs": 463
+      },
+      "gemini-latest-model": {
+        "ok": true,
+        "itemCount": 13,
+        "durationMs": 391
+      },
+      "gemini-news": {
+        "ok": true,
+        "itemCount": 9,
+        "durationMs": 311
+      },
+      "vertex-release-notes": {
+        "ok": true,
+        "itemCount": 452,
+        "durationMs": 1880
+      },
+      "vertex-deprecations": {
+        "ok": true,
+        "itemCount": 1,
+        "durationMs": 446
+      },
+      "azure-openai-whats-new": {
+        "ok": true,
+        "itemCount": 14,
+        "durationMs": 126
+      },
+      "azure-foundry-models": {
+        "ok": true,
+        "itemCount": 38,
+        "durationMs": 128
+      },
+      "bedrock-lifecycle": {
+        "ok": true,
+        "itemCount": 2,
+        "durationMs": 179
+      },
+      "bedrock-doc-history": {
+        "ok": true,
+        "itemCount": 196,
+        "durationMs": 267
+      }
+    },
+    "newEvents": 32,
+    "summaries": {
+      "summarized": 7,
+      "routed": 10,
+      "calls": 17,
+      "failed": 3,
+      "candidates": 10,
+      "skipped": false,
+      "model": "gpt-4.1-mini",
+      "fatalError": null
+    },
+    "summaryStatus": "blocked",
+    "summaryMessage": "OpenAI summarized 7/10 display candidates; refusing to publish mixed Korean and raw-source cards."
+  },
+  {
     "startedAt": "2026-09-01T12:33:15.155Z",
     "completedAt": "2026-09-01T12:37:39.948Z",
     "sources": {
@@ -10566,125 +10685,6 @@
         "ok": true,
         "itemCount": 192,
         "durationMs": 151
-      }
-    },
-    "newEvents": 121,
-    "summaries": {
-      "summarized": 0,
-      "routed": 0,
-      "calls": 0,
-      "failed": 1,
-      "candidates": 10,
-      "skipped": false,
-      "model": "gpt-4.1-mini",
-      "fatalError": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."
-    },
-    "summaryStatus": "blocked",
-    "summaryMessage": "OpenAI summarized 0/10 display candidates; refusing to publish mixed Korean and raw-source cards."
-  },
-  {
-    "startedAt": "2026-08-16T02:24:33.306Z",
-    "completedAt": "2026-08-16T02:26:14.525Z",
-    "sources": {
-      "openai-changelog": {
-        "ok": true,
-        "itemCount": 34,
-        "durationMs": 479
-      },
-      "openai-deprecations": {
-        "ok": true,
-        "itemCount": 100,
-        "durationMs": 130
-      },
-      "openai-models": {
-        "ok": true,
-        "itemCount": 65,
-        "durationMs": 132
-      },
-      "openai-news": {
-        "ok": true,
-        "itemCount": 1129,
-        "durationMs": 337
-      },
-      "openai-price-performance": {
-        "ok": false,
-        "error": "HTTP 403",
-        "durationMs": 8
-      },
-      "anthropic-release-notes": {
-        "ok": true,
-        "itemCount": 97,
-        "durationMs": 689
-      },
-      "anthropic-deprecations": {
-        "ok": true,
-        "itemCount": 18,
-        "durationMs": 491
-      },
-      "anthropic-models": {
-        "ok": true,
-        "itemCount": 6,
-        "durationMs": 442
-      },
-      "anthropic-news": {
-        "ok": true,
-        "itemCount": 13,
-        "durationMs": 562
-      },
-      "gemini-changelog": {
-        "ok": true,
-        "itemCount": 130,
-        "durationMs": 328
-      },
-      "gemini-deprecations": {
-        "ok": true,
-        "itemCount": 11,
-        "durationMs": 565
-      },
-      "gemini-models": {
-        "ok": true,
-        "itemCount": 16,
-        "durationMs": 528
-      },
-      "gemini-latest-model": {
-        "ok": true,
-        "itemCount": 12,
-        "durationMs": 243
-      },
-      "gemini-news": {
-        "ok": true,
-        "itemCount": 9,
-        "durationMs": 125
-      },
-      "vertex-release-notes": {
-        "ok": true,
-        "itemCount": 449,
-        "durationMs": 831
-      },
-      "vertex-deprecations": {
-        "ok": true,
-        "itemCount": 1,
-        "durationMs": 359
-      },
-      "azure-openai-whats-new": {
-        "ok": true,
-        "itemCount": 14,
-        "durationMs": 57
-      },
-      "azure-foundry-models": {
-        "ok": true,
-        "itemCount": 38,
-        "durationMs": 57
-      },
-      "bedrock-lifecycle": {
-        "ok": true,
-        "itemCount": 2,
-        "durationMs": 265
-      },
-      "bedrock-doc-history": {
-        "ok": true,
-        "itemCount": 192,
-        "durationMs": 180
       }
     },
     "newEvents": 121,
