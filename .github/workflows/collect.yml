@@ -33,7 +33,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # A repository variable can deliberately override this fallback.
-          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL || 'gpt-4.1-mini' }}
+          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL || 'gpt-5.6-luna' }}
           # Keep the daily backfill large enough to translate the current
           # month's backlog; manual runs can still lower it via the input.
           SUMMARY_MAX_EVENTS: ${{ inputs.summary_max_events || '20' }}
