@@ -3,7 +3,7 @@
     "openai-changelog": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 35,
       "contentHash": "8353fde19dd37490d311d169",
       "error": null
@@ -11,7 +11,7 @@
     "openai-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 106,
       "contentHash": "4233a57f02da4369a322735b",
       "error": null
@@ -19,7 +19,7 @@
     "openai-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 69,
       "contentHash": "afc85808d2913d8990de2b1f",
       "error": null
@@ -27,7 +27,7 @@
     "openai-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 1233,
       "contentHash": "937f122f6e8ae8119296b70b",
       "error": null
@@ -35,7 +35,7 @@
     "anthropic-release-notes": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 112,
       "contentHash": "56d9ddd1b221a06deda50113",
       "error": null
@@ -43,7 +43,7 @@
     "anthropic-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 18,
       "contentHash": "de0ef5f42c90467dd6bf3f5a",
       "error": null
@@ -51,7 +51,7 @@
     "anthropic-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 4,
       "contentHash": "3c42fed265bd89d024b72a4f",
       "error": null
@@ -59,7 +59,7 @@
     "anthropic-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 14,
       "contentHash": "d627b4d989f90a9b67b099af",
       "error": null
@@ -67,7 +67,7 @@
     "gemini-changelog": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 139,
       "contentHash": "9c10ae92343dda1b922a0b92",
       "error": null
@@ -75,7 +75,7 @@
     "gemini-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 13,
       "contentHash": "864745c7db7aedd79e642714",
       "error": null
@@ -83,7 +83,7 @@
     "gemini-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 16,
       "contentHash": "3fc665fe5bd9a930e384e263",
       "error": null
@@ -91,7 +91,7 @@
     "gemini-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 9,
       "contentHash": "30a0158f9c3e7964138d2ef4",
       "error": null
@@ -99,15 +99,15 @@
     "vertex-release-notes": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
-      "itemCount": 458,
-      "contentHash": "0a7523a63dec72b02cbf7a4a",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
+      "itemCount": 460,
+      "contentHash": "40209c9abeee129666037133",
       "error": null
     },
     "vertex-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 1,
       "contentHash": "ed45fc556d719094d5994544",
       "error": null
@@ -115,7 +115,7 @@
     "bedrock-lifecycle": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 2,
       "contentHash": "7d97c0f6e129d6dc9af22403",
       "error": null
@@ -123,7 +123,7 @@
     "bedrock-doc-history": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 199,
       "contentHash": "60440a509c52ba7fe8f2c704",
       "error": null
@@ -131,7 +131,7 @@
     "azure-openai-whats-new": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 14,
       "contentHash": "6149eab4546def979cc08cd6",
       "error": null
@@ -139,7 +139,7 @@
     "azure-foundry-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 40,
       "contentHash": "c03de45a99b360fd738be5bc",
       "error": null
@@ -147,17 +147,17 @@
     "gemini-latest-model": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "itemCount": 13,
       "contentHash": "8f6f04b0fbacf68d9c22b9c5",
       "error": null
     },
     "openai-price-performance": {
       "ok": false,
-      "checkedAt": "2026-09-29T00:58:59.232Z",
+      "checkedAt": "2026-09-29T01:13:34.651Z",
       "error": "HTTP 403",
       "optional": true
     }
   },
-  "lastRunAt": "2026-09-29T00:58:59.232Z"
+  "lastRunAt": "2026-09-29T01:13:34.651Z"
 }
