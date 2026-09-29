@@ -217,7 +217,7 @@ function promptTip(event) {
       lane: "Context",
       title: "긴 시스템 지시문은 캐싱·추론 설정까지 함께 설계",
       signal: "OpenAI 모델 변경 로그에서 prompt caching, persisted reasoning, reasoning effort, tool calling 관련 변화가 확인됐습니다.",
-      evidence: "원문은 GPT-5.6 계열 변경과 함께 prompt caching controls, persisted reasoning, max reasoning effort, Programmatic Tool Calling을 언급합니다. 컨텍스트 구성과 추론 예산을 같이 설계해야 하는 변화입니다.",
+      evidence: "원문은 GPT-6 계열 변경과 함께 prompt caching controls, persisted reasoning, max reasoning effort, Programmatic Tool Calling을 언급합니다. 컨텍스트 구성과 추론 예산을 같이 설계해야 하는 변화입니다.",
       practice: "항상 반복해서 넣는 정책, 예시, 도구 설명은 요청마다 새로 붙이는 대신 ‘고정 컨텍스트’로 분리하는 편이 좋습니다. 그래야 비용도 줄이고, 어떤 부분을 바꿨을 때 답이 흔들렸는지도 보기 쉽습니다.",
       example: "예: 고객 응대 봇이라면 회사 정책·말투·금지 답변은 고정 블록으로 두고, 이번 티켓 내용과 최근 대화만 요청별 블록으로 넣습니다.",
       checklist: "프롬프트를 고정 지시문, 이번 요청의 자료, 도구 결과, 출력 형식 네 블록으로 나눠보세요."
@@ -707,8 +707,8 @@ function briefing(event) {
   }
   if (/gpt[-\s]?5\.6|gpt-5\.6-sol|gpt-5\.6-terra|gpt-5\.6-luna/.test(lower)) {
     return {
-      title: "OpenAI GPT-5.6 모델 패밀리 공개",
-      change: "OpenAI 공식 모델 문서와 변경 로그에서 GPT-5.6 Sol, Terra, Luna 모델 패밀리와 gpt-5.6 alias 안내가 확인됐습니다.",
+      title: "OpenAI GPT-6 모델 패밀리 공개",
+      change: "OpenAI 공식 모델 문서와 변경 로그에서 GPT-6 Astra, Sol, Luna 모델 패밀리가 공개됐습니다.",
       impact: "복잡한 추론·코딩용 Sol, 비용 균형형 Terra, 고처리량용 Luna로 모델 선택 기준이 새로 생겼습니다.",
       action: "현재 GPT 계열 호출부에서 모델 alias, 비용, reasoning/tool 기능 지원 범위를 확인하고 평가 후보에 추가하세요."
     };

@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "unit": "1M tokens",
-  "verifiedAt": "2026-07-30",
+  "verifiedAt": "2026-09-29",
   "sources": [
     {
       "vendor": "openai",
@@ -62,6 +62,19 @@
       "context": "short",
       "effectiveFrom": "2026-07-30",
       "notes": "2026-07-30 가격 인하 반영. Long context는 $0.40/$1.80"
+    },
+    {
+      "vendor": "openai",
+      "platform": "OpenAI API",
+      "model": "gpt-6-luna",
+      "input": 0.1,
+      "output": 0.5,
+      "cacheWrite5m": 0.125,
+      "cacheRead": 0.01,
+      "tier": "standard",
+      "context": "short",
+      "effectiveFrom": "2026-09-29",
+      "notes": "OpenAI 공식 GPT-6 Luna 가격. 입력 $0.10, 출력 $0.50 / 1M tokens"
     },
     {
       "vendor": "openai",
