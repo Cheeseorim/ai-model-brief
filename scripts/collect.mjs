@@ -116,16 +116,15 @@ if (summaryStrict && newEvents.length > 0 && summaryResult.skipped) {
   process.exit(0);
 }
 if (
-  summaryStrict &&
   !summaryResult.skipped &&
   newEvents.length > 0 &&
   summaryResult.candidates > summaryResult.summarized
 ) {
-  run.summaryStatus = "blocked";
-  run.summaryMessage = `OpenAI summarized ${summaryResult.summarized}/${summaryResult.candidates} display candidates; refusing to publish mixed Korean and raw-source cards.`;
-  console.error(`${run.summaryMessage}${summaryResult.fatalError ? ` Last error: ${summaryResult.fatalError}` : ""}`);
-  await logSkippedPublish(run);
-  process.exit(0);
+  // Keep successful translations visible; unresolved candidates remain
+  // excluded from Korean views and can be retried on the next manual run.
+  run.summaryStatus = "partial";
+  run.summaryMessage = `OpenAI summarized ${summaryResult.summarized}/${summaryResult.candidates} display candidates; publishing successful Korean summaries and leaving the rest for a later run.`;
+  console.warn(run.summaryMessage);
 }
 const retainedPrevious = await enrichCarriedEvents(previousEvents.filter(
   (event) => !consumedPrevious.has(previousKey(event)) && !consumedSourceUrls.has(`${event.sourceId}|${event.sourceUrl}`)
