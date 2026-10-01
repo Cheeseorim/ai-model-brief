@@ -207,6 +207,17 @@
     {
       "vendor": "google",
       "platform": "Gemini API",
+      "model": "Gemini 4 Argon",
+      "input": 2,
+      "output": 10,
+      "cacheRead": 0.1,
+      "tier": "early-access",
+      "effectiveFrom": "2026-09-30",
+      "notes": "Google 공식 발표 기준. 현재 신뢰할 수 있는 사이버 보안 테스터에 단계적 제공 중이며, 유료 API 고객부터 확대 예정. 출시 후 정가 입력 $4, 출력 $20 / 1M tokens"
+    },
+    {
+      "vendor": "google",
+      "platform": "Gemini API",
       "model": "Gemini 3 Flash Preview",
       "input": 0.5,
       "output": 3,

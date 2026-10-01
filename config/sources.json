@@ -127,6 +127,16 @@
     "priority": 40
   },
   {
+    "id": "gemini-4-argon-news",
+    "vendor": "google",
+    "platform": "gemini",
+    "kind": "news",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+    "parser": "headings",
+    "publishedAt": "2026-09-30",
+    "priority": 120
+  },
+  {
     "id": "vertex-release-notes",
     "vendor": "google",
     "platform": "vertex-ai",
