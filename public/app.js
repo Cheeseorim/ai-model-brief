@@ -14,8 +14,6 @@ const ui = {
   coverageMeta: document.querySelector("#coverageMeta"),
   headlines: document.querySelector("#headlines"),
   headlineMeta: document.querySelector("#headlineMeta"),
-  promptTips: document.querySelector("#promptTips"),
-  promptMeta: document.querySelector("#promptMeta"),
   pricingRows: document.querySelector("#pricingRows"),
   pricingMeta: document.querySelector("#pricingMeta"),
   pricingSources: document.querySelector("#pricingSources"),
@@ -94,7 +92,6 @@ ui.health.classList.add(failures.length || summaryBlocked ? "bad" : "ok");
 
 renderCoverage();
 renderHeadlines();
-renderPromptTips();
 renderPricing();
 activateTab(initialTab());
 
@@ -119,7 +116,7 @@ function activateTab(tabName) {
 }
 
 function dashboardTabs() {
-  return ["briefing", "prompting", "vendors", "pricing"];
+  return ["briefing", "vendors", "pricing"];
 }
 
 function renderPromptTips() {
@@ -646,9 +643,9 @@ function headlineCard(event, index) {
       </div>
       <h3>${escapeHtml(brief.title)}</h3>
       <div class="brief-points">
-        <p><strong>변경</strong><span>${escapeHtml(brief.change)}</span></p>
-        <p><strong>영향</strong><span>${escapeHtml(brief.impact)}</span></p>
-        <p><strong>확인</strong><span>${escapeHtml(brief.action)}</span></p>
+        <p><strong>무슨 일</strong><span>${escapeHtml(brief.change)}</span></p>
+        <p><strong>왜 중요한가</strong><span>${escapeHtml(brief.impact)}</span></p>
+        <p><strong>지금 할 일</strong><span>${escapeHtml(brief.action)}</span></p>
       </div>
       <div class="headline-bottom">
         <span>${escapeHtml(sourceLabels[event.sourceId] || event.sourceId || "")}</span>

@@ -20,7 +20,6 @@
     <main>
       <nav class="section-tabs" aria-label="대시보드 섹션">
         <button type="button" class="active" data-tab="briefing">주요 뉴스</button>
-        <button type="button" data-tab="prompting">프롬프트 팁</button>
         <button type="button" data-tab="vendors">공급사별 이슈</button>
         <button type="button" data-tab="pricing">가격 비교</button>
       </nav>
@@ -34,35 +33,6 @@
           <span id="headlineMeta"></span>
         </div>
         <div id="headlines" class="headline-list"></div>
-      </section>
-      <section class="prompt-panel tab-panel" data-panel="prompting" aria-labelledby="promptTitle">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">프롬프트·컨텍스트·하니스</p>
-            <h2 id="promptTitle">프롬프트 노트</h2>
-          </div>
-          <span id="promptMeta"></span>
-        </div>
-        <div class="prompt-layout">
-          <div class="prompt-principles" aria-label="프롬프트 노트 읽는 법">
-            <article>
-              <span>읽는 법</span>
-              <h3>뉴스를 프롬프트 습관으로 번역합니다</h3>
-              <p>모델 출시 소식 자체보다, 그 변화가 어떤 지시문·컨텍스트·평가 방식으로 이어질 수 있는지 먼저 봅니다.</p>
-            </article>
-            <article>
-              <span>근거</span>
-              <h3>원문에서 건질 수 있는 단서를 남깁니다</h3>
-              <p>왜 이런 팁이 나왔는지 보여야 나중에 팀 프롬프트나 에이전트 하니스에 반영할 때 납득하기 쉽습니다.</p>
-            </article>
-            <article>
-              <span>실험</span>
-              <h3>좋아 보이는 팁은 바로 작은 실험으로</h3>
-              <p>자주 쓰는 요청 하나를 골라 기존 프롬프트와 개선 프롬프트를 나란히 돌려보는 방식으로 확인하세요.</p>
-            </article>
-          </div>
-          <div id="promptTips" class="prompt-tip-list"></div>
-        </div>
       </section>
       <section class="coverage tab-panel" data-panel="vendors" aria-labelledby="coverageTitle">
         <div class="section-heading compact">
