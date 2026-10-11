@@ -118,7 +118,47 @@
     "severity": 55,
     "publishedAt": "2026-10-08",
     "detectedAt": "2026-10-11T12:55:12.206Z",
-    "watched": false
+    "watched": false,
+    "titleKo": "Anthropic, 사이버 미션 소개",
+    "summaryKo": "Anthropic이 ‘Anthropic Cyber Mission’을 소개했습니다. 제공된 자료에는 모델이나 API 변경 내용이 없습니다.",
+    "impactKo": "이번 소식만으로는 제품 연동이나 운영 방식에 미치는 영향을 판단하기 어렵습니다.",
+    "actionKo": "사이버 미션의 구체적인 내용이 업무와 관련 있는 팀은 공식 발표문을 확인하세요.",
+    "whoShouldCareKo": "Anthropic의 사이버 보안 관련 활동을 살펴보는 팀.",
+    "urgency": "low",
+    "changeType": "product_news",
+    "confidence": "high",
+    "isProbablyNoise": true,
+    "clusterKey": "anthropic:cyber-mission",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Anthropic의 사이버 미션 소개",
+      "change": "Anthropic이 ‘Anthropic Cyber Mission’을 소개했습니다. 제공된 자료에는 모델이나 API 변경 내용이 없습니다.",
+      "impact": "이번 소식만으로는 제품 연동이나 운영 방식에 미치는 영향을 판단하기 어렵습니다.",
+      "action": "사이버 미션의 구체적인 내용이 업무와 관련 있는 팀은 공식 발표문을 확인하세요.",
+      "audience": "Anthropic의 사이버 보안 관련 활동을 살펴보는 팀.",
+      "urgency": "low"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:03:53.650Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "product_news",
+      "confidence": "high",
+      "isProbablyNoise": true,
+      "clusterKey": "anthropic:cyber-mission",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Anthropic의 사이버 미션 소개라는 제품·사업 뉴스지만 모델·API 변경이나 프롬프트 적용 정보는 제공되지 않아 운영 브리핑 우선순위가 낮습니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -176,7 +216,7 @@
     "publishedAt": "2026-10-06",
     "detectedAt": "2026-07-09T09:02:39.782Z",
     "watched": true,
-    "summaryError": "Unterminated string in JSON at position 1147 (line 10 column 124)"
+    "summaryError": "Unterminated string in JSON at position 175 (line 4 column 76)"
   },
   {
     "id": "4e5c9a3a1a84f38ac195b431",
@@ -192,7 +232,47 @@
     "severity": 55,
     "publishedAt": "2026-10-06",
     "detectedAt": "2026-10-11T12:55:12.205Z",
-    "watched": false
+    "watched": false,
+    "titleKo": "사이버 검증 프로그램 확대",
+    "summaryKo": "Anthropic이 사이버 검증 프로그램을 확대해 자격을 갖춘 보안 전문가에게 고급 사이버 기능과 차단 분류기 완화 접근을 제공합니다. 발표일은 2026년 10월 6일입니다.",
+    "impactKo": "대상 자격을 갖춘 보안 전문가는 해당 기능에 접근할 수 있지만, 구체적인 자격 요건과 신청 절차는 원문에서 확인해야 합니다.",
+    "actionKo": "프로그램 원문에서 자격 요건과 신청 방법을 확인하고, 이용이 승인되면 기존 보안 테스트 절차와 정책을 점검하세요.",
+    "whoShouldCareKo": "Anthropic의 사이버 기능을 보안 업무에 활용하려는 보안 전문가와 이를 운영하는 팀.",
+    "urgency": "medium",
+    "changeType": "availability",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "anthropic:cyber-verification-program",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "자격을 갖춘 보안 전문가 대상 프로그램 확대",
+      "change": "Anthropic이 사이버 검증 프로그램을 확대해 자격을 갖춘 보안 전문가에게 고급 사이버 기능과 차단 분류기 완화 접근을 제공합니다. 발표일은 2026년 10월 6일입니다.",
+      "impact": "대상 자격을 갖춘 보안 전문가는 해당 기능에 접근할 수 있지만, 구체적인 자격 요건과 신청 절차는 원문에서 확인해야 합니다.",
+      "action": "프로그램 원문에서 자격 요건과 신청 방법을 확인하고, 이용이 승인되면 기존 보안 테스트 절차와 정책을 점검하세요.",
+      "audience": "Anthropic의 사이버 기능을 보안 업무에 활용하려는 보안 전문가와 이를 운영하는 팀.",
+      "urgency": "medium"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:03:41.730Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "availability",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "anthropic:cyber-verification-program",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "자격을 갖춘 보안 전문가에게 고급 사이버 기능과 차단 분류기 완화 접근을 제공하는 프로그램 확대이므로 이용 가능성 변화로 분류합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -472,7 +552,47 @@
     "publishedAt": "2026-10-01",
     "detectedAt": "2026-07-09T09:02:36.385Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "Responses API 초고속 모드·Decisions API 베타 출시",
+    "summaryKo": "Responses API에서 `gpt-6.1-sol`의 `ultrafast` 모드를 제공하기 시작했습니다. `gpt-6-luna` 기반 Decisions API는 베타로 출시됐으며, 텍스트와 이미지를 입력받아 구조화된 답변을 생성합니다.",
+    "impactKo": "초고속 모드는 출력 토큰 간 지연을 줄이지만 요금과 요청 한도의 영향을 받으며, Decisions API는 베타 단계라 기존 Responses API와의 성능·출력 차이를 확인해야 합니다.",
+    "actionKo": "운영 적용 전 `ultrafast`의 요금과 rate limit, 글로벌 처리 및 미국·EU 데이터 레지던시 조건을 확인하고, Decisions API는 실제 입력으로 응답 형식과 속도를 테스트하세요.",
+    "whoShouldCareKo": "OpenAI Responses API에서 `gpt-6.1-sol`을 쓰거나, 구조화된 답변 생성을 위해 `gpt-6-luna`와 Decisions API를 검토하는 개발·운영팀",
+    "urgency": "high",
+    "changeType": "availability",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:api-model-features",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "OpenAI, 초고속 모드와 Decisions API 베타 공개",
+      "change": "Responses API에서 `gpt-6.1-sol`의 `ultrafast` 모드를 제공하기 시작했습니다. `gpt-6-luna` 기반 Decisions API는 베타로 출시됐으며, 텍스트와 이미지를 입력받아 구조화된 답변을 생성합니다.",
+      "impact": "초고속 모드는 출력 토큰 간 지연을 줄이지만 요금과 요청 한도의 영향을 받으며, Decisions API는 베타 단계라 기존 Responses API와의 성능·출력 차이를 확인해야 합니다.",
+      "action": "운영 적용 전 `ultrafast`의 요금과 rate limit, 글로벌 처리 및 미국·EU 데이터 레지던시 조건을 확인하고, Decisions API는 실제 입력으로 응답 형식과 속도를 테스트하세요.",
+      "audience": "OpenAI Responses API에서 `gpt-6.1-sol`을 쓰거나, 구조화된 답변 생성을 위해 `gpt-6-luna`와 Decisions API를 검토하는 개발·운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:02:53.616Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "availability",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:api-model-features",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Responses API의 ultrafast 모드와 Decisions API 베타 출시 등 모델·API 기능 및 이용 가능성 변화가 포함되어 운영 확인이 필요합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "ee92f7a928d209a512fbb580",
@@ -498,7 +618,47 @@
     "publishedAt": "2026-10-01",
     "detectedAt": "2026-07-09T09:02:36.442Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "GPT-5.3-Codex·GPT-5.1·GPT-5.4-Nano, 2027년 4월 1일 종료",
+    "summaryKo": "OpenAI는 GPT-5.3-Codex, GPT-5.1, GPT-5.4-Nano를 2027년 4월 1일 API에서 종료합니다. 대체 모델로 각각 gpt-6-sol, gpt-6-sol, gpt-6-luna를 권장했습니다.",
+    "impactKo": "종료일 이후 해당 모델을 사용하는 API 호출이 영향을 받으므로, 운영 중인 모델과 의존 기능을 확인해 마이그레이션해야 합니다.",
+    "actionKo": "오늘 모델 ID가 설정된 서비스와 작업을 찾아 목록화하고, 권장 대체 모델로 전환한 뒤 주요 요청의 응답·기능 테스트를 계획하세요.",
+    "whoShouldCareKo": "OpenAI API에서 GPT-5.3-Codex, GPT-5.1 또는 GPT-5.4-Nano를 사용하는 개발·운영 팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:model-deprecations-2027-04",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "OpenAI, 세 모델 API 지원 종료 예고",
+      "change": "OpenAI는 GPT-5.3-Codex, GPT-5.1, GPT-5.4-Nano를 2027년 4월 1일 API에서 종료합니다. 대체 모델로 각각 gpt-6-sol, gpt-6-sol, gpt-6-luna를 권장했습니다.",
+      "impact": "종료일 이후 해당 모델을 사용하는 API 호출이 영향을 받으므로, 운영 중인 모델과 의존 기능을 확인해 마이그레이션해야 합니다.",
+      "action": "오늘 모델 ID가 설정된 서비스와 작업을 찾아 목록화하고, 권장 대체 모델로 전환한 뒤 주요 요청의 응답·기능 테스트를 계획하세요.",
+      "audience": "OpenAI API에서 GPT-5.3-Codex, GPT-5.1 또는 GPT-5.4-Nano를 사용하는 개발·운영 팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:01:38.188Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:model-deprecations-2027-04",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "GPT-5.3-Codex, GPT-5.1, GPT-5.4-Nano의 API 종료일과 권장 대체 모델이 명시되어 있어 운영자가 마이그레이션을 준비해야 합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "ee92f7a928d209a512fbb580",
@@ -1235,7 +1395,7 @@
     "publishedAt": "2026-09-28",
     "detectedAt": "2026-07-09T09:02:39.782Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "Unterminated string in JSON at position 517 (line 6 column 71)"
   },
   {
     "id": "d96dd8bf8c9b2f08d2eb6bee",
@@ -3573,7 +3733,8 @@
     "severity": 100,
     "publishedAt": "2026-08-27",
     "detectedAt": "2026-07-09T09:02:45.899Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "3263e11980d56f7d8b5b04cf",
@@ -3646,7 +3807,47 @@
     "publishedAt": "2026-08-26",
     "detectedAt": "2026-07-09T09:02:36.442Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "전사 모델 4종, 2027년 2월 API 종료",
+    "summaryKo": "whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize의 API 제공이 2027년 2월 26일 종료됩니다. 대체 모델로 gpt-live-transcribe 또는 gpt-transcribe가 권장됩니다.",
+    "impactKo": "종료일까지 기존 모델을 사용하는 전사 워크로드를 대체 모델로 전환하고 호환성을 검증해야 합니다.",
+    "actionKo": "현재 API 호출과 운영 환경에서 네 모델의 사용 여부를 확인하고, 대체 모델로 전환해 전사 결과와 애플리케이션 연동을 테스트하세요.",
+    "whoShouldCareKo": "OpenAI API에서 whisper-1 또는 gpt-4o 전사 모델을 사용하는 개발·운영팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:transcription-model-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "전사 모델 4종 지원 종료 예정",
+      "change": "whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize의 API 제공이 2027년 2월 26일 종료됩니다. 대체 모델로 gpt-live-transcribe 또는 gpt-transcribe가 권장됩니다.",
+      "impact": "종료일까지 기존 모델을 사용하는 전사 워크로드를 대체 모델로 전환하고 호환성을 검증해야 합니다.",
+      "action": "현재 API 호출과 운영 환경에서 네 모델의 사용 여부를 확인하고, 대체 모델로 전환해 전사 결과와 애플리케이션 연동을 테스트하세요.",
+      "audience": "OpenAI API에서 whisper-1 또는 gpt-4o 전사 모델을 사용하는 개발·운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:04:18.988Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:transcription-model-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "전사 모델 4종의 API 지원 종료일과 대체 모델이 명시되어 있어 운영자가 확인해야 합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -4657,7 +4858,47 @@
     "publishedAt": "2026-08-01",
     "detectedAt": "2026-07-09T09:02:36.385Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "전사 모델 4종, 2027년 2월 종료 예정",
+    "summaryKo": "OpenAI가 whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize의 지원 종료를 공지했습니다. 네 모델은 2027년 2월 26일 종료되며, 대체 모델로 gpt-live-transcribe 또는 gpt-transcribe를 안내했습니다.",
+    "impactKo": "종료일 이후 기존 모델을 호출하는 전사 작업이 중단될 수 있어, 모델명에 의존하는 연동과 운영 절차를 미리 전환하고 검증해야 합니다.",
+    "actionKo": "현재 사용 중인 모델과 전사 요청 경로를 확인하고, 대체 모델로 바꾼 뒤 실제 오디오 입력과 출력 형식·품질을 테스트하세요.",
+    "whoShouldCareKo": "OpenAI API에서 whisper-1 또는 gpt-4o 전사 모델을 사용하는 개발·운영팀.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:transcription-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "OpenAI 전사 모델 4종 종료 및 대체 모델 안내",
+      "change": "OpenAI가 whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize의 지원 종료를 공지했습니다. 네 모델은 2027년 2월 26일 종료되며, 대체 모델로 gpt-live-transcribe 또는 gpt-transcribe를 안내했습니다.",
+      "impact": "종료일 이후 기존 모델을 호출하는 전사 작업이 중단될 수 있어, 모델명에 의존하는 연동과 운영 절차를 미리 전환하고 검증해야 합니다.",
+      "action": "현재 사용 중인 모델과 전사 요청 경로를 확인하고, 대체 모델로 바꾼 뒤 실제 오디오 입력과 출력 형식·품질을 테스트하세요.",
+      "audience": "OpenAI API에서 whisper-1 또는 gpt-4o 전사 모델을 사용하는 개발·운영팀.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:04:06.987Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:transcription-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "전사 모델 4종의 종료일(2027년 2월 26일)과 대체 모델이 공지되어 운영자의 마이그레이션 확인이 필요합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "7199127ecc3791d31ce73a9b",
@@ -5605,7 +5846,47 @@
     "severity": 100,
     "publishedAt": "2026-08-01",
     "detectedAt": "2026-07-09T09:02:46.468Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "Gemini 오디오 모델 지원 종료 일정",
+    "summaryKo": "Gemini API의 gemini-2.5-flash-preview-tts와 gemini-2.5-pro-preview-tts는 2026년 11월 17일 종료됩니다. Google은 두 모델의 대체 모델로 gemini-3.8-flash-tts 또는 gemini-3.8-flash-lite-tts를 권장합니다. gemini-3.5-transcribe는 2026년 8월 출시됐으며 종료일은 발표되지 않았습니다.",
+    "impactKo": "종료 대상 TTS 모델을 계속 호출하는 서비스는 종료일 전에 대체 모델로 전환하고 음성 출력 결과와 연동 동작을 검증해야 합니다.",
+    "actionKo": "오늘 운영 중인 Gemini API 모델 ID와 호출 경로를 확인하고, 두 프리뷰 TTS 모델을 쓰고 있다면 권장 대체 모델로 전환한 뒤 실제 요청에서 음성 출력과 애플리케이션 연동을 테스트하세요.",
+    "whoShouldCareKo": "Gemini API로 음성 합성 서비스를 운영하거나 gemini-2.5-flash-preview-tts·gemini-2.5-pro-preview-tts를 호출하는 팀.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "google:gemini-audio-model-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Gemini 음성 합성 프리뷰 모델, 2026년 11월 종료",
+      "change": "Gemini API의 gemini-2.5-flash-preview-tts와 gemini-2.5-pro-preview-tts는 2026년 11월 17일 종료됩니다. Google은 두 모델의 대체 모델로 gemini-3.8-flash-tts 또는 gemini-3.8-flash-lite-tts를 권장합니다. gemini-3.5-transcribe는 2026년 8월 출시됐으며 종료일은 발표되지 않았습니다.",
+      "impact": "종료 대상 TTS 모델을 계속 호출하는 서비스는 종료일 전에 대체 모델로 전환하고 음성 출력 결과와 연동 동작을 검증해야 합니다.",
+      "action": "오늘 운영 중인 Gemini API 모델 ID와 호출 경로를 확인하고, 두 프리뷰 TTS 모델을 쓰고 있다면 권장 대체 모델로 전환한 뒤 실제 요청에서 음성 출력과 애플리케이션 연동을 테스트하세요.",
+      "audience": "Gemini API로 음성 합성 서비스를 운영하거나 gemini-2.5-flash-preview-tts·gemini-2.5-pro-preview-tts를 호출하는 팀.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-11T13:04:56.272Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:gemini-audio-model-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Gemini API 오디오 모델의 종료 일정과 권장 대체 모델이 안내되어 운영자가 확인해야 하는 제공 여부 변화입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "9db2cbb0f04cf8853f9097f8",
