@@ -1188,7 +1188,32 @@
     "severity": 20,
     "publishedAt": "2026-09-30",
     "detectedAt": "2026-10-01T03:10:07.872Z",
-    "watched": false
+    "watched": false,
+    "titleKo": "Gemini 4 Argon 공개",
+    "summaryKo": "Google이 Gemini 4 Argon을 공개했습니다. 복잡한 장기 작업, 소프트웨어 엔지니어링, 법률·금융 등 기업 지식 업무와 사이버 보안 방어를 겨냥한 프론티어 모델입니다. 현재는 신뢰할 수 있는 사이버 보안 테스터부터 단계적으로 제공되며, 유료 API 고객과 Google AI Ultra 구독자부터 확대될 예정입니다.",
+    "impactKo": "출력 토큰 한도가 100만 토큰으로 확대됐고, 장시간 이어지는 코딩·리서치·에이전트 작업을 주요 사용 사례로 내세웁니다.",
+    "actionKo": "API 도입을 검토한다면 정식 공개 전 접근 조건과 리전·쿼터·안전정책을 확인하고, 현재 운영 모델과의 비용·성능 비교 기준을 먼저 마련하세요.",
+    "whoShouldCareKo": "장기 실행 에이전트, 엔터프라이즈 지식 업무, 사이버 보안 자동화를 검토하는 팀",
+    "briefKo": {
+      "title": "Gemini 4 Argon, 단계적 얼리 액세스 시작",
+      "change": "Google이 장기 추론과 엔터프라이즈 업무를 겨냥한 Gemini 4 Argon을 공개했습니다.",
+      "impact": "현재는 제한된 테스터 대상이며, 출력 한도는 100만 토큰입니다.",
+      "action": "정식 API 공개 전 접근 조건과 비용·성능을 비교할 준비를 하세요.",
+      "audience": "장기 실행 에이전트와 엔터프라이즈 AI를 운영하는 팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "editorial-fallback",
+      "model": null,
+      "summarizedAt": "2026-10-11T13:05:00.000Z",
+      "pipeline": "official-announcement-fallback",
+      "calls": 0,
+      "changeType": "release",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:gemini-4-argon",
+      "routes": ["news"]
+    }
   },
   {
     "id": "07e6f61048d3b1791212bc2d",
