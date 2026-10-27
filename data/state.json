@@ -3,111 +3,111 @@
     "openai-changelog": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 36,
-      "contentHash": "29cb6702df77be90d0b644e5",
+      "contentHash": "4001070402af3fb44772f045",
       "error": null
     },
     "openai-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 113,
-      "contentHash": "815ae121fb36914d59258429",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 118,
+      "contentHash": "40a9eb7c30f7e8f642ec2cf0",
       "error": null
     },
     "openai-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 74,
-      "contentHash": "ae19d4507765016be7b044b8",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 78,
+      "contentHash": "7e9d53cc11399421ec221cb2",
       "error": null
     },
     "openai-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 1287,
-      "contentHash": "bf9aeb0ea1a0f1dc8c28b06d",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 1325,
+      "contentHash": "974038e768998c157650c2e1",
       "error": null
     },
     "anthropic-release-notes": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 119,
-      "contentHash": "201867e98ead1a85b7ce6ad1",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 125,
+      "contentHash": "d428885c94930a97d68b8c65",
       "error": null
     },
     "anthropic-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 19,
-      "contentHash": "15ec9fd1e7ab5f31f9f5c503",
+      "contentHash": "91a5c3ef0c7ca4ad53eccf81",
       "error": null
     },
     "anthropic-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 4,
-      "contentHash": "5553d044e3c9759b66261459",
+      "contentHash": "756f6cd260ce6134655e2b59",
       "error": null
     },
     "anthropic-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 10,
-      "contentHash": "00ed297a2a24b8c420319276",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 26,
+      "contentHash": "bac85162d9b8e20eb0238edb",
       "error": null
     },
     "gemini-changelog": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 141,
-      "contentHash": "1ae2b52203340d050220d2dc",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 143,
+      "contentHash": "1e813022445d726788263194",
       "error": null
     },
     "gemini-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 14,
-      "contentHash": "f82fe9d2de662384e77fcef2",
+      "contentHash": "e31f4299f963fd156ff15b24",
       "error": null
     },
     "gemini-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 16,
-      "contentHash": "f71692297fa619a57aba9923",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 17,
+      "contentHash": "4ce1cbf7dd4815e73387f04c",
       "error": null
     },
     "gemini-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 9,
-      "contentHash": "cf9e8df275ef2c558743bdcc",
+      "contentHash": "55bc4ca9bad57a771302a43c",
       "error": null
     },
     "vertex-release-notes": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 462,
-      "contentHash": "4f487cf96aef0713deebc07c",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 470,
+      "contentHash": "4eda16f7723803466632fe0c",
       "error": null
     },
     "vertex-deprecations": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 1,
       "contentHash": "ed45fc556d719094d5994544",
       "error": null
@@ -115,7 +115,7 @@
     "bedrock-lifecycle": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 2,
       "contentHash": "7d97c0f6e129d6dc9af22403",
       "error": null
@@ -123,15 +123,15 @@
     "bedrock-doc-history": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
-      "itemCount": 201,
-      "contentHash": "300746254296039323a4b007",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
+      "itemCount": 207,
+      "contentHash": "7cef66423898d794e738202a",
       "error": null
     },
     "azure-openai-whats-new": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 14,
       "contentHash": "6149eab4546def979cc08cd6",
       "error": null
@@ -139,33 +139,33 @@
     "azure-foundry-models": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 45,
-      "contentHash": "b1a68618c304f0516a0b51dc",
+      "contentHash": "e0e73940b530b02c01f97f2c",
       "error": null
     },
     "gemini-latest-model": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 15,
-      "contentHash": "e57bd7a67fb0a2e0fb8e7cf4",
+      "contentHash": "6a374c65f24f12bd02e20f3f",
       "error": null
     },
     "openai-price-performance": {
       "ok": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "error": "HTTP 403",
       "optional": true
     },
     "gemini-4-argon-news": {
       "ok": true,
       "optional": false,
-      "checkedAt": "2026-10-12T02:08:54.461Z",
+      "checkedAt": "2026-10-27T00:48:15.739Z",
       "itemCount": 8,
       "contentHash": "3a4e2d44b0d5602e3466e115",
       "error": null
     }
   },
-  "lastRunAt": "2026-10-12T02:08:54.461Z"
+  "lastRunAt": "2026-10-27T00:48:15.739Z"
 }
