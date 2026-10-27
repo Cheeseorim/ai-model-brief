@@ -62,7 +62,47 @@
     "severity": 45,
     "publishedAt": "2026-10-26",
     "detectedAt": "2026-07-09T09:02:48.956Z",
-    "watched": false
+    "watched": false,
+    "titleKo": "Vertex AI Workbench 보안 패키지 업데이트",
+    "summaryKo": "2026년 10월 26일 공개된 변경 사항에 따라 Agent Platform Workbench v2에 업스트림 패키지의 최신 버전이 설치됐습니다. 번들 패키지의 여러 보안 취약점을 해결하고 certifi, pip, conda ca-certificates를 최신 버전으로 업데이트했습니다.",
+    "impactKo": "Workbench 환경의 패키지와 인증서 보안이 개선되므로, 해당 환경을 운영하는 팀은 기존 설정이나 패키지 설치 절차에 영향이 있는지 확인해야 합니다.",
+    "actionKo": "Agent Platform Workbench v2를 사용하는 경우 환경의 패키지 버전과 패키지 설치·인증서 관련 작업이 정상적으로 동작하는지 확인하세요.",
+    "whoShouldCareKo": "Vertex AI Agent Platform Workbench v2 환경을 운영하거나 해당 환경에서 패키지를 설치하는 팀.",
+    "urgency": "low",
+    "changeType": "product_news",
+    "confidence": "high",
+    "isProbablyNoise": true,
+    "clusterKey": "google:vertex-agent-platform-workbench-security-updates",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Workbench에 최신 패키지와 인증서 업데이트 적용",
+      "change": "2026년 10월 26일 공개된 변경 사항에 따라 Agent Platform Workbench v2에 업스트림 패키지의 최신 버전이 설치됐습니다. 번들 패키지의 여러 보안 취약점을 해결하고 certifi, pip, conda ca-certificates를 최신 버전으로 업데이트했습니다.",
+      "impact": "Workbench 환경의 패키지와 인증서 보안이 개선되므로, 해당 환경을 운영하는 팀은 기존 설정이나 패키지 설치 절차에 영향이 있는지 확인해야 합니다.",
+      "action": "Agent Platform Workbench v2를 사용하는 경우 환경의 패키지 버전과 패키지 설치·인증서 관련 작업이 정상적으로 동작하는지 확인하세요.",
+      "audience": "Vertex AI Agent Platform Workbench v2 환경을 운영하거나 해당 환경에서 패키지를 설치하는 팀.",
+      "urgency": "low"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:59:30.118Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "product_news",
+      "confidence": "high",
+      "isProbablyNoise": true,
+      "clusterKey": "google:vertex-agent-platform-workbench-security-updates",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Workbench 패키지 및 인증서 보안 업데이트가 적용됐지만 모델/API 동작이나 프롬프트 작성에 관한 변화는 아닙니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "fe437f3dc28b62f59c1c3ac5",
@@ -154,7 +194,47 @@
     "publishedAt": "2026-10-23",
     "detectedAt": "2026-07-09T09:02:39.782Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "Claude Enterprise에 Tag API 베타 제공",
+    "summaryKo": "Claude Enterprise 조직은 `experimental-claude-tag-2026-10-21` 베타 헤더를 사용해 Claude Tag API를 이용할 수 있습니다. Slack 채널과 워크스페이스의 Tag 설정을 조회·변경하고, 채널에 적용되는 설정과 출처를 확인하거나 Access bundle을 연결할 수 있습니다. Claude Platform(Claude Console) 조직은 이용할 수 없습니다.",
+    "impactKo": "API 호출에는 주 소유자가 claude.ai에서 만든 Admin API 키와 `read:claude_tag` 또는 `write:claude_tag` 권한 범위가 필요하므로 조직 유형과 권한 설정에 따라 사용 가능 여부가 달라집니다.",
+    "actionKo": "사용 전 소속 조직이 Claude Enterprise인지 확인하고, 주 소유자에게 필요한 권한 범위의 Admin API 키를 요청한 뒤 베타 헤더와 `/v1/organizations/claude_tag/` 엔드포인트로 호출을 검증하세요.",
+    "whoShouldCareKo": "Claude Enterprise에서 Slack 채널·워크스페이스의 Claude Tag 설정과 Access bundle을 관리하는 팀.",
+    "urgency": "medium",
+    "changeType": "availability",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "anthropic:claude-tag-api-beta",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Claude Tag API 베타, Enterprise 조직에서 이용 가능",
+      "change": "Claude Enterprise 조직은 `experimental-claude-tag-2026-10-21` 베타 헤더를 사용해 Claude Tag API를 이용할 수 있습니다. Slack 채널과 워크스페이스의 Tag 설정을 조회·변경하고, 채널에 적용되는 설정과 출처를 확인하거나 Access bundle을 연결할 수 있습니다. Claude Platform(Claude Console) 조직은 이용할 수 없습니다.",
+      "impact": "API 호출에는 주 소유자가 claude.ai에서 만든 Admin API 키와 `read:claude_tag` 또는 `write:claude_tag` 권한 범위가 필요하므로 조직 유형과 권한 설정에 따라 사용 가능 여부가 달라집니다.",
+      "action": "사용 전 소속 조직이 Claude Enterprise인지 확인하고, 주 소유자에게 필요한 권한 범위의 Admin API 키를 요청한 뒤 베타 헤더와 `/v1/organizations/claude_tag/` 엔드포인트로 호출을 검증하세요.",
+      "audience": "Claude Enterprise에서 Slack 채널·워크스페이스의 Claude Tag 설정과 Access bundle을 관리하는 팀.",
+      "urgency": "medium"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:57:13.648Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "availability",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "anthropic:claude-tag-api-beta",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Claude Enterprise용 Claude Tag API 베타가 새로 제공되며 지원 조직·엔드포인트·권한 범위가 명시됐지만 Claude Platform 조직은 사용할 수 없습니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -315,7 +395,47 @@
     "publishedAt": "2026-10-21",
     "detectedAt": "2026-07-09T09:02:39.782Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "Claude API 2026-10-21 버전 공개",
+    "summaryKo": "Claude API 버전 2026-10-21이 공개됐으며, 새 Python·TypeScript·C#·Go·Java·PHP·Ruby SDK와 ant CLI는 이 버전을 기본으로 사용합니다. SDK와 CLI에는 API 버전과 별개인 호환성 변경도 포함됐고, 라이선스가 MIT에서 Apache 2.0으로 바뀌었습니다. 고객 프로필에는 제한·차단 상태를 확인하는 enforcement_status 및 enforcement_actions 필드와 enforcement_status[] 필터가 추가됐습니다.",
+    "impactKo": "SDK나 CLI를 새 버전으로 올리면 API 버전 전환뿐 아니라 별도 호환성 변경과 라이선스 조건도 영향을 줄 수 있어, 기존 연동과 배포 절차를 함께 검증해야 합니다.",
+    "actionKo": "사용 중인 SDK·CLI 버전과 라이선스 검토 절차를 확인하고, 마이그레이션 안내에 따라 API 요청·응답 및 프로필 조회에서 enforcement 필드와 필터를 테스트하세요.",
+    "whoShouldCareKo": "Claude API를 사용하거나 클라이언트 SDK·ant CLI를 배포하는 개발·플랫폼 팀, 고객 프로필의 제한·차단 상태를 확인하는 운영 팀",
+    "urgency": "high",
+    "changeType": "api_change",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "anthropic:api-version-2026-10-21",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "API 버전 전환과 SDK·CLI 호환성을 확인하세요",
+      "change": "Claude API 버전 2026-10-21이 공개됐으며, 새 Python·TypeScript·C#·Go·Java·PHP·Ruby SDK와 ant CLI는 이 버전을 기본으로 사용합니다. SDK와 CLI에는 API 버전과 별개인 호환성 변경도 포함됐고, 라이선스가 MIT에서 Apache 2.0으로 바뀌었습니다. 고객 프로필에는 제한·차단 상태를 확인하는 enforcement_status 및 enforcement_actions 필드와 enforcement_status[] 필터가 추가됐습니다.",
+      "impact": "SDK나 CLI를 새 버전으로 올리면 API 버전 전환뿐 아니라 별도 호환성 변경과 라이선스 조건도 영향을 줄 수 있어, 기존 연동과 배포 절차를 함께 검증해야 합니다.",
+      "action": "사용 중인 SDK·CLI 버전과 라이선스 검토 절차를 확인하고, 마이그레이션 안내에 따라 API 요청·응답 및 프로필 조회에서 enforcement 필드와 필터를 테스트하세요.",
+      "audience": "Claude API를 사용하거나 클라이언트 SDK·ant CLI를 배포하는 개발·플랫폼 팀, 고객 프로필의 제한·차단 상태를 확인하는 운영 팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:56:00.617Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "api_change",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "anthropic:api-version-2026-10-21",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "새 API 버전과 SDK·CLI의 기본 버전 전환 및 별도 하위 호환성 변경이 있어 마이그레이션 확인이 필요합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "cc5ab385bb00f1ada7bbbc9c",
@@ -1033,7 +1153,47 @@
     "publishedAt": "2026-10-08",
     "detectedAt": "2026-07-09T09:02:45.899Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "Gemini Flash 모델 대체 및 Deep Research Agent 종료 예정",
+    "summaryKo": "Gemini 3.7 Flash와 3.5 Flash는 각각 3.8 Flash와 3.6 Flash로 대체됐으며, 기존 모델 ID를 사용하는 API 요청도 새 모델로 자동 라우팅됩니다. Deep Research Agent `deep-research-pro-preview-12-2025`는 2026년 10월 23일 종료 예정입니다.",
+    "impactKo": "자동 라우팅으로 모델 동작이 달라질 수 있고, 종료 예정인 에이전트는 기한 전에 마이그레이션해야 합니다.",
+    "actionKo": "사용 중인 모델 ID와 에이전트를 확인해 Flash 모델 ID를 교체하고, Deep Research 요청을 새 버전으로 옮긴 뒤 출력과 통합 테스트를 검증하세요.",
+    "whoShouldCareKo": "Gemini API에서 Flash 모델이나 `deep-research-pro-preview-12-2025` 에이전트를 사용하는 개발·운영팀.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "google:gemini-model-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Gemini Flash 자동 라우팅, Deep Research Agent는 10월 23일 종료",
+      "change": "Gemini 3.7 Flash와 3.5 Flash는 각각 3.8 Flash와 3.6 Flash로 대체됐으며, 기존 모델 ID를 사용하는 API 요청도 새 모델로 자동 라우팅됩니다. Deep Research Agent `deep-research-pro-preview-12-2025`는 2026년 10월 23일 종료 예정입니다.",
+      "impact": "자동 라우팅으로 모델 동작이 달라질 수 있고, 종료 예정인 에이전트는 기한 전에 마이그레이션해야 합니다.",
+      "action": "사용 중인 모델 ID와 에이전트를 확인해 Flash 모델 ID를 교체하고, Deep Research 요청을 새 버전으로 옮긴 뒤 출력과 통합 테스트를 검증하세요.",
+      "audience": "Gemini API에서 Flash 모델이나 `deep-research-pro-preview-12-2025` 에이전트를 사용하는 개발·운영팀.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:56:24.344Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:gemini-model-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Gemini Flash 모델이 대체·자동 라우팅되고 Deep Research Agent의 종료 일정과 마이그레이션 안내가 있어 운영자가 확인해야 합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -1086,7 +1246,8 @@
     "severity": 65,
     "publishedAt": "2026-10-07",
     "detectedAt": "2026-07-18T08:49:59.601Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -3179,7 +3340,47 @@
     "severity": 100,
     "publishedAt": "2026-09-22",
     "detectedAt": "2026-07-09T09:02:46.468Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "Gemini API 모델별 지원 종료 일정",
+    "summaryKo": "Gemini API의 일부 모델은 종료일이 공지됐고, 일부는 대체 모델로 전환됩니다. 예를 들어 gemini-3.1-flash-lite는 2027년 5월 7일 종료 예정이며 gemini-3.5-flash-lite로 대체하도록 안내돼 있습니다. gemini-3.7-flash와 gemini-3.5-flash는 각각 대체 모델로 요청이 자동 라우팅되며, Google AI Studio에서 선택할 수 없게 됩니다.",
+    "impactKo": "모델별 종료일과 자동 라우팅 여부가 다르므로, 종료되는 모델을 쓰는 서비스는 요청 실패를 막고 결과 차이를 파악할 수 있도록 마이그레이션과 호환성 테스트가 필요합니다.",
+    "actionKo": "운영 중인 모델 ID를 공식 종료 일정과 대조하고, 대체 모델로 바꾼 뒤 대표 요청의 응답 품질과 애플리케이션 호환성을 테스트하세요.",
+    "whoShouldCareKo": "Gemini API에서 종료 일정에 포함된 모델을 사용하는 개발·운영팀.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "google:gemini-api-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Gemini API 모델 종료 일정과 대체 모델 확인",
+      "change": "Gemini API의 일부 모델은 종료일이 공지됐고, 일부는 대체 모델로 전환됩니다. 예를 들어 gemini-3.1-flash-lite는 2027년 5월 7일 종료 예정이며 gemini-3.5-flash-lite로 대체하도록 안내돼 있습니다. gemini-3.7-flash와 gemini-3.5-flash는 각각 대체 모델로 요청이 자동 라우팅되며, Google AI Studio에서 선택할 수 없게 됩니다.",
+      "impact": "모델별 종료일과 자동 라우팅 여부가 다르므로, 종료되는 모델을 쓰는 서비스는 요청 실패를 막고 결과 차이를 파악할 수 있도록 마이그레이션과 호환성 테스트가 필요합니다.",
+      "action": "운영 중인 모델 ID를 공식 종료 일정과 대조하고, 대체 모델로 바꾼 뒤 대표 요청의 응답 품질과 애플리케이션 호환성을 테스트하세요.",
+      "audience": "Gemini API에서 종료 일정에 포함된 모델을 사용하는 개발·운영팀.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:58:54.010Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:gemini-api-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Gemini API 모델별 종료일과 대체 모델, Studio 선택 불가 및 요청 자동 라우팅 정보가 있어 운영자가 확인해야 하는 변경이다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "d1751848528eadb3a01dc5e2",
@@ -5206,7 +5407,8 @@
     "severity": 100,
     "publishedAt": "2026-08-27",
     "detectedAt": "2026-07-09T09:02:39.782Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "6721b21ae45d870209f7265f",
@@ -5339,7 +5541,47 @@
     "publishedAt": "2026-08-26",
     "detectedAt": "2026-07-09T09:02:36.442Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "전사 모델·번역 엔드포인트, 2027년 2월 종료",
+    "summaryKo": "OpenAI는 2026년 8월 26일 whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize와 /v1/audio/translations의 지원 종료를 알렸습니다. 모두 2027년 2월 26일 API에서 종료되며, 대체 모델과 엔드포인트가 안내됐습니다.",
+    "impactKo": "해당 모델이나 엔드포인트를 사용하는 서비스는 종료일 전에 호출 방식과 응답 처리를 새 경로에 맞게 바꾸고 호환성을 검증해야 합니다.",
+    "actionKo": "운영 코드와 배치 작업에서 네 모델 및 /v1/audio/translations 사용 여부를 확인하고, 대체 모델은 gpt-live-transcribe 또는 gpt-transcribe, 번역은 v1/realtime/translations를 기준으로 마이그레이션 계획을 세우세요.",
+    "whoShouldCareKo": "OpenAI API에서 전사 모델이나 /v1/audio/translations를 사용하는 개발·운영 팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:transcription-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "OpenAI 전사 모델과 오디오 번역 API 종료 예고",
+      "change": "OpenAI는 2026년 8월 26일 whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize와 /v1/audio/translations의 지원 종료를 알렸습니다. 모두 2027년 2월 26일 API에서 종료되며, 대체 모델과 엔드포인트가 안내됐습니다.",
+      "impact": "해당 모델이나 엔드포인트를 사용하는 서비스는 종료일 전에 호출 방식과 응답 처리를 새 경로에 맞게 바꾸고 호환성을 검증해야 합니다.",
+      "action": "운영 코드와 배치 작업에서 네 모델 및 /v1/audio/translations 사용 여부를 확인하고, 대체 모델은 gpt-live-transcribe 또는 gpt-transcribe, 번역은 v1/realtime/translations를 기준으로 마이그레이션 계획을 세우세요.",
+      "audience": "OpenAI API에서 전사 모델이나 /v1/audio/translations를 사용하는 개발·운영 팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:58:16.194Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:transcription-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "여러 전사 모델과 번역 엔드포인트의 API 종료일 및 대체 모델이 공지되어 운영자의 마이그레이션 대응이 필요합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -7378,7 +7620,47 @@
     "severity": 100,
     "publishedAt": "2026-07-30",
     "detectedAt": "2026-07-09T09:02:46.468Z",
-    "watched": true
+    "watched": true,
+    "titleKo": "Gemini Robotics 모델 지원 종료 일정",
+    "summaryKo": "gemini-robotics-er-1.5-preview는 2026년 4월 30일, gemini-robotics-er-1.6-preview는 2026년 8월 31일에 종료됩니다. 두 모델의 권장 대체 모델은 gemini-robotics-er-2-preview이며, gemini-robotics-er-2-preview와 gemini-robotics-er-2-streaming-preview는 종료일이 발표되지 않았습니다.",
+    "impactKo": "종료일 이후에는 해당 모델을 사용할 수 없으므로, 이를 사용하는 서비스는 대체 모델 전환과 호환성 검증을 미리 준비해야 합니다.",
+    "actionKo": "현재 사용 중인 모델과 호출 경로를 확인하고, gemini-robotics-er-2-preview로 전환해 실제 요청·응답 동작과 로봇 작업 평가를 테스트하세요.",
+    "whoShouldCareKo": "Gemini API에서 Gemini Robotics 모델을 사용하는 개발·운영팀",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "google:gemini-robotics-model-deprecations",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Gemini Robotics 모델별 종료일과 대체 모델",
+      "change": "gemini-robotics-er-1.5-preview는 2026년 4월 30일, gemini-robotics-er-1.6-preview는 2026년 8월 31일에 종료됩니다. 두 모델의 권장 대체 모델은 gemini-robotics-er-2-preview이며, gemini-robotics-er-2-preview와 gemini-robotics-er-2-streaming-preview는 종료일이 발표되지 않았습니다.",
+      "impact": "종료일 이후에는 해당 모델을 사용할 수 없으므로, 이를 사용하는 서비스는 대체 모델 전환과 호환성 검증을 미리 준비해야 합니다.",
+      "action": "현재 사용 중인 모델과 호출 경로를 확인하고, gemini-robotics-er-2-preview로 전환해 실제 요청·응답 동작과 로봇 작업 평가를 테스트하세요.",
+      "audience": "Gemini API에서 Gemini Robotics 모델을 사용하는 개발·운영팀",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T00:59:05.272Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:gemini-robotics-model-deprecations",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Gemini Robotics 모델의 종료 일정과 권장 대체 모델이 명시되어 운영자가 지원 종료에 대비해야 합니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "a871f35cceb8febb75f8432c",
