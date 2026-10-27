@@ -105,7 +105,47 @@
     "publishedAt": "2026-10-26",
     "detectedAt": "2026-07-09T09:02:48.956Z",
     "watched": false,
-    "summaryError": "Unexpected non-whitespace character after JSON at position 308 (line 2 column 2)"
+    "summaryError": "Unexpected non-whitespace character after JSON at position 308 (line 2 column 2)",
+    "titleKo": "Workbench 인스턴스에 커스텀 조직 정책 적용 가능",
+    "summaryKo": "Agent Platform Workbench 인스턴스의 구성에 따라 생성이나 수정을 허용하거나 차단하는 커스텀 조직 정책 기능이 정식 제공(GA)됩니다. `notebooks.googleapis.com/Instance` 리소스에 사용자 지정 제약 조건을 적용할 수 있으며, 드라이런 모드도 지원합니다.",
+    "impactKo": "조직 정책으로 인스턴스 구성 기준을 일관되게 적용하고 실제 변경 전에 정책 결과를 드라이런으로 확인할 수 있습니다.",
+    "actionKo": "인스턴스 생성·수정에 적용할 구성 조건을 정리하고, 사용자 지정 제약 조건을 만든 뒤 드라이런으로 예상 결과를 확인하세요.",
+    "whoShouldCareKo": "Google Cloud에서 Agent Platform Workbench 인스턴스를 관리하는 플랫폼 운영자와 조직 정책 담당자",
+    "urgency": "medium",
+    "changeType": "availability",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "google:agent-platform-workbench-org-policies",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "Agent Platform Workbench 커스텀 조직 정책 GA",
+      "change": "Agent Platform Workbench 인스턴스의 구성에 따라 생성이나 수정을 허용하거나 차단하는 커스텀 조직 정책 기능이 정식 제공(GA)됩니다. `notebooks.googleapis.com/Instance` 리소스에 사용자 지정 제약 조건을 적용할 수 있으며, 드라이런 모드도 지원합니다.",
+      "impact": "조직 정책으로 인스턴스 구성 기준을 일관되게 적용하고 실제 변경 전에 정책 결과를 드라이런으로 확인할 수 있습니다.",
+      "action": "인스턴스 생성·수정에 적용할 구성 조건을 정리하고, 사용자 지정 제약 조건을 만든 뒤 드라이런으로 예상 결과를 확인하세요.",
+      "audience": "Google Cloud에서 Agent Platform Workbench 인스턴스를 관리하는 플랫폼 운영자와 조직 정책 담당자",
+      "urgency": "medium"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T07:57:23.605Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "availability",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "google:agent-platform-workbench-org-policies",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "Workbench 인스턴스 생성·수정에 적용하는 커스텀 조직 정책 기능이 GA로 제공되어 운영자가 확인할 제품 기능 제공 여부 변화입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "fe437f3dc28b62f59c1c3ac5",
@@ -1764,7 +1804,47 @@
     "publishedAt": "2026-10-01",
     "detectedAt": "2026-07-09T09:02:36.442Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "TTS 모델 4종, 2027년 1월 6일 API 종료",
+    "summaryKo": "OpenAI가 tts-1, tts-1-hd와 gpt-4o-mini-tts의 두 버전을 2027년 1월 6일 API에서 종료합니다. 권장 대체 모델은 gpt-realtime-2.1-mini입니다.",
+    "impactKo": "종료일 이후에는 대상 모델을 호출하는 TTS 기능이 중단되므로, 기존 연동의 호환성과 음성 생성 결과를 미리 확인해야 합니다.",
+    "actionKo": "오늘 운영 코드와 설정에서 대상 모델 ID 사용 여부를 확인하고, 해당 모델을 쓰는 서비스는 Realtime API 가이드를 참고해 gpt-realtime-2.1-mini로 마이그레이션한 뒤 음성 생성 및 연동 테스트를 계획하세요.",
+    "whoShouldCareKo": "OpenAI API에서 tts-1, tts-1-hd 또는 gpt-4o-mini-tts를 사용하는 개발팀과 서비스 운영자.",
+    "urgency": "high",
+    "changeType": "deprecation",
+    "confidence": "high",
+    "isProbablyNoise": false,
+    "clusterKey": "openai:tts-model-deprecation",
+    "routes": [
+      "news"
+    ],
+    "briefKo": {
+      "title": "OpenAI TTS 모델 지원 종료: 2027년 1월 6일까지 마이그레이션",
+      "change": "OpenAI가 tts-1, tts-1-hd와 gpt-4o-mini-tts의 두 버전을 2027년 1월 6일 API에서 종료합니다. 권장 대체 모델은 gpt-realtime-2.1-mini입니다.",
+      "impact": "종료일 이후에는 대상 모델을 호출하는 TTS 기능이 중단되므로, 기존 연동의 호환성과 음성 생성 결과를 미리 확인해야 합니다.",
+      "action": "오늘 운영 코드와 설정에서 대상 모델 ID 사용 여부를 확인하고, 해당 모델을 쓰는 서비스는 Realtime API 가이드를 참고해 gpt-realtime-2.1-mini로 마이그레이션한 뒤 음성 생성 및 연동 테스트를 계획하세요.",
+      "audience": "OpenAI API에서 tts-1, tts-1-hd 또는 gpt-4o-mini-tts를 사용하는 개발팀과 서비스 운영자.",
+      "urgency": "high"
+    },
+    "summaryMeta": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "summarizedAt": "2026-10-27T07:56:10.094Z",
+      "pipeline": "router-v1+writer-v1",
+      "calls": 2,
+      "changeType": "deprecation",
+      "confidence": "high",
+      "isProbablyNoise": false,
+      "clusterKey": "openai:tts-model-deprecation",
+      "routes": [
+        "news"
+      ],
+      "routingRationaleKo": "TTS 모델의 API 제공 종료일과 권장 마이그레이션 대상이 명시되어 운영자가 확인해야 하는 변경입니다.",
+      "promptTipLane": null,
+      "promptTipKo": "",
+      "promptTipEvidenceKo": "",
+      "promptTipExampleKo": ""
+    }
   },
   {
     "id": "aa87c97a5146ca7fb1a6e3f2",
@@ -2188,7 +2268,8 @@
     "severity": 80,
     "publishedAt": "2026-10-01",
     "detectedAt": "2026-10-27T00:48:16.490Z",
-    "watched": false
+    "watched": false,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "24e4cef3eb01649d167e037c",
