@@ -46,63 +46,66 @@
     "publishedAt": "2026-10-26",
     "detectedAt": "2026-07-09T09:02:45.899Z",
     "watched": true,
-    "summaryError": "OpenAI response did not contain JSON"
-  },
-  {
-    "id": "a871f35cceb8febb75f8432c",
-    "fingerprint": "562cb0d93c47dbee745e1a7c",
-    "sourceId": "vertex-release-notes",
-    "vendor": "google",
-    "platform": "vertex-ai",
-    "kind": "changelog",
-    "title": "October 26, 2026",
-    "summary": "Agent Platform Workbench v2 Change 20261025.00_p0 Release Change Installed latest packages from upstream dependencies. Security Updated certifi, pip, and conda ca-certificates to the latest versions. Change 20261025.00_p0 Release Change Installed latest packages from upstream dependencies. Security Addressed multiple reported security vulnerabilities in bundled packages. Security Updated certifi, pip, and conda ca-certificates to the latest versions.",
-    "modelIds": [],
-    "sourceUrl": "https://docs.cloud.google.com/vertex-ai/docs/release-notes",
-    "severity": 45,
-    "publishedAt": "2026-10-26",
-    "detectedAt": "2026-07-09T09:02:48.956Z",
-    "watched": false,
-    "titleKo": "Vertex AI Workbench 보안 패키지 업데이트",
-    "summaryKo": "2026년 10월 26일 공개된 변경 사항에 따라 Agent Platform Workbench v2에 업스트림 패키지의 최신 버전이 설치됐습니다. 번들 패키지의 여러 보안 취약점을 해결하고 certifi, pip, conda ca-certificates를 최신 버전으로 업데이트했습니다.",
-    "impactKo": "Workbench 환경의 패키지와 인증서 보안이 개선되므로, 해당 환경을 운영하는 팀은 기존 설정이나 패키지 설치 절차에 영향이 있는지 확인해야 합니다.",
-    "actionKo": "Agent Platform Workbench v2를 사용하는 경우 환경의 패키지 버전과 패키지 설치·인증서 관련 작업이 정상적으로 동작하는지 확인하세요.",
-    "whoShouldCareKo": "Vertex AI Agent Platform Workbench v2 환경을 운영하거나 해당 환경에서 패키지를 설치하는 팀.",
-    "urgency": "low",
-    "changeType": "product_news",
+    "summaryError": "OpenAI response did not contain JSON",
+    "titleKo": "유료 신규 프로젝트, Generate Content API 저장 기본값 변경",
+    "summaryKo": "2026년 10월 26일부터 유료 티어의 신규 프로젝트는 Generate Content API 요청을 기본적으로 저장합니다(store=true). 기존 프로젝트의 설정은 유지되며, 요청마다 store=false를 지정하거나 Logs and Datasets 대시보드의 설정에서 API 로깅을 끌 수 있습니다.",
+    "impactKo": "신규 프로젝트에서 요청 저장을 원치 않는다면 요청 처리 방식과 로깅 설정을 바꿔야 하므로, 데이터 취급 정책과 기존 시스템 동작의 호환성을 확인해야 합니다.",
+    "actionKo": "유료 신규 프로젝트에서 generateContent·streamGenerateContent·batchGenerateContent 호출을 점검하고, 저장을 원치 않는 요청에는 store=false를 설정한 뒤 테스트 환경에서 저장 여부를 검증하세요.",
+    "whoShouldCareKo": "Gemini API의 유료 티어에서 Generate Content API를 사용하는 팀과 데이터·로그 보관 정책을 관리하는 운영자.",
+    "urgency": "high",
+    "changeType": "api_change",
     "confidence": "high",
-    "isProbablyNoise": true,
-    "clusterKey": "google:vertex-agent-platform-workbench-security-updates",
+    "isProbablyNoise": false,
+    "clusterKey": "google:generate-content-storage-default",
     "routes": [
-      "news"
+      "news",
+      "prompt_tip"
     ],
     "briefKo": {
-      "title": "Workbench에 최신 패키지와 인증서 업데이트 적용",
-      "change": "2026년 10월 26일 공개된 변경 사항에 따라 Agent Platform Workbench v2에 업스트림 패키지의 최신 버전이 설치됐습니다. 번들 패키지의 여러 보안 취약점을 해결하고 certifi, pip, conda ca-certificates를 최신 버전으로 업데이트했습니다.",
-      "impact": "Workbench 환경의 패키지와 인증서 보안이 개선되므로, 해당 환경을 운영하는 팀은 기존 설정이나 패키지 설치 절차에 영향이 있는지 확인해야 합니다.",
-      "action": "Agent Platform Workbench v2를 사용하는 경우 환경의 패키지 버전과 패키지 설치·인증서 관련 작업이 정상적으로 동작하는지 확인하세요.",
-      "audience": "Vertex AI Agent Platform Workbench v2 환경을 운영하거나 해당 환경에서 패키지를 설치하는 팀.",
-      "urgency": "low"
+      "title": "Generate Content API 요청 저장 기본값 변경",
+      "change": "2026년 10월 26일부터 유료 티어의 신규 프로젝트는 Generate Content API 요청을 기본적으로 저장합니다(store=true). 기존 프로젝트의 설정은 유지되며, 요청마다 store=false를 지정하거나 Logs and Datasets 대시보드의 설정에서 API 로깅을 끌 수 있습니다.",
+      "impact": "신규 프로젝트에서 요청 저장을 원치 않는다면 요청 처리 방식과 로깅 설정을 바꿔야 하므로, 데이터 취급 정책과 기존 시스템 동작의 호환성을 확인해야 합니다.",
+      "action": "유료 신규 프로젝트에서 generateContent·streamGenerateContent·batchGenerateContent 호출을 점검하고, 저장을 원치 않는 요청에는 store=false를 설정한 뒤 테스트 환경에서 저장 여부를 검증하세요.",
+      "audience": "Gemini API의 유료 티어에서 Generate Content API를 사용하는 팀과 데이터·로그 보관 정책을 관리하는 운영자.",
+      "urgency": "high"
     },
     "summaryMeta": {
       "provider": "openai",
       "model": "gpt-6-luna",
-      "summarizedAt": "2026-10-27T00:59:30.118Z",
+      "summarizedAt": "2026-10-27T07:51:58.139Z",
       "pipeline": "router-v1+writer-v1",
       "calls": 2,
-      "changeType": "product_news",
+      "changeType": "api_change",
       "confidence": "high",
-      "isProbablyNoise": true,
-      "clusterKey": "google:vertex-agent-platform-workbench-security-updates",
+      "isProbablyNoise": false,
+      "clusterKey": "google:generate-content-storage-default",
       "routes": [
-        "news"
+        "news",
+        "prompt_tip"
       ],
-      "routingRationaleKo": "Workbench 패키지 및 인증서 보안 업데이트가 적용됐지만 모델/API 동작이나 프롬프트 작성에 관한 변화는 아닙니다.",
-      "promptTipLane": null,
-      "promptTipKo": "",
-      "promptTipEvidenceKo": "",
-      "promptTipExampleKo": ""
+      "routingRationaleKo": "유료 신규 프로젝트의 Generate Content API 요청 저장 기본값이 변경되어 운영자가 확인해야 하며, 저장 여부를 요청별로 제어하는 설정도 프롬프트·데이터 취급 맥락에 적용됩니다.",
+      "promptTipLane": "context",
+      "promptTipKo": "요청 저장 여부가 기본값에 맡겨지면 프롬프트 자체뿐 아니라 요청에 담긴 컨텍스트의 취급 방식도 달라질 수 있습니다. 저장할 필요가 없는 민감한 입력은 호출별로 명시적으로 제외하고, 실제 요청 경로에서 그 설정이 유지되는지 확인하는 테스트를 두세요.",
+      "promptTipEvidenceKo": "원문은 Generate Content API의 `store=true` 기본값을 명시하고, `store=false`를 개별 요청에 설정해 저장을 막을 수 있다고 설명합니다. 이 저장 설정이 프롬프트와 컨텍스트 데이터 취급에 직접 영향을 주므로 팁으로 연결했습니다.",
+      "promptTipExampleKo": "테스트 요청에 `store=false`를 지정하고, 민감한 컨텍스트 블록을 포함한 `generateContent` 호출을 보내세요. 테스트에서는 요청에 설정이 실제로 전달되는지 확인하고, Logs and Datasets 대시보드에서 해당 요청이 저장되지 않는지도 검증합니다."
     }
+  },
+  {
+    "id": "a871f35cceb8febb75f8432c",
+    "fingerprint": "cfb098249bc88d119abb1204",
+    "sourceId": "vertex-release-notes",
+    "vendor": "google",
+    "platform": "vertex-ai",
+    "kind": "release",
+    "title": "October 26, 2026",
+    "summary": "Agent Platform Workbench v2 Change 20261025.00_p0 Release Change Installed latest packages from upstream dependencies. Security Updated certifi, pip, and conda ca-certificates to the latest versions. Change 20261025.00_p0 Release Change Installed latest packages from upstream dependencies. Security Addressed multiple reported security vulnerabilities in bundled packages. Security Updated certifi, pip, and conda ca-certificates to the latest versions. Feature Custom organization policies for Agent Platform Workbench instances You can now use custom organization policies to allow or deny the creation and update of Agent Platform Workbench instances based on their configuration. Custom constraints for the notebooks.googleapis.com/Instance resource are enforced when you create or update an instance, and support dry-run mode. This feature is now generally available (GA). For more information, see Create custom organization policy constraints.",
+    "modelIds": [],
+    "sourceUrl": "https://docs.cloud.google.com/vertex-ai/docs/release-notes",
+    "severity": 55,
+    "publishedAt": "2026-10-26",
+    "detectedAt": "2026-07-09T09:02:48.956Z",
+    "watched": false,
+    "summaryError": "Unexpected non-whitespace character after JSON at position 308 (line 2 column 2)"
   },
   {
     "id": "fe437f3dc28b62f59c1c3ac5",
@@ -118,6 +121,23 @@
     "severity": 55,
     "publishedAt": "2026-10-26",
     "detectedAt": "2026-10-27T00:48:23.787Z",
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
+  },
+  {
+    "id": "6ebdb2fe96733d800bda05fe",
+    "fingerprint": "0f2bf62d3d85b0f508dd9829",
+    "sourceId": "bedrock-doc-history",
+    "vendor": "aws",
+    "platform": "amazon-bedrock",
+    "kind": "changelog",
+    "title": "Clarified batch inference completion behavior and quotas",
+    "summary": "Clarified on the Capacity and Performance page that on-demand requests are prioritized over batch inference jobs and that job completion is not guaranteed. Added the default and maximum job timeout (24 hours by default, up to 168 hours). Replaced the fixed job size and file size values with a link to the batch inference quotas in the AWS General Reference. Updated the Capacity and Performance page and the Create a batch inference job page. October 26, 2026",
+    "modelIds": [],
+    "sourceUrl": "https://docs.aws.amazon.com/bedrock/latest/userguide/capacity-limits-cost-optimization.html",
+    "severity": 55,
+    "publishedAt": "2026-10-26",
+    "detectedAt": "2026-10-27T07:50:56.903Z",
     "watched": true,
     "summaryError": "OpenAI response did not contain JSON"
   },
@@ -638,7 +658,8 @@
     "severity": 55,
     "publishedAt": "2026-10-18",
     "detectedAt": "2026-10-27T00:48:23.787Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "188a33a9a1418844aac41c93",
@@ -3275,7 +3296,8 @@
     "severity": 90,
     "publishedAt": "2026-09-22",
     "detectedAt": "2026-07-09T09:02:39.782Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "efaa69f004a9b414ce450ea1",
@@ -4049,7 +4071,7 @@
     "publishedAt": "2026-09-01",
     "detectedAt": "2026-07-09T09:02:36.385Z",
     "watched": true,
-    "summaryError": "Unexpected non-whitespace character after JSON at position 369 (line 2 column 1)"
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "35d53a1426e21b77bae16e45",
@@ -5295,7 +5317,8 @@
     "severity": 90,
     "publishedAt": "2026-09-01",
     "detectedAt": "2026-07-09T09:02:39.782Z",
-    "watched": true
+    "watched": true,
+    "summaryError": "OpenAI response did not contain JSON"
   },
   {
     "id": "392b491e7446fecce31d49f4",
@@ -5829,31 +5852,31 @@
   },
   {
     "id": "f53d0dba03491e026a793de0",
-    "fingerprint": "f15762194ed4a46f79b5ec1e",
+    "fingerprint": "bd5b88d0343792dc59c23c0b",
     "sourceId": "gemini-latest-model",
     "vendor": "google",
     "platform": "gemini-api",
-    "kind": "models",
+    "kind": "pricing",
     "title": "Migrate to gemini-4-argon",
     "summary": "Update model ID: Change your target model string to gemini-4-argon. Review max_output_tokens: If you set it explicitly today, consider raising it. We recommend at least 32,768, since Gemini 4 Argon can spend more of the limit on thinking. Configure thinking level: Choose low, medium (default), or high, and test your workload at all three. Move off explicit context caching: Explicit caching (cachedContents / caches.create) is not supported on Gemini 4 Argon. Remove calls that create or reference cached_content from your requests. Implicit caching is enabled by default for prompts of at least 4,096 tokens and discounts cached input tokens by 95% on cache hits. Remove sampling parameters: Remove temperature, top_p, and top_k from your requests. If provided, they are ignored. Use background execution for long outputs: For tasks that need more than 64K tokens, set background to true and max_output_tokens greater than 65,536. Increase client timeouts: Hard prompts can take several minutes. U",
     "modelIds": [
       "gemini-4-argon"
     ],
     "sourceUrl": "https://ai.google.dev/gemini-api/docs/latest-model",
-    "severity": 45,
+    "severity": 80,
     "publishedAt": null,
     "detectedAt": "2026-08-24T07:29:13.630Z",
     "watched": true
   },
   {
     "id": "f53d0dba03491e026a793de0",
-    "fingerprint": "6a5c64378ee63bc9bebeaa15",
+    "fingerprint": "87a9d618c0790f0766ede0ce",
     "sourceId": "gemini-latest-model",
     "vendor": "google",
     "platform": "gemini-api",
     "kind": "pricing",
     "title": "Pricing",
-    "summary": "Gemini 4 Argon is available at introductory pricing through November 30, 2026: Input tokens: $2.00 per 1M tokens ($4.00 starting December 1, 2026) Cached input tokens: Implicit caching discounts cached input by 95%, to $0.10 per 1M tokens ($0.20 starting December 1, 2026). Output tokens, including thinking tokens: $10.00 per 1M tokens ($20.00 starting December 1, 2026) Gemini 4 Argon is not available on the Free tier. For complete pricing tiers, see the pricing page.",
+    "summary": "Gemini 4 Argon is available at introductory pricing through November 30, 2026: Input tokens: $2.00 per 1M tokens ($4.00 starting December 1, 2026) Cached input tokens: Implicit caching discounts cached input by 95%, to $0.10 per 1M tokens ($0.20 starting December 1, 2026). Output tokens, including thinking tokens: $10.00 per 1M tokens ($20.00 starting December 1, 2026) Every token the model processes is counted and billed, including thinking tokens and internal tool system instructions and function declarations when using grounding. Grounding with Google Search also remains billed per query. Gemini 4 Argon is not available on the Free tier. For complete pricing tiers, see the pricing page.",
     "modelIds": [],
     "sourceUrl": "https://ai.google.dev/gemini-api/docs/latest-model",
     "severity": 80,
